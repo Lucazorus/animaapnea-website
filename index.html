@@ -161,6 +161,43 @@
       }
     }
 
+    /* Bottom-right corner ripples */
+    .corner-ripples {
+      position: fixed;
+      bottom: 0; right: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .corner-ring {
+      position: absolute;
+      bottom: 0; right: 0;
+      transform: translate(50%, 50%);
+      border-radius: 50%;
+      border: 1px solid rgba(111,175,172,0.05);
+      animation: corner-expand 12s ease-out infinite;
+    }
+
+    .corner-ring:nth-child(1) { animation-delay: 0s; }
+    .corner-ring:nth-child(2) { animation-delay: 2.4s; }
+    .corner-ring:nth-child(3) { animation-delay: 4.8s; }
+    .corner-ring:nth-child(4) { animation-delay: 7.2s; }
+    .corner-ring:nth-child(5) { animation-delay: 9.6s; }
+
+    @keyframes corner-expand {
+      0% {
+        width: 100px; height: 100px;
+        opacity: 0;
+        border-color: rgba(111,175,172,0.10);
+      }
+      8% { opacity: 1; }
+      100% {
+        width: 900px; height: 900px;
+        opacity: 0;
+        border-color: rgba(111,156,175,0.01);
+      }
+    }
+
     .content { position: relative; z-index: 1; }
 
     /* ── Nav ── */
@@ -433,6 +470,13 @@
 </head>
 <body>
   <div class="mesh-bg"></div>
+  <div class="corner-ripples">
+    <div class="corner-ring"></div>
+    <div class="corner-ring"></div>
+    <div class="corner-ring"></div>
+    <div class="corner-ring"></div>
+    <div class="corner-ring"></div>
+  </div>
   <div class="content">
 
     <!-- Nav -->
@@ -478,7 +522,7 @@
         </a>
         <div class="left-links">
           <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
-          <a href="mailto:lucas.massoni.contact@gmail.com" data-i18n="contact">Contact</a>
+          <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
         </div>
         <p class="left-copy">&copy; 2025 Anima Apnea</p>
       </div>
@@ -746,6 +790,18 @@
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.lang-select')) dd.classList.remove('open');
     });
+
+    // Copy email to clipboard
+    function copyEmail(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText('lucas.massoni.contact@gmail.com').then(() => {
+        const btn = document.getElementById('contactBtn');
+        const original = btn.textContent;
+        btn.textContent = '✓ Email copied!';
+        btn.style.color = 'var(--cyan)';
+        setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
+      });
+    }
 
     // Handle ?lang= param
     const urlLang = new URLSearchParams(window.location.search).get('lang');
