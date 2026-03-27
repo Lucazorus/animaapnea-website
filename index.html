@@ -3,12 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anima Apnea — Freediving Training App</title>
-  <meta name="description" content="Train your breath, track your progress. The ultimate freediving app for static apnea, CO₂/O₂ tables, and breathing exercises.">
+  <title>Anima Apnea — Freediving Training App | Static Apnea Timer, CO₂/O₂ Tables & Breathwork</title>
+  <meta name="description" content="The best freediving app for breath-hold training. Static apnea timer with contraction tracking, CO₂ and O₂ training tables, breathing exercises, progress charts and training plans. Available on iOS.">
+  <meta name="keywords" content="freediving app, apnea training, static apnea timer, breath hold training, CO2 table, O2 table, freediving training, breathwork app, apnea app, breath hold app, freediving breath training, spearfishing breath training, apnée statique, entraînement apnée, plongée libre">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Anima Apnea — Freediving Training App">
+  <meta property="og:description" content="Train your breath, push your limits. Static apnea timer, CO₂/O₂ tables, breathing exercises and progress tracking.">
+  <meta property="og:image" content="https://animaapnea.com/og-image.png">
+  <meta property="og:url" content="https://animaapnea.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anima Apnea">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anima Apnea — Freediving Training App">
+  <meta name="twitter:description" content="Train your breath, push your limits. The complete freediving companion.">
+  <meta name="twitter:image" content="https://animaapnea.com/og-image.png">
+
+  <!-- Canonical & alternate languages -->
+  <link rel="canonical" href="https://animaapnea.com/">
+  <link rel="alternate" hreflang="en" href="https://animaapnea.com/">
+  <link rel="alternate" hreflang="fr" href="https://animaapnea.com/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://animaapnea.com/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://animaapnea.com/?lang=de">
+  <link rel="alternate" hreflang="it" href="https://animaapnea.com/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://animaapnea.com/?lang=pt">
+  <link rel="alternate" hreflang="ja" href="https://animaapnea.com/?lang=ja">
+  <link rel="alternate" hreflang="zh" href="https://animaapnea.com/?lang=zh">
+  <link rel="alternate" hreflang="x-default" href="https://animaapnea.com/">
+
+  <!-- App linking -->
+  <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Anima Apnea",
+    "operatingSystem": "iOS",
+    "applicationCategory": "HealthApplication",
+    "description": "Freediving training app with static apnea timer, CO₂/O₂ training tables, breathing exercises, progress charts and training plans.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "1"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Lucas Massoni"
+    },
+    "url": "https://animaapnea.com",
+    "image": "https://animaapnea.com/logo.png",
+    "keywords": "freediving, apnea, breath hold, training, static apnea, CO2 table, O2 table, breathwork"
+  }
+  </script>
   <style>
     :root {
       --bg: #050D1A;
@@ -50,12 +111,24 @@
         radial-gradient(ellipse 40% 40% at 50% 50%, rgba(112,170,175,0.03) 0%, transparent 70%);
     }
 
-    /* Concentric ripple animation */
-    .ripple-container {
-      position: fixed;
+    /* Concentric ripple animation — behind logo */
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .logo-wrapper .hero-logo {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 0;
+    }
+
+    .logo-ripples {
+      position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -64,25 +137,25 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      border: 1px solid rgba(111,156,175,0.06);
-      animation: ripple-expand 10s ease-out infinite;
+      border: 1px solid rgba(111,156,175,0.08);
+      animation: ripple-expand 8s ease-out infinite;
     }
 
     .ripple-ring:nth-child(1) { animation-delay: 0s; }
-    .ripple-ring:nth-child(2) { animation-delay: 2s; }
-    .ripple-ring:nth-child(3) { animation-delay: 4s; }
-    .ripple-ring:nth-child(4) { animation-delay: 6s; }
-    .ripple-ring:nth-child(5) { animation-delay: 8s; }
+    .ripple-ring:nth-child(2) { animation-delay: 1.6s; }
+    .ripple-ring:nth-child(3) { animation-delay: 3.2s; }
+    .ripple-ring:nth-child(4) { animation-delay: 4.8s; }
+    .ripple-ring:nth-child(5) { animation-delay: 6.4s; }
 
     @keyframes ripple-expand {
       0% {
         width: 80px; height: 80px;
         opacity: 0;
-        border-color: rgba(111,156,175,0.12);
+        border-color: rgba(111,156,175,0.15);
       }
       10% { opacity: 1; }
       100% {
-        width: 1200px; height: 1200px;
+        width: 500px; height: 500px;
         opacity: 0;
         border-color: rgba(111,175,172,0.02);
       }
@@ -163,77 +236,85 @@
 
     .lang-dropdown a:hover { background: var(--glass-secondary); color: var(--text-primary); }
 
-    /* ── Hero ── */
-    .hero {
+    /* ── Main layout: single viewport, split left/right ── */
+    .main-split {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 6rem 2rem 4rem;
+      padding: 5rem 3rem 2rem;
+      gap: 3rem;
+      max-width: 1300px;
+      margin: 0 auto;
     }
 
-    .hero-inner {
+    .left-side {
+      flex: 0 0 38%;
       display: flex;
-      align-items: center;
-      gap: 4rem;
-      max-width: 1100px;
-      width: 100%;
+      flex-direction: column;
     }
 
-    .hero-text { flex: 1; }
-
-    .hero-visual {
+    .right-side {
       flex: 1;
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      gap: 0.9rem;
+      align-content: center;
     }
 
     .hero-logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 24px;
-      margin-bottom: 1.5rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
       box-shadow: 0 0 50px rgba(111,156,175,0.2), 0 0 100px rgba(111,175,172,0.08);
     }
 
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
+    .left-side h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
       line-height: 1.1;
     }
 
-    .hero h1 span { color: var(--cyan); }
+    .left-side h1 span { color: var(--cyan); }
 
-    .hero .subtitle {
-      font-size: 1.1rem;
+    .left-side .subtitle {
+      font-size: 1rem;
       color: var(--text-secondary);
       font-weight: 300;
       line-height: 1.6;
-      margin-bottom: 2rem;
-      max-width: 420px;
+      margin-bottom: 1.5rem;
+      max-width: 380px;
     }
 
     .badge-row {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 0.4rem;
+      justify-content: start;
     }
 
     .badge {
-      padding: 0.35rem 0.85rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 20px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 500;
       border: 1px solid;
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
-    .badge .material-icons-round { font-size: 14px; }
+    .badge .material-icons-round { font-size: 13px; }
 
     .badge.cyan   { color: var(--cyan); border-color: rgba(111,156,175,0.3); background: rgba(111,156,175,0.08); }
     .badge.teal   { color: var(--teal); border-color: rgba(112,170,175,0.3); background: rgba(112,170,175,0.08); }
@@ -244,14 +325,15 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      padding: 0.85rem 1.8rem;
+      padding: 0.8rem 1.6rem;
       background: white;
       color: black;
       border-radius: 14px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
+      align-self: flex-start;
     }
 
     .app-store-btn:hover {
@@ -259,82 +341,56 @@
       box-shadow: 0 8px 30px rgba(255,255,255,0.12);
     }
 
-    .app-store-btn svg { width: 22px; height: 22px; }
+    .app-store-btn svg { width: 20px; height: 20px; }
 
-    /* Phone mockup */
-    .phone-frame {
-      width: 280px;
-      height: 560px;
-      border-radius: 36px;
-      border: 2px solid var(--border-mid);
-      background: var(--surface);
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(111,156,175,0.12), 0 20px 60px rgba(0,0,0,0.4);
-      position: relative;
+    .left-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
     }
 
-    .phone-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .left-links a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: color 0.2s;
     }
 
-    .phone-notch {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 28px;
-      background: var(--bg);
-      border-radius: 0 0 16px 16px;
+    .left-links a:hover { color: var(--cyan); }
+
+    .left-copy {
+      margin-top: 0.6rem;
+      color: var(--text-tertiary);
+      font-size: 0.65rem;
+      opacity: 0.4;
     }
 
-    /* ── Features split ── */
-    .features-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem 5rem;
-    }
-
-    .features-section h2 {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 3rem;
-    }
-
-    .features-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
+    /* ── Feature cards ── */
     .feature-card {
       background: var(--glass-secondary);
       border: 1px solid var(--border-dim);
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 14px;
+      padding: 1.2rem;
       backdrop-filter: blur(20px);
       transition: border-color 0.3s, transform 0.3s;
     }
 
     .feature-card:hover {
       border-color: var(--border-mid);
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
-    .feature-icon .material-icons-round { font-size: 22px; }
+    .feature-icon .material-icons-round { font-size: 20px; }
 
     .feature-icon.cyan   { background: rgba(111,156,175,0.12); color: var(--cyan); }
     .feature-icon.teal   { background: rgba(112,170,175,0.12); color: var(--teal); }
@@ -343,78 +399,40 @@
     .feature-icon.yellow { background: rgba(255,215,64,0.12);  color: var(--yellow); }
 
     .feature-card h3 {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
 
     .feature-card p {
       color: var(--text-tertiary);
-      font-size: 0.85rem;
-      line-height: 1.5;
+      font-size: 0.78rem;
+      line-height: 1.45;
     }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 2.5rem 2rem;
-      border-top: 1px solid var(--border-dim);
-    }
-
-    footer .links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    footer a {
-      color: var(--text-tertiary);
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: var(--cyan); }
-
-    footer .copy {
-      color: var(--text-tertiary);
-      font-size: 0.75rem;
-      opacity: 0.5;
-    }
-
-    /* ── Fade in ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
-      .hero-inner {
+    @media (max-width: 900px) {
+      .main-split {
         flex-direction: column;
+        padding: 5rem 1.5rem 2rem;
+        gap: 2rem;
+        min-height: auto;
+      }
+      .left-side {
+        flex: none;
+        align-items: center;
         text-align: center;
       }
-      .hero-text { display: flex; flex-direction: column; align-items: center; }
-      .hero .subtitle { max-width: 100%; }
+      .left-side .subtitle { max-width: 100%; }
       .badge-row { justify-content: center; }
-      .phone-frame { width: 220px; height: 440px; }
-      .features-split { grid-template-columns: 1fr; }
+      .app-store-btn { align-self: center; }
+      .left-links { justify-content: center; }
+      .right-side { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="mesh-bg"></div>
-  <div class="ripple-container">
-    <div class="ripple-ring"></div>
-    <div class="ripple-ring"></div>
-    <div class="ripple-ring"></div>
-    <div class="ripple-ring"></div>
-    <div class="ripple-ring"></div>
-  </div>
   <div class="content">
 
     <!-- Nav -->
@@ -432,78 +450,73 @@
       </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-text">
+    <!-- Single viewport split -->
+    <div class="main-split">
+      <!-- Left: Hero -->
+      <div class="left-side">
+        <div class="logo-wrapper">
           <img src="logo.png" alt="Anima Apnea" class="hero-logo">
-          <h1>Anima <span>Apnea</span></h1>
-          <p class="subtitle" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
-          <div class="badge-row">
-            <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
-            <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
-            <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathing</span></span>
-            <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
-          </div>
-          <a href="#" class="app-store-btn">
-            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <span data-i18n="appStore">Download on the App Store</span>
-          </a>
-        </div>
-        <div class="hero-visual">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <img src="screenshot.png" alt="Anima Apnea Screenshot">
+          <div class="logo-ripples">
+            <div class="ripple-ring"></div>
+            <div class="ripple-ring"></div>
+            <div class="ripple-ring"></div>
+            <div class="ripple-ring"></div>
+            <div class="ripple-ring"></div>
           </div>
         </div>
+        <h1>Anima <span>Apnea</span></h1>
+        <p class="subtitle" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
+        <div class="badge-row badge-grid">
+          <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
+          <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
+          <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathing</span></span>
+          <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
+        </div>
+        <a href="#" class="app-store-btn">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span data-i18n="appStore">Download on the App Store</span>
+        </a>
+        <div class="left-links">
+          <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
+          <a href="mailto:lucas.massoni.contact@gmail.com" data-i18n="contact">Contact</a>
+        </div>
+        <p class="left-copy">&copy; 2025 Anima Apnea</p>
       </div>
-    </section>
 
-    <!-- Features -->
-    <section class="features-section">
-      <h2 class="fade-in" data-i18n="featuresTitle">Everything you need to progress</h2>
-      <div class="features-split">
-        <div class="feature-card fade-in">
+      <!-- Right: Feature cards 3x2 grid -->
+      <div class="right-side">
+        <div class="feature-card">
           <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
           <h3 data-i18n="f1Title">Static Apnea Timer</h3>
           <p data-i18n="f1Desc">Precise timer with contraction tracking, personal records, and detailed session history.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-icon teal"><span class="material-icons-round">equalizer</span></div>
           <h3 data-i18n="f2Title">CO₂ & O₂ Tables</h3>
           <p data-i18n="f2Desc">Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-icon aqua"><span class="material-icons-round">air</span></div>
           <h3 data-i18n="f3Title">Breathing Exercises</h3>
           <p data-i18n="f3Desc">Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-icon green"><span class="material-icons-round">trending_up</span></div>
           <h3 data-i18n="f4Title">Progress Charts</h3>
           <p data-i18n="f4Desc">Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-icon yellow"><span class="material-icons-round">emoji_events</span></div>
           <h3 data-i18n="f5Title">Training Plans</h3>
           <p data-i18n="f5Desc">4-week structured programs that adapt to your level. Stay consistent and break records.</p>
         </div>
-        <div class="feature-card fade-in">
+        <div class="feature-card">
           <div class="feature-icon cyan"><span class="material-icons-round">cloud_sync</span></div>
           <h3 data-i18n="f6Title">Cloud Sync</h3>
           <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="links">
-        <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
-        <a href="mailto:lucas.massoni.contact@gmail.com" data-i18n="contact">Contact</a>
-      </div>
-      <p class="copy">&copy; 2025 Anima Apnea. All rights reserved.</p>
-    </footer>
+    </div>
 
   </div>
 
@@ -733,6 +746,10 @@
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.lang-select')) dd.classList.remove('open');
     });
+
+    // Handle ?lang= param
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang && LANGS[urlLang]) setLang(urlLang);
 
     // Fade-in observer
     const observer = new IntersectionObserver((entries) => {
