@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <style>
     :root {
       --bg: #050D1A;
@@ -19,11 +20,12 @@
       --aqua: #6FAFAC;
       --green: #70AF84;
       --yellow: #FFD740;
+      --orange: #FF6D00;
       --text-primary: #FFFFFF;
-      --text-secondary: rgba(255,255,255,0.8);
-      --text-tertiary: rgba(255,255,255,0.6);
-      --border-dim: rgba(255,255,255,0.1);
-      --border-mid: rgba(255,255,255,0.2);
+      --text-secondary: rgba(255,255,255,0.75);
+      --text-tertiary: rgba(255,255,255,0.5);
+      --border-dim: rgba(255,255,255,0.08);
+      --border-mid: rgba(255,255,255,0.15);
       --glass: rgba(255,255,255,0.04);
       --glass-secondary: rgba(255,255,255,0.06);
     }
@@ -38,71 +40,200 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Mesh gradient background */
     .mesh-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(111,156,175,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 80% 80%, rgba(111,175,172,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(112,170,175,0.04) 0%, transparent 70%);
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(111,156,175,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 80%, rgba(111,175,172,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(112,170,175,0.03) 0%, transparent 70%);
+    }
+
+    /* Concentric ripple animation */
+    .ripple-container {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .ripple-ring {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(111,156,175,0.06);
+      animation: ripple-expand 10s ease-out infinite;
+    }
+
+    .ripple-ring:nth-child(1) { animation-delay: 0s; }
+    .ripple-ring:nth-child(2) { animation-delay: 2s; }
+    .ripple-ring:nth-child(3) { animation-delay: 4s; }
+    .ripple-ring:nth-child(4) { animation-delay: 6s; }
+    .ripple-ring:nth-child(5) { animation-delay: 8s; }
+
+    @keyframes ripple-expand {
+      0% {
+        width: 80px; height: 80px;
+        opacity: 0;
+        border-color: rgba(111,156,175,0.12);
+      }
+      10% { opacity: 1; }
+      100% {
+        width: 1200px; height: 1200px;
+        opacity: 0;
+        border-color: rgba(111,175,172,0.02);
+      }
     }
 
     .content { position: relative; z-index: 1; }
 
-    /* Hero */
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(5,13,26,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
+
+    .lang-select {
+      position: relative;
+    }
+
+    .lang-btn {
+      background: var(--glass-secondary);
+      border: 1px solid var(--border-dim);
+      border-radius: 10px;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lang-btn .material-icons-round { font-size: 16px; }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      padding: 0.4rem;
+      min-width: 160px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .lang-dropdown.open { display: block; }
+
+    .lang-dropdown a {
+      display: block;
+      padding: 0.5rem 0.8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      transition: background 0.15s;
+    }
+
+    .lang-dropdown a:hover { background: var(--glass-secondary); color: var(--text-primary); }
+
+    /* ── Hero ── */
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 2rem;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
     }
 
     .hero-logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 28px;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 60px rgba(111,156,175,0.25), 0 0 120px rgba(111,175,172,0.1);
+      width: 100px;
+      height: 100px;
+      border-radius: 24px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 50px rgba(111,156,175,0.2), 0 0 100px rgba(111,175,172,0.08);
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
     }
 
     .hero h1 span { color: var(--cyan); }
 
     .hero .subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-size: 1.1rem;
       color: var(--text-secondary);
       font-weight: 300;
-      max-width: 520px;
       line-height: 1.6;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      max-width: 420px;
     }
 
     .badge-row {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .badge {
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 500;
       border: 1px solid;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
     }
+
+    .badge .material-icons-round { font-size: 14px; }
 
     .badge.cyan   { color: var(--cyan); border-color: rgba(111,156,175,0.3); background: rgba(111,156,175,0.08); }
     .badge.teal   { color: var(--teal); border-color: rgba(112,170,175,0.3); background: rgba(112,170,175,0.08); }
@@ -113,11 +244,11 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 1.8rem;
       background: white;
       color: black;
       border-radius: 14px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
@@ -125,96 +256,108 @@
 
     .app-store-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255,255,255,0.15);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.12);
     }
 
-    .app-store-btn svg { width: 24px; height: 24px; }
+    .app-store-btn svg { width: 22px; height: 22px; }
 
-    /* Features */
-    .features {
+    /* Phone mockup */
+    .phone-frame {
+      width: 280px;
+      height: 560px;
+      border-radius: 36px;
+      border: 2px solid var(--border-mid);
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(111,156,175,0.12), 0 20px 60px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 28px;
+      background: var(--bg);
+      border-radius: 0 0 16px 16px;
+    }
+
+    /* ── Features split ── */
+    .features-section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+      padding: 4rem 2rem 5rem;
     }
 
-    .features h2 {
+    .features-section h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
       margin-bottom: 3rem;
-      letter-spacing: -0.01em;
     }
 
-    .features-grid {
+    .features-split {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
     }
 
     .feature-card {
       background: var(--glass-secondary);
       border: 1px solid var(--border-dim);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 1.5rem;
       backdrop-filter: blur(20px);
       transition: border-color 0.3s, transform 0.3s;
     }
 
     .feature-card:hover {
       border-color: var(--border-mid);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
 
-    .feature-card .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
     }
 
-    .feature-card .icon.cyan  { background: rgba(111,156,175,0.12); }
-    .feature-card .icon.teal  { background: rgba(112,170,175,0.12); }
-    .feature-card .icon.aqua  { background: rgba(111,175,172,0.12); }
-    .feature-card .icon.green { background: rgba(112,175,132,0.12); }
-    .feature-card .icon.yellow { background: rgba(255,215,64,0.12); }
+    .feature-icon .material-icons-round { font-size: 22px; }
+
+    .feature-icon.cyan   { background: rgba(111,156,175,0.12); color: var(--cyan); }
+    .feature-icon.teal   { background: rgba(112,170,175,0.12); color: var(--teal); }
+    .feature-icon.aqua   { background: rgba(111,175,172,0.12); color: var(--aqua); }
+    .feature-icon.green  { background: rgba(112,175,132,0.12); color: var(--green); }
+    .feature-icon.yellow { background: rgba(255,215,64,0.12);  color: var(--yellow); }
 
     .feature-card h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .feature-card p {
       color: var(--text-tertiary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.5;
     }
 
-    /* Stats bar */
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-      padding: 3rem 2rem;
-      border-top: 1px solid var(--border-dim);
-      border-bottom: 1px solid var(--border-dim);
-      max-width: 900px;
-      margin: 0 auto 4rem;
-    }
-
-    .stat { text-align: center; }
-    .stat .num { font-size: 2rem; font-weight: 700; color: var(--cyan); }
-    .stat .label { font-size: 0.85rem; color: var(--text-tertiary); margin-top: 0.25rem; }
-
-    /* Footer */
+    /* ── Footer ── */
     footer {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
       border-top: 1px solid var(--border-dim);
     }
 
@@ -223,13 +366,13 @@
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     footer a {
       color: var(--text-tertiary);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       transition: color 0.2s;
     }
 
@@ -237,109 +380,127 @@
 
     footer .copy {
       color: var(--text-tertiary);
-      font-size: 0.8rem;
-      opacity: 0.6;
+      font-size: 0.75rem;
+      opacity: 0.5;
     }
 
-    /* Scroll animation */
+    /* ── Fade in ── */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 640px) {
-      .stats-bar { gap: 2rem; }
-      .features-grid { grid-template-columns: 1fr; }
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text { display: flex; flex-direction: column; align-items: center; }
+      .hero .subtitle { max-width: 100%; }
+      .badge-row { justify-content: center; }
+      .phone-frame { width: 220px; height: 440px; }
+      .features-split { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="mesh-bg"></div>
+  <div class="ripple-container">
+    <div class="ripple-ring"></div>
+    <div class="ripple-ring"></div>
+    <div class="ripple-ring"></div>
+    <div class="ripple-ring"></div>
+    <div class="ripple-ring"></div>
+  </div>
   <div class="content">
+
+    <!-- Nav -->
+    <nav>
+      <a href="/" class="nav-brand">
+        <img src="logo.png" alt="Anima Apnea">
+        <span data-i18n="brand">Anima Apnea</span>
+      </a>
+      <div class="lang-select">
+        <button class="lang-btn" onclick="document.querySelector('.lang-dropdown').classList.toggle('open')">
+          <span class="material-icons-round">language</span>
+          <span id="currentLang">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown"></div>
+      </div>
+    </nav>
 
     <!-- Hero -->
     <section class="hero">
-      <img src="logo.png" alt="Anima Apnea" class="hero-logo">
-      <h1>Anima <span>Apnea</span></h1>
-      <p class="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
-      <div class="badge-row">
-        <span class="badge cyan">Static Apnea</span>
-        <span class="badge teal">CO₂ / O₂ Tables</span>
-        <span class="badge aqua">Breathing Exercises</span>
-        <span class="badge green">Progress Tracking</span>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <img src="logo.png" alt="Anima Apnea" class="hero-logo">
+          <h1>Anima <span>Apnea</span></h1>
+          <p class="subtitle" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
+          <div class="badge-row">
+            <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
+            <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
+            <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathing</span></span>
+            <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
+          </div>
+          <a href="#" class="app-store-btn">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span data-i18n="appStore">Download on the App Store</span>
+          </a>
+        </div>
+        <div class="hero-visual">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <img src="screenshot.png" alt="Anima Apnea Screenshot">
+          </div>
+        </div>
       </div>
-      <a href="#" class="app-store-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on the App Store
-      </a>
     </section>
 
     <!-- Features -->
-    <section class="features">
-      <h2 class="fade-in">Everything you need to progress</h2>
-      <div class="features-grid">
+    <section class="features-section">
+      <h2 class="fade-in" data-i18n="featuresTitle">Everything you need to progress</h2>
+      <div class="features-split">
         <div class="feature-card fade-in">
-          <div class="icon cyan">🫁</div>
-          <h3>Static Apnea Timer</h3>
-          <p>Precise timer with contraction tracking, personal records, and detailed session history.</p>
+          <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
+          <h3 data-i18n="f1Title">Static Apnea Timer</h3>
+          <p data-i18n="f1Desc">Precise timer with contraction tracking, personal records, and detailed session history.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="icon teal">📊</div>
-          <h3>CO₂ & O₂ Tables</h3>
-          <p>Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
+          <div class="feature-icon teal"><span class="material-icons-round">equalizer</span></div>
+          <h3 data-i18n="f2Title">CO₂ & O₂ Tables</h3>
+          <p data-i18n="f2Desc">Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="icon aqua">🌬️</div>
-          <h3>Breathing Exercises</h3>
-          <p>Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
+          <div class="feature-icon aqua"><span class="material-icons-round">air</span></div>
+          <h3 data-i18n="f3Title">Breathing Exercises</h3>
+          <p data-i18n="f3Desc">Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="icon green">📈</div>
-          <h3>Progress Charts</h3>
-          <p>Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
+          <div class="feature-icon green"><span class="material-icons-round">trending_up</span></div>
+          <h3 data-i18n="f4Title">Progress Charts</h3>
+          <p data-i18n="f4Desc">Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="icon yellow">🏆</div>
-          <h3>Training Plans</h3>
-          <p>4-week structured programs that adapt to your level. Stay consistent and break records.</p>
+          <div class="feature-icon yellow"><span class="material-icons-round">emoji_events</span></div>
+          <h3 data-i18n="f5Title">Training Plans</h3>
+          <p data-i18n="f5Desc">4-week structured programs that adapt to your level. Stay consistent and break records.</p>
         </div>
         <div class="feature-card fade-in">
-          <div class="icon cyan">🔄</div>
-          <h3>Cloud Sync</h3>
-          <p>Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
+          <div class="feature-icon cyan"><span class="material-icons-round">cloud_sync</span></div>
+          <h3 data-i18n="f6Title">Cloud Sync</h3>
+          <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
         </div>
       </div>
     </section>
-
-    <!-- Stats -->
-    <div class="stats-bar fade-in">
-      <div class="stat">
-        <div class="num">14</div>
-        <div class="label">Languages</div>
-      </div>
-      <div class="stat">
-        <div class="num">4</div>
-        <div class="label">Breathing patterns</div>
-      </div>
-      <div class="stat">
-        <div class="num">∞</div>
-        <div class="label">Sessions tracked</div>
-      </div>
-    </div>
 
     <!-- Footer -->
     <footer>
       <div class="links">
-        <a href="/privacy/">Privacy Policy</a>
-        <a href="/privacy/en.html">English</a>
-        <a href="/privacy/fr.html">Français</a>
-        <a href="mailto:lucas.massoni.contact@gmail.com">Contact</a>
+        <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
+        <a href="mailto:lucas.massoni.contact@gmail.com" data-i18n="contact">Contact</a>
       </div>
       <p class="copy">&copy; 2025 Anima Apnea. All rights reserved.</p>
     </footer>
@@ -347,6 +508,233 @@
   </div>
 
   <script>
+    // ── i18n ──
+    const LANGS = {
+      en: { flag: '🇬🇧', label: 'English', privacyFile: 'en', data: {
+        subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.',
+        badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathing', badgeProgress: 'Progress',
+        appStore: 'Download on the App Store',
+        featuresTitle: 'Everything you need to progress',
+        f1Title: 'Static Apnea Timer', f1Desc: 'Precise timer with contraction tracking, personal records, and detailed session history.',
+        f2Title: 'CO₂ & O₂ Tables', f2Desc: 'Customizable training tables to build your tolerance. Auto-adapts to your personal record.',
+        f3Title: 'Breathing Exercises', f3Desc: 'Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.',
+        f4Title: 'Progress Charts', f4Desc: 'Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.',
+        f5Title: 'Training Plans', f5Desc: '4-week structured programs that adapt to your level. Stay consistent and break records.',
+        f6Title: 'Cloud Sync', f6Desc: 'Sign in with Apple or Google. Your data syncs across all your devices, always safe.',
+        privacyLabel: 'Privacy Policy', contact: 'Contact',
+      }},
+      fr: { flag: '🇫🇷', label: 'Français', privacyFile: 'fr', data: {
+        subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables et la respiration.',
+        badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Respiration', badgeProgress: 'Progression',
+        appStore: 'Télécharger sur l\'App Store',
+        featuresTitle: 'Tout ce qu\'il te faut pour progresser',
+        f1Title: 'Chrono apnée statique', f1Desc: 'Chrono précis avec suivi des contractions, records personnels et historique détaillé.',
+        f2Title: 'Tables CO₂ & O₂', f2Desc: 'Tables d\'entraînement personnalisables. S\'adaptent automatiquement à ton record.',
+        f3Title: 'Exercices de respiration', f3Desc: 'Diaphragmatique, box breathing, 4-7-8 et patterns personnalisés pour préparer ton corps.',
+        f4Title: 'Graphiques de progression', f4Desc: 'Visualise ton évolution par jour, semaine ou mois. Suis tes temps, tables et contractions.',
+        f5Title: 'Plans d\'entraînement', f5Desc: 'Programmes de 4 semaines qui s\'adaptent à ton niveau. Reste régulier et bats tes records.',
+        f6Title: 'Synchronisation cloud', f6Desc: 'Connecte-toi avec Apple ou Google. Tes données se synchronisent sur tous tes appareils.',
+        privacyLabel: 'Politique de confidentialité', contact: 'Contact',
+      }},
+      es: { flag: '🇪🇸', label: 'Español', privacyFile: 'es', data: {
+        subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas y respiración.',
+        badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Respiración', badgeProgress: 'Progreso',
+        appStore: 'Descargar en el App Store',
+        featuresTitle: 'Todo lo que necesitas para progresar',
+        f1Title: 'Cronómetro de apnea', f1Desc: 'Cronómetro preciso con seguimiento de contracciones, récords personales e historial.',
+        f2Title: 'Tablas CO₂ y O₂', f2Desc: 'Tablas de entrenamiento personalizables. Se adaptan automáticamente a tu récord.',
+        f3Title: 'Ejercicios de respiración', f3Desc: 'Diafragmática, box breathing, 4-7-8 y patrones personalizados.',
+        f4Title: 'Gráficos de progreso', f4Desc: 'Visualiza tu evolución por día, semana o mes. Sigue tus tiempos y contracciones.',
+        f5Title: 'Planes de entrenamiento', f5Desc: 'Programas de 4 semanas que se adaptan a tu nivel. Mantén la constancia.',
+        f6Title: 'Sincronización cloud', f6Desc: 'Inicia sesión con Apple o Google. Tus datos se sincronizan en todos tus dispositivos.',
+        privacyLabel: 'Política de privacidad', contact: 'Contacto',
+      }},
+      it: { flag: '🇮🇹', label: 'Italiano', privacyFile: 'it', data: {
+        subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle e respirazione.',
+        badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Respirazione', badgeProgress: 'Progressi',
+        appStore: 'Scarica sull\'App Store',
+        featuresTitle: 'Tutto ciò che ti serve per progredire',
+        f1Title: 'Timer apnea statica', f1Desc: 'Timer preciso con tracciamento contrazioni, record personali e cronologia.',
+        f2Title: 'Tabelle CO₂ e O₂', f2Desc: 'Tabelle di allenamento personalizzabili. Si adattano al tuo record.',
+        f3Title: 'Esercizi di respirazione', f3Desc: 'Diaframmatica, box breathing, 4-7-8 e schemi personalizzati.',
+        f4Title: 'Grafici di progressione', f4Desc: 'Visualizza la tua evoluzione per giorno, settimana o mese.',
+        f5Title: 'Piani di allenamento', f5Desc: 'Programmi di 4 settimane che si adattano al tuo livello.',
+        f6Title: 'Sincronizzazione cloud', f6Desc: 'Accedi con Apple o Google. I tuoi dati si sincronizzano ovunque.',
+        privacyLabel: 'Informativa sulla privacy', contact: 'Contatto',
+      }},
+      de: { flag: '🇩🇪', label: 'Deutsch', privacyFile: 'de', data: {
+        subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, Tabellen und Atemübungen.',
+        badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Atmung', badgeProgress: 'Fortschritt',
+        appStore: 'Im App Store laden',
+        featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
+        f1Title: 'Statische Apnoe Timer', f1Desc: 'Präziser Timer mit Kontraktionstracking, persönlichen Rekorden und Verlauf.',
+        f2Title: 'CO₂ & O₂ Tabellen', f2Desc: 'Anpassbare Trainingstabellen. Passen sich automatisch an deinen Rekord an.',
+        f3Title: 'Atemübungen', f3Desc: 'Zwerchfell, Box Breathing, 4-7-8 und individuelle Muster.',
+        f4Title: 'Fortschrittsdiagramme', f4Desc: 'Visualisiere deine Entwicklung nach Tag, Woche oder Monat.',
+        f5Title: 'Trainingspläne', f5Desc: '4-Wochen-Programme, die sich an dein Level anpassen.',
+        f6Title: 'Cloud-Synchronisierung', f6Desc: 'Melde dich mit Apple oder Google an. Deine Daten werden überall synchronisiert.',
+        privacyLabel: 'Datenschutz', contact: 'Kontakt',
+      }},
+      pt: { flag: '🇧🇷', label: 'Português', privacyFile: 'pt', data: {
+        subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas e respiração.',
+        badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Respiração', badgeProgress: 'Progresso',
+        appStore: 'Baixar na App Store',
+        featuresTitle: 'Tudo que você precisa para progredir',
+        f1Title: 'Timer de apneia', f1Desc: 'Timer preciso com rastreamento de contrações, recordes pessoais e histórico.',
+        f2Title: 'Tabelas CO₂ e O₂', f2Desc: 'Tabelas de treino personalizáveis que se adaptam ao seu recorde.',
+        f3Title: 'Exercícios de respiração', f3Desc: 'Diafragmática, box breathing, 4-7-8 e padrões personalizados.',
+        f4Title: 'Gráficos de progresso', f4Desc: 'Visualize sua evolução por dia, semana ou mês.',
+        f5Title: 'Planos de treino', f5Desc: 'Programas de 4 semanas que se adaptam ao seu nível.',
+        f6Title: 'Sincronização na nuvem', f6Desc: 'Entre com Apple ou Google. Seus dados sincronizam em todos os dispositivos.',
+        privacyLabel: 'Política de privacidade', contact: 'Contato',
+      }},
+      zh: { flag: '🇨🇳', label: '中文', privacyFile: 'zh', data: {
+        subtitle: '训练你的呼吸，突破你的极限。静态屏气、训练表和呼吸练习的完整伙伴。',
+        badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: '呼吸', badgeProgress: '进展',
+        appStore: '在 App Store 下载',
+        featuresTitle: '你所需要的一切',
+        f1Title: '静态屏气计时器', f1Desc: '精确计时，收缩追踪，个人记录和详细历史。',
+        f2Title: 'CO₂ 和 O₂ 训练表', f2Desc: '可自定义的训练表，自动适应你的个人记录。',
+        f3Title: '呼吸练习', f3Desc: '横膈膜呼吸、方块呼吸、4-7-8 和自定义模式。',
+        f4Title: '进展图表', f4Desc: '按日、周或月查看你的进步。',
+        f5Title: '训练计划', f5Desc: '4周结构化计划，适应你的水平。',
+        f6Title: '云同步', f6Desc: '使用 Apple 或 Google 登录，数据在所有设备间同步。',
+        privacyLabel: '隐私政策', contact: '联系我们',
+      }},
+      ja: { flag: '🇯🇵', label: '日本語', privacyFile: 'ja', data: {
+        subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、テーブル、呼吸法の完全なパートナー。',
+        badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: '呼吸', badgeProgress: '進捗',
+        appStore: 'App Store でダウンロード',
+        featuresTitle: '上達に必要なすべて',
+        f1Title: 'スタティック・アプネア・タイマー', f1Desc: '収縮トラッキング、自己記録、セッション履歴付き精密タイマー。',
+        f2Title: 'CO₂ & O₂ テーブル', f2Desc: 'カスタマイズ可能なトレーニングテーブル。自己記録に自動適応。',
+        f3Title: '呼吸エクササイズ', f3Desc: '横隔膜呼吸、ボックス呼吸、4-7-8、カスタムパターン。',
+        f4Title: '進捗チャート', f4Desc: '日・週・月単位で進歩を可視化。',
+        f5Title: 'トレーニングプラン', f5Desc: 'レベルに合わせた4週間プログラム。',
+        f6Title: 'クラウド同期', f6Desc: 'Apple または Google でサインイン。全デバイスでデータ同期。',
+        privacyLabel: 'プライバシーポリシー', contact: 'お問い合わせ',
+      }},
+      da: { flag: '🇩🇰', label: 'Dansk', privacyFile: 'da', data: {
+        subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, tabeller og vejrtrækning.',
+        badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Vejrtrækning', badgeProgress: 'Fremskridt',
+        appStore: 'Download i App Store',
+        featuresTitle: 'Alt du behøver for at forbedre dig',
+        f1Title: 'Statisk apnø timer', f1Desc: 'Præcis timer med kontraktionssporing, personlige rekorder og historik.',
+        f2Title: 'CO₂ & O₂ tabeller', f2Desc: 'Tilpasselige træningstabeller der tilpasser sig din rekord.',
+        f3Title: 'Vejrtrækningsøvelser', f3Desc: 'Diafragma, box breathing, 4-7-8 og brugerdefinerede mønstre.',
+        f4Title: 'Fremskridtsdiagrammer', f4Desc: 'Se din udvikling per dag, uge eller måned.',
+        f5Title: 'Træningsplaner', f5Desc: '4-ugers programmer tilpasset dit niveau.',
+        f6Title: 'Cloud-synkronisering', f6Desc: 'Log ind med Apple eller Google. Dine data synkroniseres overalt.',
+        privacyLabel: 'Fortrolighedspolitik', contact: 'Kontakt',
+      }},
+      nl: { flag: '🇳🇱', label: 'Nederlands', privacyFile: 'nl', data: {
+        subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, tabellen en ademhaling.',
+        badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Ademhaling', badgeProgress: 'Voortgang',
+        appStore: 'Download in de App Store',
+        featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
+        f1Title: 'Statische apneu timer', f1Desc: 'Nauwkeurige timer met contractietracking, persoonlijke records en geschiedenis.',
+        f2Title: 'CO₂ & O₂ tabellen', f2Desc: 'Aanpasbare trainingstabellen die zich aanpassen aan je record.',
+        f3Title: 'Ademhalingsoefeningen', f3Desc: 'Diafragma, box breathing, 4-7-8 en aangepaste patronen.',
+        f4Title: 'Voortgangsgrafieken', f4Desc: 'Bekijk je evolutie per dag, week of maand.',
+        f5Title: 'Trainingsplannen', f5Desc: '4-weken programma\'s aangepast aan je niveau.',
+        f6Title: 'Cloud-synchronisatie', f6Desc: 'Log in met Apple of Google. Je data synchroniseert op al je apparaten.',
+        privacyLabel: 'Privacybeleid', contact: 'Contact',
+      }},
+      hi: { flag: '🇮🇳', label: 'हिन्दी', privacyFile: 'hi', data: {
+        subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
+        badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'श्वास', badgeProgress: 'प्रगति',
+        appStore: 'App Store से डाउनलोड करें',
+        featuresTitle: 'प्रगति के लिए सब कुछ',
+        f1Title: 'स्टैटिक एपनिया टाइमर', f1Desc: 'संकुचन ट्रैकिंग, व्यक्तिगत रिकॉर्ड और विस्तृत इतिहास के साथ सटीक टाइमर।',
+        f2Title: 'CO₂ और O₂ टेबल', f2Desc: 'अनुकूलन योग्य प्रशिक्षण तालिकाएं जो आपके रिकॉर्ड के अनुसार ढलती हैं।',
+        f3Title: 'श्वास अभ्यास', f3Desc: 'डायाफ्रामिक, बॉक्स ब्रीदिंग, 4-7-8 और कस्टम पैटर्न।',
+        f4Title: 'प्रगति चार्ट', f4Desc: 'दिन, सप्ताह या महीने के अनुसार अपनी प्रगति देखें।',
+        f5Title: 'प्रशिक्षण योजनाएं', f5Desc: 'आपके स्तर के अनुसार 4-सप्ताह के कार्यक्रम।',
+        f6Title: 'क्लाउड सिंक', f6Desc: 'Apple या Google से साइन इन करें। सभी उपकरणों पर डेटा सिंक।',
+        privacyLabel: 'गोपनीयता नीति', contact: 'संपर्क',
+      }},
+      id: { flag: '🇮🇩', label: 'Indonesia', privacyFile: 'id', data: {
+        subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel, dan latihan pernapasan.',
+        badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Pernapasan', badgeProgress: 'Kemajuan',
+        appStore: 'Unduh di App Store',
+        featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
+        f1Title: 'Timer Apnea Statis', f1Desc: 'Timer presisi dengan pelacakan kontraksi, rekor pribadi, dan riwayat.',
+        f2Title: 'Tabel CO₂ & O₂', f2Desc: 'Tabel latihan yang dapat disesuaikan dan otomatis menyesuaikan rekor.',
+        f3Title: 'Latihan Pernapasan', f3Desc: 'Diafragma, box breathing, 4-7-8, dan pola kustom.',
+        f4Title: 'Grafik Kemajuan', f4Desc: 'Lihat evolusimu per hari, minggu, atau bulan.',
+        f5Title: 'Rencana Latihan', f5Desc: 'Program 4 minggu yang disesuaikan dengan levelmu.',
+        f6Title: 'Sinkronisasi Cloud', f6Desc: 'Masuk dengan Apple atau Google. Data tersinkron di semua perangkat.',
+        privacyLabel: 'Kebijakan Privasi', contact: 'Kontak',
+      }},
+      th: { flag: '🇹🇭', label: 'ไทย', privacyFile: 'th', data: {
+        subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง และการฝึกหายใจ',
+        badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'การหายใจ', badgeProgress: 'ความก้าวหน้า',
+        appStore: 'ดาวน์โหลดบน App Store',
+        featuresTitle: 'ทุกอย่างที่คุณต้องการ',
+        f1Title: 'ตัวจับเวลาแอปเนีย', f1Desc: 'ตัวจับเวลาแม่นยำพร้อมการติดตามการบีบตัว สถิติส่วนตัว และประวัติ',
+        f2Title: 'ตาราง CO₂ และ O₂', f2Desc: 'ตารางฝึกซ้อมที่ปรับแต่งได้ ปรับอัตโนมัติตามสถิติ',
+        f3Title: 'แบบฝึกหัดการหายใจ', f3Desc: 'การหายใจด้วยกระบังลม, Box Breathing, 4-7-8 และรูปแบบกำหนดเอง',
+        f4Title: 'กราฟความก้าวหน้า', f4Desc: 'ดูพัฒนาการตามวัน สัปดาห์ หรือเดือน',
+        f5Title: 'แผนการฝึก', f5Desc: 'โปรแกรม 4 สัปดาห์ที่ปรับตามระดับของคุณ',
+        f6Title: 'ซิงค์บนคลาวด์', f6Desc: 'เข้าสู่ระบบด้วย Apple หรือ Google ข้อมูลซิงค์ทุกอุปกรณ์',
+        privacyLabel: 'นโยบายความเป็นส่วนตัว', contact: 'ติดต่อ',
+      }},
+      vi: { flag: '🇻🇳', label: 'Tiếng Việt', privacyFile: 'vi', data: {
+        subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng tập và bài tập thở.',
+        badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Hô hấp', badgeProgress: 'Tiến bộ',
+        appStore: 'Tải trên App Store',
+        featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
+        f1Title: 'Bộ đếm ngưng thở', f1Desc: 'Bộ đếm chính xác với theo dõi co thắt, kỷ lục cá nhân và lịch sử.',
+        f2Title: 'Bảng CO₂ & O₂', f2Desc: 'Bảng tập tùy chỉnh tự động thích ứng với kỷ lục của bạn.',
+        f3Title: 'Bài tập hô hấp', f3Desc: 'Thở cơ hoành, box breathing, 4-7-8 và các mẫu tùy chỉnh.',
+        f4Title: 'Biểu đồ tiến bộ', f4Desc: 'Xem tiến trình theo ngày, tuần hoặc tháng.',
+        f5Title: 'Kế hoạch tập luyện', f5Desc: 'Chương trình 4 tuần thích ứng với trình độ của bạn.',
+        f6Title: 'Đồng bộ đám mây', f6Desc: 'Đăng nhập bằng Apple hoặc Google. Dữ liệu đồng bộ trên mọi thiết bị.',
+        privacyLabel: 'Chính sách bảo mật', contact: 'Liên hệ',
+      }},
+    };
+
+    let currentLang = 'en';
+
+    function setLang(code) {
+      currentLang = code;
+      const lang = LANGS[code];
+      document.documentElement.lang = code;
+      document.getElementById('currentLang').textContent = lang.flag + ' ' + code.toUpperCase();
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (key === 'brand') return;
+        if (lang.data[key]) el.textContent = lang.data[key];
+      });
+      // Update privacy link
+      const privLink = document.querySelector('[data-i18n-href="privacyLink"]');
+      if (privLink) privLink.href = '/privacy/' + lang.privacyFile + '.html';
+      // Close dropdown
+      document.querySelector('.lang-dropdown').classList.remove('open');
+      localStorage.setItem('lang', code);
+    }
+
+    // Build dropdown
+    const dd = document.getElementById('langDropdown');
+    Object.entries(LANGS).forEach(([code, lang]) => {
+      const a = document.createElement('a');
+      a.href = '#';
+      a.textContent = lang.flag + '  ' + lang.label;
+      a.onclick = (e) => { e.preventDefault(); setLang(code); };
+      dd.appendChild(a);
+    });
+
+    // Init lang from storage or browser
+    const stored = localStorage.getItem('lang');
+    const browserLang = navigator.language.slice(0, 2);
+    setLang(stored || (LANGS[browserLang] ? browserLang : 'en'));
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.lang-select')) dd.classList.remove('open');
+    });
+
+    // Fade-in observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
