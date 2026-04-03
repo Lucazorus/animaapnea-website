@@ -377,39 +377,6 @@
       max-width: 420px;
     }
 
-    /* ── Stats row ── */
-    .stats-row {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.8rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stat-number {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--text-tertiary);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      margin-top: 0.15rem;
-    }
-
     /* ── Badges ── */
     .badge-row {
       display: flex;
@@ -571,6 +538,152 @@
       line-height: 1.5;
     }
 
+    /* ── Theme transitions ── */
+    html, body, nav, .feature-card, .badge, .app-store-btn, .lang-btn, .lang-dropdown {
+      transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      color: var(--text-secondary);
+      padding: 0.4rem;
+      font-size: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, color 0.35s;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.10); }
+    .theme-toggle .material-icons-round { font-size: 18px; }
+
+    /* ── Sepia (light) theme ── */
+    html.sepia {
+      --bg: #FBF0E3;
+      --surface: #F5F4EF;
+      --surface-hi: #EBEAE3;
+      --text-primary: #2C2A22;
+      --text-secondary: #585040;
+      --text-tertiary: #7E7A6E;
+      --border-dim: rgba(58,56,40,0.10);
+      --border-mid: rgba(58,56,40,0.18);
+      --glass: rgba(58,56,40,0.03);
+      --glass-secondary: rgba(58,56,40,0.05);
+    }
+
+    html.sepia body::after { opacity: 0.018; }
+
+    html.sepia .mesh-bg {
+      background:
+        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(111,156,175,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 65% at 85% 75%, rgba(111,175,172,0.04) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(112,170,175,0.025) 0%, transparent 60%);
+    }
+
+    html.sepia .hero-glow {
+      background: radial-gradient(circle, rgba(111,156,175,0.05) 0%, transparent 70%);
+    }
+
+    html.sepia .ripple-ring { border-color: rgba(111,156,175,0.06); }
+    html.sepia .corner-ring { border-color: rgba(111,175,172,0.04); }
+
+    html.sepia nav {
+      background: rgba(251,240,227,0.8);
+      border-bottom-color: rgba(58,56,40,0.08);
+    }
+
+    html.sepia .theme-toggle {
+      background: rgba(58,56,40,0.05);
+      border-color: rgba(58,56,40,0.10);
+      color: var(--text-secondary);
+    }
+
+    html.sepia .theme-toggle:hover {
+      background: rgba(58,56,40,0.08);
+      border-color: rgba(58,56,40,0.15);
+    }
+
+    html.sepia .lang-btn {
+      background: rgba(58,56,40,0.05);
+      border-color: rgba(58,56,40,0.10);
+    }
+
+    html.sepia .lang-btn:hover {
+      background: rgba(58,56,40,0.08);
+      border-color: rgba(58,56,40,0.15);
+    }
+
+    html.sepia .lang-dropdown {
+      background: rgba(251,240,227,0.95);
+      border-color: rgba(58,56,40,0.12);
+      box-shadow: 0 16px 48px rgba(44,42,34,0.12), 0 0 0 1px rgba(58,56,40,0.06);
+    }
+
+    html.sepia .lang-dropdown a:hover {
+      background: rgba(58,56,40,0.06);
+    }
+
+    html.sepia .hero-logo {
+      box-shadow: 0 0 60px rgba(111,156,175,0.12), 0 0 120px rgba(111,175,172,0.05), 0 4px 20px rgba(44,42,34,0.1);
+    }
+
+    html.sepia .left-side h1 span {
+      background: linear-gradient(135deg, #5B8799 0%, #5A9499 50%, #5A9995 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    html.sepia .badge.cyan   { color: #5B8799; border-color: rgba(91,135,153,0.25); background: rgba(91,135,153,0.08); }
+    html.sepia .badge.teal   { color: #5A9499; border-color: rgba(90,148,153,0.25); background: rgba(90,148,153,0.08); }
+    html.sepia .badge.aqua   { color: #5A9995; border-color: rgba(90,153,149,0.25); background: rgba(90,153,149,0.08); }
+    html.sepia .badge.green  { color: #5E9970; border-color: rgba(94,153,112,0.25); background: rgba(94,153,112,0.08); }
+
+    html.sepia .app-store-btn {
+      background: linear-gradient(135deg, #2C2A22 0%, #3A3828 100%);
+      color: #FBF0E3;
+      box-shadow: 0 4px 20px rgba(44,42,34,0.2), 0 0 0 1px rgba(58,56,40,0.12);
+    }
+
+    html.sepia .app-store-btn:hover {
+      box-shadow: 0 8px 40px rgba(91,135,153,0.12), 0 4px 20px rgba(44,42,34,0.2), 0 0 0 1px rgba(58,56,40,0.18);
+    }
+
+    html.sepia .app-store-btn svg path { fill: #FBF0E3; }
+
+    html.sepia .feature-card {
+      background: rgba(58,56,40,0.03);
+      border-color: rgba(58,56,40,0.08);
+    }
+
+    html.sepia .feature-card:hover {
+      border-color: rgba(58,56,40,0.14);
+      box-shadow: 0 12px 40px rgba(44,42,34,0.08), 0 0 60px rgba(111,156,175,0.03);
+    }
+
+    html.sepia .feature-card:hover::before {
+      background: linear-gradient(135deg, rgba(91,135,153,0.12) 0%, rgba(90,153,149,0.06) 50%, rgba(94,153,112,0.04) 100%);
+    }
+
+    html.sepia .feature-icon.cyan   { background: rgba(91,135,153,0.10); color: #5B8799; }
+    html.sepia .feature-icon.teal   { background: rgba(90,148,153,0.10); color: #5A9499; }
+    html.sepia .feature-icon.aqua   { background: rgba(90,153,149,0.10); color: #5A9995; }
+    html.sepia .feature-icon.green  { background: rgba(94,153,112,0.10); color: #5E9970; }
+    html.sepia .feature-icon.yellow { background: rgba(204,172,51,0.10); color: #B89B2E; }
+
+    html.sepia .feature-card:hover .feature-icon.cyan   { box-shadow: 0 0 20px rgba(91,135,153,0.12); }
+    html.sepia .feature-card:hover .feature-icon.teal   { box-shadow: 0 0 20px rgba(90,148,153,0.12); }
+    html.sepia .feature-card:hover .feature-icon.aqua   { box-shadow: 0 0 20px rgba(90,153,149,0.12); }
+    html.sepia .feature-card:hover .feature-icon.green  { box-shadow: 0 0 20px rgba(94,153,112,0.12); }
+    html.sepia .feature-card:hover .feature-icon.yellow { box-shadow: 0 0 20px rgba(204,172,51,0.12); }
+
+    html.sepia .left-links a:hover { color: #5B8799; }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .main-split {
@@ -628,12 +741,17 @@
         <img src="logo.png" alt="Anima Apnea">
         <span data-i18n="brand">Anima Apnea</span>
       </a>
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="material-icons-round">dark_mode</span>
+      </button>
       <div class="lang-select">
         <button class="lang-btn" onclick="document.querySelector('.lang-dropdown').classList.toggle('open')">
           <span class="material-icons-round">language</span>
           <span id="currentLang">EN</span>
         </button>
         <div class="lang-dropdown" id="langDropdown"></div>
+      </div>
       </div>
     </nav>
 
@@ -653,61 +771,51 @@
         </div>
         <h1 class="anim anim-d2">Anima <span>Apnea</span></h1>
         <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
-        <div class="stats-row anim anim-d4">
-          <div class="stat-item">
-            <span class="stat-number" data-i18n="stat1Num">5+</span>
-            <span class="stat-label" data-i18n="stat1Label">Exercises</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" data-i18n="stat2Num">4 wk</span>
-            <span class="stat-label" data-i18n="stat2Label">Training Plans</span>
-          </div>
-        </div>
-        <div class="badge-row badge-grid anim anim-d5">
+        <div class="badge-row badge-grid anim anim-d4">
           <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
           <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
-          <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathing</span></span>
+          <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathwork</span></span>
           <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
         </div>
-        <a href="#" class="app-store-btn anim anim-d6">
+        <a href="#" class="app-store-btn anim anim-d5">
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span data-i18n="appStore">Download on the App Store</span>
         </a>
-        <div class="left-links anim anim-d7">
+        <div class="left-links anim anim-d6">
           <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
           <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
         </div>
-        <p class="left-copy anim anim-d7">&copy; 2025 Anima Apnea</p>
+        <p class="left-copy anim anim-d6">&copy; 2025 Anima Apnea</p>
       </div>
 
       <!-- Right: Feature cards 3x2 grid -->
       <div class="right-side">
-        <div class="feature-card anim anim-d7">
+        <div class="feature-card anim anim-d6">
           <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
           <h3 data-i18n="f1Title">Static Apnea Timer</h3>
           <p data-i18n="f1Desc">Precise timer with contraction tracking, personal records, and detailed session history.</p>
         </div>
-        <div class="feature-card anim anim-d8">
+        <div class="feature-card anim anim-d7">
           <div class="feature-icon teal"><span class="material-icons-round">equalizer</span></div>
           <h3 data-i18n="f2Title">CO₂ & O₂ Tables</h3>
           <p data-i18n="f2Desc">Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
         </div>
-        <div class="feature-card anim anim-d9">
+        <div class="feature-card anim anim-d8">
           <div class="feature-icon aqua"><span class="material-icons-round">air</span></div>
           <h3 data-i18n="f3Title">Breathing Exercises</h3>
           <p data-i18n="f3Desc">Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
         </div>
-        <div class="feature-card anim anim-d10">
+        <div class="feature-card anim anim-d9">
           <div class="feature-icon green"><span class="material-icons-round">trending_up</span></div>
           <h3 data-i18n="f4Title">Progress Charts</h3>
           <p data-i18n="f4Desc">Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
         </div>
-        <div class="feature-card anim anim-d11">
+        <div class="feature-card anim anim-d10">
           <div class="feature-icon yellow"><span class="material-icons-round">emoji_events</span></div>
           <h3 data-i18n="f5Title">Training Plans</h3>
           <p data-i18n="f5Desc">4-week structured programs that adapt to your level. Stay consistent and break records.</p>
         </div>
-        <div class="feature-card anim anim-d12">
+        <div class="feature-card anim anim-d11">
           <div class="feature-icon cyan"><span class="material-icons-round">cloud_sync</span></div>
           <h3 data-i18n="f6Title">Cloud Sync</h3>
           <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
@@ -718,12 +826,48 @@
   </div>
 
   <script>
+    // ── Theme ──
+    (function() {
+      const html = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const icon = btn.querySelector('.material-icons-round');
+      const mq = window.matchMedia('(prefers-color-scheme: light)');
+
+      function applyTheme(isSepia) {
+        html.classList.toggle('sepia', isSepia);
+        icon.textContent = isSepia ? 'light_mode' : 'dark_mode';
+      }
+
+      function getSystemPref() { return mq.matches; }
+
+      // Init: check localStorage, fallback to system
+      const stored = localStorage.getItem('theme');
+      if (stored) {
+        applyTheme(stored === 'sepia');
+      } else {
+        applyTheme(getSystemPref());
+      }
+
+      // Toggle button
+      btn.addEventListener('click', () => {
+        const isSepia = !html.classList.contains('sepia');
+        applyTheme(isSepia);
+        localStorage.setItem('theme', isSepia ? 'sepia' : 'dark');
+      });
+
+      // Listen for system changes (only if no manual override)
+      mq.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          applyTheme(e.matches);
+        }
+      });
+    })();
+
     // ── i18n ──
     const LANGS = {
       en: { flag: '🇬🇧', label: 'English', privacyFile: 'en', data: {
         subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.',
-        stat1Num: '5+', stat1Label: 'Exercises', stat2Num: '4 wk', stat2Label: 'Training Plans',
-        badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathing', badgeProgress: 'Progress',
+        badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathwork', badgeProgress: 'Progress',
         appStore: 'Download on the App Store',
         featuresTitle: 'Everything you need to progress',
         f1Title: 'Static Apnea Timer', f1Desc: 'Precise timer with contraction tracking, personal records, and detailed session history.',
@@ -736,8 +880,7 @@
       }},
       fr: { flag: '🇫🇷', label: 'Français', privacyFile: 'fr', data: {
         subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables et la respiration.',
-        stat1Num: '5+', stat1Label: 'Exercices', stat2Num: '4 sem', stat2Label: 'Plans d\'entraînement',
-        badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Respiration', badgeProgress: 'Progression',
+        badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progression',
         appStore: 'Télécharger sur l\'App Store',
         featuresTitle: 'Tout ce qu\'il te faut pour progresser',
         f1Title: 'Chrono apnée statique', f1Desc: 'Chrono précis avec suivi des contractions, records personnels et historique détaillé.',
@@ -750,8 +893,7 @@
       }},
       es: { flag: '🇪🇸', label: 'Español', privacyFile: 'es', data: {
         subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas y respiración.',
-        stat1Num: '5+', stat1Label: 'Ejercicios', stat2Num: '4 sem', stat2Label: 'Planes de entrenamiento',
-        badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Respiración', badgeProgress: 'Progreso',
+        badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progreso',
         appStore: 'Descargar en el App Store',
         featuresTitle: 'Todo lo que necesitas para progresar',
         f1Title: 'Cronómetro de apnea', f1Desc: 'Cronómetro preciso con seguimiento de contracciones, récords personales e historial.',
@@ -764,8 +906,7 @@
       }},
       it: { flag: '🇮🇹', label: 'Italiano', privacyFile: 'it', data: {
         subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle e respirazione.',
-        stat1Num: '5+', stat1Label: 'Esercizi', stat2Num: '4 sett', stat2Label: 'Piani di allenamento',
-        badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Respirazione', badgeProgress: 'Progressi',
+        badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progressi',
         appStore: 'Scarica sull\'App Store',
         featuresTitle: 'Tutto ciò che ti serve per progredire',
         f1Title: 'Timer apnea statica', f1Desc: 'Timer preciso con tracciamento contrazioni, record personali e cronologia.',
@@ -778,8 +919,7 @@
       }},
       de: { flag: '🇩🇪', label: 'Deutsch', privacyFile: 'de', data: {
         subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, Tabellen und Atemübungen.',
-        stat1Num: '5+', stat1Label: 'Übungen', stat2Num: '4 Wo', stat2Label: 'Trainingspläne',
-        badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Atmung', badgeProgress: 'Fortschritt',
+        badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Fortschritt',
         appStore: 'Im App Store laden',
         featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
         f1Title: 'Statische Apnoe Timer', f1Desc: 'Präziser Timer mit Kontraktionstracking, persönlichen Rekorden und Verlauf.',
@@ -792,8 +932,7 @@
       }},
       pt: { flag: '🇧🇷', label: 'Português', privacyFile: 'pt', data: {
         subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas e respiração.',
-        stat1Num: '5+', stat1Label: 'Exercícios', stat2Num: '4 sem', stat2Label: 'Planos de treino',
-        badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Respiração', badgeProgress: 'Progresso',
+        badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progresso',
         appStore: 'Baixar na App Store',
         featuresTitle: 'Tudo que você precisa para progredir',
         f1Title: 'Timer de apneia', f1Desc: 'Timer preciso com rastreamento de contrações, recordes pessoais e histórico.',
@@ -806,8 +945,7 @@
       }},
       zh: { flag: '🇨🇳', label: '中文', privacyFile: 'zh', data: {
         subtitle: '训练你的呼吸，突破你的极限。静态屏气、训练表和呼吸练习的完整伙伴。',
-        stat1Num: '5+', stat1Label: '练习', stat2Num: '4 周', stat2Label: '训练计划',
-        badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: '呼吸', badgeProgress: '进展',
+        badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: 'Breathwork', badgeProgress: '进展',
         appStore: '在 App Store 下载',
         featuresTitle: '你所需要的一切',
         f1Title: '静态屏气计时器', f1Desc: '精确计时，收缩追踪，个人记录和详细历史。',
@@ -820,8 +958,7 @@
       }},
       ja: { flag: '🇯🇵', label: '日本語', privacyFile: 'ja', data: {
         subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、テーブル、呼吸法の完全なパートナー。',
-        stat1Num: '5+', stat1Label: 'エクササイズ', stat2Num: '4 週', stat2Label: 'トレーニングプラン',
-        badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: '呼吸', badgeProgress: '進捗',
+        badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: 'Breathwork', badgeProgress: '進捗',
         appStore: 'App Store でダウンロード',
         featuresTitle: '上達に必要なすべて',
         f1Title: 'スタティック・アプネア・タイマー', f1Desc: '収縮トラッキング、自己記録、セッション履歴付き精密タイマー。',
@@ -834,8 +971,7 @@
       }},
       da: { flag: '🇩🇰', label: 'Dansk', privacyFile: 'da', data: {
         subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, tabeller og vejrtrækning.',
-        stat1Num: '5+', stat1Label: 'Øvelser', stat2Num: '4 uger', stat2Label: 'Træningsplaner',
-        badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Vejrtrækning', badgeProgress: 'Fremskridt',
+        badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Breathwork', badgeProgress: 'Fremskridt',
         appStore: 'Download i App Store',
         featuresTitle: 'Alt du behøver for at forbedre dig',
         f1Title: 'Statisk apnø timer', f1Desc: 'Præcis timer med kontraktionssporing, personlige rekorder og historik.',
@@ -848,8 +984,7 @@
       }},
       nl: { flag: '🇳🇱', label: 'Nederlands', privacyFile: 'nl', data: {
         subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, tabellen en ademhaling.',
-        stat1Num: '5+', stat1Label: 'Oefeningen', stat2Num: '4 wk', stat2Label: 'Trainingsplannen',
-        badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Ademhaling', badgeProgress: 'Voortgang',
+        badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Voortgang',
         appStore: 'Download in de App Store',
         featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
         f1Title: 'Statische apneu timer', f1Desc: 'Nauwkeurige timer met contractietracking, persoonlijke records en geschiedenis.',
@@ -862,8 +997,7 @@
       }},
       hi: { flag: '🇮🇳', label: 'हिन्दी', privacyFile: 'hi', data: {
         subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
-        stat1Num: '5+', stat1Label: 'अभ्यास', stat2Num: '4 सप्ताह', stat2Label: 'प्रशिक्षण योजनाएं',
-        badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'श्वास', badgeProgress: 'प्रगति',
+        badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'Breathwork', badgeProgress: 'प्रगति',
         appStore: 'App Store से डाउनलोड करें',
         featuresTitle: 'प्रगति के लिए सब कुछ',
         f1Title: 'स्टैटिक एपनिया टाइमर', f1Desc: 'संकुचन ट्रैकिंग, व्यक्तिगत रिकॉर्ड और विस्तृत इतिहास के साथ सटीक टाइमर।',
@@ -876,8 +1010,7 @@
       }},
       id: { flag: '🇮🇩', label: 'Indonesia', privacyFile: 'id', data: {
         subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel, dan latihan pernapasan.',
-        stat1Num: '5+', stat1Label: 'Latihan', stat2Num: '4 mgu', stat2Label: 'Rencana Latihan',
-        badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Pernapasan', badgeProgress: 'Kemajuan',
+        badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Kemajuan',
         appStore: 'Unduh di App Store',
         featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
         f1Title: 'Timer Apnea Statis', f1Desc: 'Timer presisi dengan pelacakan kontraksi, rekor pribadi, dan riwayat.',
@@ -890,8 +1023,7 @@
       }},
       th: { flag: '🇹🇭', label: 'ไทย', privacyFile: 'th', data: {
         subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง และการฝึกหายใจ',
-        stat1Num: '5+', stat1Label: 'แบบฝึกหัด', stat2Num: '4 สัปดาห์', stat2Label: 'แผนการฝึก',
-        badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'การหายใจ', badgeProgress: 'ความก้าวหน้า',
+        badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'ความก้าวหน้า',
         appStore: 'ดาวน์โหลดบน App Store',
         featuresTitle: 'ทุกอย่างที่คุณต้องการ',
         f1Title: 'ตัวจับเวลาแอปเนีย', f1Desc: 'ตัวจับเวลาแม่นยำพร้อมการติดตามการบีบตัว สถิติส่วนตัว และประวัติ',
@@ -904,8 +1036,7 @@
       }},
       vi: { flag: '🇻🇳', label: 'Tiếng Việt', privacyFile: 'vi', data: {
         subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng tập và bài tập thở.',
-        stat1Num: '5+', stat1Label: 'Bài tập', stat2Num: '4 tuần', stat2Label: 'Kế hoạch tập luyện',
-        badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Hô hấp', badgeProgress: 'Tiến bộ',
+        badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Tiến bộ',
         appStore: 'Tải trên App Store',
         featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
         f1Title: 'Bộ đếm ngưng thở', f1Desc: 'Bộ đếm chính xác với theo dõi co thắt, kỷ lục cá nhân và lịch sử.',
