@@ -72,30 +72,28 @@
   </script>
   <style>
     :root {
-      --bg: #050D1A;
-      --surface: #0C1829;
-      --surface-hi: #112035;
-      --cyan: #6F9CAF;
-      --cyan-dim: #5B8799;
-      --teal: #70AAAF;
-      --aqua: #6FAFAC;
-      --green: #70AF84;
+      --bg: #040B15;
+      --surface: #0A1525;
+      --surface-hi: #0F1D32;
+      --cyan: #7AB4C9;
+      --cyan-bright: #8ECAE6;
+      --teal: #7BBEC4;
+      --aqua: #7AC4C0;
+      --green: #7BC493;
       --yellow: #FFD740;
       --orange: #FF6D00;
-      --text-primary: #FFFFFF;
-      --text-secondary: rgba(255,255,255,0.75);
-      --text-tertiary: rgba(255,255,255,0.5);
-      --border-dim: rgba(255,255,255,0.08);
-      --border-mid: rgba(255,255,255,0.15);
-      --glass: rgba(255,255,255,0.04);
-      --glass-secondary: rgba(255,255,255,0.06);
+      --text-primary: #F0F4F8;
+      --text-secondary: rgba(240,244,248,0.68);
+      --text-tertiary: rgba(240,244,248,0.42);
+      --border-dim: rgba(255,255,255,0.06);
+      --border-mid: rgba(255,255,255,0.12);
+      --glass: rgba(255,255,255,0.03);
+      --glass-secondary: rgba(255,255,255,0.05);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      overflow-x: hidden;
-    }
+    html { overflow-x: hidden; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -105,21 +103,72 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── Grain texture overlay ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px;
+    }
+
     .mesh-bg {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(111,156,175,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 80% 80%, rgba(111,175,172,0.05) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(112,170,175,0.03) 0%, transparent 70%);
+        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(122,180,201,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 65% at 85% 75%, rgba(122,196,192,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(123,190,196,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 40% at 30% 60%, rgba(122,180,201,0.03) 0%, transparent 70%);
     }
 
-    /* Concentric ripple animation — behind logo */
+    /* ── Hero glow ── */
+    .hero-glow {
+      position: fixed;
+      top: 10%; left: 15%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(122,180,201,0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(60px);
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .anim { opacity: 0; animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .anim-d1 { animation-delay: 0.08s; }
+    .anim-d2 { animation-delay: 0.18s; }
+    .anim-d3 { animation-delay: 0.28s; }
+    .anim-d4 { animation-delay: 0.38s; }
+    .anim-d5 { animation-delay: 0.48s; }
+    .anim-d6 { animation-delay: 0.58s; }
+    .anim-d7 { animation-delay: 0.68s; }
+    .anim-d8 { animation-delay: 0.78s; }
+    .anim-d9 { animation-delay: 0.88s; }
+    .anim-d10 { animation-delay: 0.98s; }
+    .anim-d11 { animation-delay: 1.08s; }
+    .anim-d12 { animation-delay: 1.18s; }
+
+    /* ── Concentric ripple — behind logo ── */
     .logo-wrapper {
       position: relative;
       display: inline-block;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .logo-wrapper .hero-logo {
@@ -141,7 +190,7 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
-      border: 1px solid rgba(111,156,175,0.08);
+      border: 1px solid rgba(122,180,201,0.06);
       animation: ripple-expand 8s ease-out infinite;
     }
 
@@ -152,20 +201,12 @@
     .ripple-ring:nth-child(5) { animation-delay: 6.4s; }
 
     @keyframes ripple-expand {
-      0% {
-        width: 80px; height: 80px;
-        opacity: 0;
-        border-color: rgba(111,156,175,0.15);
-      }
+      0% { width: 90px; height: 90px; opacity: 0; border-color: rgba(122,180,201,0.12); }
       10% { opacity: 1; }
-      100% {
-        width: 500px; height: 500px;
-        opacity: 0;
-        border-color: rgba(111,175,172,0.02);
-      }
+      100% { width: 500px; height: 500px; opacity: 0; border-color: rgba(122,196,192,0.01); }
     }
 
-    /* Bottom-right corner ripples */
+    /* ── Corner ripples ── */
     .corner-ripples {
       position: fixed;
       bottom: 0; right: 0;
@@ -178,7 +219,7 @@
       bottom: 0; right: 0;
       transform: translate(50%, 50%);
       border-radius: 50%;
-      border: 1px solid rgba(111,175,172,0.05);
+      border: 1px solid rgba(122,196,192,0.04);
       animation: corner-expand 12s ease-out infinite;
     }
 
@@ -189,17 +230,9 @@
     .corner-ring:nth-child(5) { animation-delay: 9.6s; }
 
     @keyframes corner-expand {
-      0% {
-        width: 100px; height: 100px;
-        opacity: 0;
-        border-color: rgba(111,175,172,0.10);
-      }
+      0% { width: 100px; height: 100px; opacity: 0; border-color: rgba(122,196,192,0.08); }
       8% { opacity: 1; }
-      100% {
-        width: 900px; height: 900px;
-        opacity: 0;
-        border-color: rgba(111,156,175,0.01);
-      }
+      100% { width: 900px; height: 900px; opacity: 0; border-color: rgba(122,180,201,0.005); }
     }
 
     .content { position: relative; z-index: 1; }
@@ -212,55 +245,60 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(5,13,26,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-dim);
+      padding: 0.9rem 2.5rem;
+      background: rgba(4,11,21,0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.3s;
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--text-primary);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
     }
 
-    .nav-brand img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 8px; }
 
-    .lang-select {
-      position: relative;
-    }
+    .lang-select { position: relative; }
 
     .lang-btn {
-      background: var(--glass-secondary);
-      border: 1px solid var(--border-dim);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 10px;
       color: var(--text-secondary);
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
       font-family: inherit;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      transition: background 0.2s, border-color 0.2s;
     }
 
-    .lang-btn .material-icons-round { font-size: 16px; }
+    .lang-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.10); }
+
+    .lang-btn .material-icons-round { font-size: 15px; }
 
     .lang-dropdown {
       display: none;
       position: absolute;
-      top: calc(100% + 6px);
+      top: calc(100% + 8px);
       right: 0;
-      background: var(--surface);
-      border: 1px solid var(--border-mid);
-      border-radius: 12px;
-      padding: 0.4rem;
-      min-width: 160px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      background: rgba(10,21,37,0.95);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 0.5rem;
+      min-width: 170px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
     }
 
     .lang-dropdown.open { display: block; }
@@ -272,24 +310,24 @@
       text-decoration: none;
       font-size: 0.8rem;
       border-radius: 8px;
-      transition: background 0.15s;
+      transition: background 0.15s, color 0.15s;
     }
 
-    .lang-dropdown a:hover { background: var(--glass-secondary); color: var(--text-primary); }
+    .lang-dropdown a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
 
-    /* ── Main layout: single viewport, split left/right ── */
+    /* ── Main layout ── */
     .main-split {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 5rem 3rem 2rem;
-      gap: 3rem;
-      max-width: 1300px;
+      padding: 6rem 4rem 3rem;
+      gap: 4.5rem;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
     .left-side {
-      flex: 0 0 38%;
+      flex: 0 0 40%;
       display: flex;
       flex-direction: column;
     }
@@ -299,93 +337,145 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: repeat(3, auto);
-      gap: 0.9rem;
+      gap: 1rem;
       align-content: center;
     }
 
+    /* ── Hero ── */
     .hero-logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 0 50px rgba(111,156,175,0.2), 0 0 100px rgba(111,175,172,0.08);
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      margin-bottom: 1.5rem;
+      box-shadow:
+        0 0 60px rgba(122,180,201,0.2),
+        0 0 120px rgba(122,196,192,0.08),
+        0 4px 20px rgba(0,0,0,0.3);
     }
 
     .left-side h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
       font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.6rem;
-      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+      line-height: 1.05;
     }
 
-    .left-side h1 span { color: var(--cyan); }
+    .left-side h1 span {
+      background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--teal) 50%, var(--aqua) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
     .left-side .subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
-      font-weight: 300;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      max-width: 380px;
+      font-weight: 350;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+      max-width: 420px;
     }
 
+    /* ── Stats row ── */
+    .stats-row {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-tertiary);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Badges ── */
     .badge-row {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
     }
 
     .badge-grid {
       display: grid;
       grid-template-columns: auto auto;
-      gap: 0.4rem;
+      gap: 0.5rem;
       justify-content: start;
     }
 
     .badge {
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
       font-weight: 500;
       border: 1px solid;
       display: flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.35rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .badge .material-icons-round { font-size: 13px; }
 
-    .badge.cyan   { color: var(--cyan); border-color: rgba(111,156,175,0.3); background: rgba(111,156,175,0.08); }
-    .badge.teal   { color: var(--teal); border-color: rgba(112,170,175,0.3); background: rgba(112,170,175,0.08); }
-    .badge.aqua   { color: var(--aqua); border-color: rgba(111,175,172,0.3); background: rgba(111,175,172,0.08); }
-    .badge.green  { color: var(--green); border-color: rgba(112,175,132,0.3); background: rgba(112,175,132,0.08); }
+    .badge.cyan   { color: var(--cyan); border-color: rgba(122,180,201,0.2); background: rgba(122,180,201,0.06); }
+    .badge.teal   { color: var(--teal); border-color: rgba(123,190,196,0.2); background: rgba(123,190,196,0.06); }
+    .badge.aqua   { color: var(--aqua); border-color: rgba(122,196,192,0.2); background: rgba(122,196,192,0.06); }
+    .badge.green  { color: var(--green); border-color: rgba(123,196,147,0.2); background: rgba(123,196,147,0.06); }
 
+    /* ── CTA Button ── */
     .app-store-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.8rem 1.6rem;
-      background: white;
-      color: black;
+      gap: 0.7rem;
+      padding: 0.9rem 1.8rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #E8EDF2 100%);
+      color: #0A1525;
       border-radius: 14px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
       align-self: flex-start;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08);
+      letter-spacing: -0.01em;
     }
 
     .app-store-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255,255,255,0.12);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 8px 40px rgba(122,180,201,0.15),
+        0 4px 20px rgba(0,0,0,0.3),
+        0 0 0 1px rgba(255,255,255,0.12);
     }
 
     .app-store-btn svg { width: 20px; height: 20px; }
 
+    /* ── Footer links ── */
     .left-links {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       display: flex;
       gap: 1.5rem;
     }
@@ -403,60 +493,97 @@
       margin-top: 0.6rem;
       color: var(--text-tertiary);
       font-size: 0.65rem;
-      opacity: 0.4;
+      opacity: 0.35;
     }
 
     /* ── Feature cards ── */
     .feature-card {
-      background: var(--glass-secondary);
-      border: 1px solid var(--border-dim);
-      border-radius: 14px;
-      padding: 1.2rem;
-      backdrop-filter: blur(20px);
-      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 1.4rem;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      transition: border-color 0.35s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(122,180,201,0) 0%, rgba(122,180,201,0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: background 0.4s;
+      pointer-events: none;
     }
 
     .feature-card:hover {
-      border-color: var(--border-mid);
-      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.10);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2), 0 0 60px rgba(122,180,201,0.04);
+    }
+
+    .feature-card:hover::before {
+      background: linear-gradient(135deg, rgba(122,180,201,0.15) 0%, rgba(122,196,192,0.08) 50%, rgba(123,196,147,0.05) 100%);
     }
 
     .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
+      transition: box-shadow 0.3s;
     }
 
     .feature-icon .material-icons-round { font-size: 20px; }
 
-    .feature-icon.cyan   { background: rgba(111,156,175,0.12); color: var(--cyan); }
-    .feature-icon.teal   { background: rgba(112,170,175,0.12); color: var(--teal); }
-    .feature-icon.aqua   { background: rgba(111,175,172,0.12); color: var(--aqua); }
-    .feature-icon.green  { background: rgba(112,175,132,0.12); color: var(--green); }
-    .feature-icon.yellow { background: rgba(255,215,64,0.12);  color: var(--yellow); }
+    .feature-icon.cyan   { background: rgba(122,180,201,0.10); color: var(--cyan); }
+    .feature-icon.teal   { background: rgba(123,190,196,0.10); color: var(--teal); }
+    .feature-icon.aqua   { background: rgba(122,196,192,0.10); color: var(--aqua); }
+    .feature-icon.green  { background: rgba(123,196,147,0.10); color: var(--green); }
+    .feature-icon.yellow { background: rgba(255,215,64,0.10);  color: var(--yellow); }
+
+    .feature-card:hover .feature-icon.cyan   { box-shadow: 0 0 20px rgba(122,180,201,0.15); }
+    .feature-card:hover .feature-icon.teal   { box-shadow: 0 0 20px rgba(123,190,196,0.15); }
+    .feature-card:hover .feature-icon.aqua   { box-shadow: 0 0 20px rgba(122,196,192,0.15); }
+    .feature-card:hover .feature-icon.green  { box-shadow: 0 0 20px rgba(123,196,147,0.15); }
+    .feature-card:hover .feature-icon.yellow { box-shadow: 0 0 20px rgba(255,215,64,0.15); }
 
     .feature-card h3 {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
     }
 
     .feature-card p {
       color: var(--text-tertiary);
-      font-size: 0.78rem;
-      line-height: 1.45;
+      font-size: 0.8rem;
+      line-height: 1.5;
     }
 
     /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .main-split {
+        padding: 5rem 2.5rem 2rem;
+        gap: 3rem;
+      }
+    }
+
     @media (max-width: 900px) {
       .main-split {
         flex-direction: column;
-        padding: 5rem 1.5rem 2rem;
-        gap: 2rem;
+        padding: 5.5rem 1.5rem 2.5rem;
+        gap: 2.5rem;
         min-height: auto;
       }
       .left-side {
@@ -465,15 +592,27 @@
         text-align: center;
       }
       .left-side .subtitle { max-width: 100%; }
+      .stats-row { justify-content: center; }
       .badge-row { justify-content: center; }
+      .badge-grid { justify-content: center; }
       .app-store-btn { align-self: center; }
       .left-links { justify-content: center; }
-      .right-side { grid-template-columns: 1fr; }
+      .right-side { grid-template-columns: 1fr 1fr; }
+      .hero-glow { left: 50%; transform: translateX(-50%); top: 5%; width: 350px; height: 350px; }
+    }
+
+    @media (max-width: 600px) {
+      .main-split { padding: 5rem 1.2rem 2rem; }
+      .right-side { grid-template-columns: 1fr; gap: 0.8rem; }
+      nav { padding: 0.9rem 1.2rem; }
+      .stats-row { gap: 1.5rem; }
+      .left-side h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
     }
   </style>
 </head>
 <body>
   <div class="mesh-bg"></div>
+  <div class="hero-glow"></div>
   <div class="corner-ripples">
     <div class="corner-ring"></div>
     <div class="corner-ring"></div>
@@ -502,7 +641,7 @@
     <div class="main-split">
       <!-- Left: Hero -->
       <div class="left-side">
-        <div class="logo-wrapper">
+        <div class="logo-wrapper anim anim-d1">
           <img src="logo.png" alt="Anima Apnea" class="hero-logo">
           <div class="logo-ripples">
             <div class="ripple-ring"></div>
@@ -512,53 +651,63 @@
             <div class="ripple-ring"></div>
           </div>
         </div>
-        <h1>Anima <span>Apnea</span></h1>
-        <p class="subtitle" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
-        <div class="badge-row badge-grid">
+        <h1 class="anim anim-d2">Anima <span>Apnea</span></h1>
+        <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
+        <div class="stats-row anim anim-d4">
+          <div class="stat-item">
+            <span class="stat-number" data-i18n="stat1Num">5+</span>
+            <span class="stat-label" data-i18n="stat1Label">Exercises</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-i18n="stat2Num">4 wk</span>
+            <span class="stat-label" data-i18n="stat2Label">Training Plans</span>
+          </div>
+        </div>
+        <div class="badge-row badge-grid anim anim-d5">
           <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
           <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
           <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathing</span></span>
           <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
         </div>
-        <a href="#" class="app-store-btn">
+        <a href="#" class="app-store-btn anim anim-d6">
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span data-i18n="appStore">Download on the App Store</span>
         </a>
-        <div class="left-links">
+        <div class="left-links anim anim-d7">
           <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
           <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
         </div>
-        <p class="left-copy">&copy; 2025 Anima Apnea</p>
+        <p class="left-copy anim anim-d7">&copy; 2025 Anima Apnea</p>
       </div>
 
       <!-- Right: Feature cards 3x2 grid -->
       <div class="right-side">
-        <div class="feature-card">
+        <div class="feature-card anim anim-d7">
           <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
           <h3 data-i18n="f1Title">Static Apnea Timer</h3>
           <p data-i18n="f1Desc">Precise timer with contraction tracking, personal records, and detailed session history.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card anim anim-d8">
           <div class="feature-icon teal"><span class="material-icons-round">equalizer</span></div>
           <h3 data-i18n="f2Title">CO₂ & O₂ Tables</h3>
           <p data-i18n="f2Desc">Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card anim anim-d9">
           <div class="feature-icon aqua"><span class="material-icons-round">air</span></div>
           <h3 data-i18n="f3Title">Breathing Exercises</h3>
           <p data-i18n="f3Desc">Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card anim anim-d10">
           <div class="feature-icon green"><span class="material-icons-round">trending_up</span></div>
           <h3 data-i18n="f4Title">Progress Charts</h3>
           <p data-i18n="f4Desc">Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card anim anim-d11">
           <div class="feature-icon yellow"><span class="material-icons-round">emoji_events</span></div>
           <h3 data-i18n="f5Title">Training Plans</h3>
           <p data-i18n="f5Desc">4-week structured programs that adapt to your level. Stay consistent and break records.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card anim anim-d12">
           <div class="feature-icon cyan"><span class="material-icons-round">cloud_sync</span></div>
           <h3 data-i18n="f6Title">Cloud Sync</h3>
           <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
@@ -573,6 +722,7 @@
     const LANGS = {
       en: { flag: '🇬🇧', label: 'English', privacyFile: 'en', data: {
         subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.',
+        stat1Num: '5+', stat1Label: 'Exercises', stat2Num: '4 wk', stat2Label: 'Training Plans',
         badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathing', badgeProgress: 'Progress',
         appStore: 'Download on the App Store',
         featuresTitle: 'Everything you need to progress',
@@ -586,6 +736,7 @@
       }},
       fr: { flag: '🇫🇷', label: 'Français', privacyFile: 'fr', data: {
         subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables et la respiration.',
+        stat1Num: '5+', stat1Label: 'Exercices', stat2Num: '4 sem', stat2Label: 'Plans d\'entraînement',
         badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Respiration', badgeProgress: 'Progression',
         appStore: 'Télécharger sur l\'App Store',
         featuresTitle: 'Tout ce qu\'il te faut pour progresser',
@@ -599,6 +750,7 @@
       }},
       es: { flag: '🇪🇸', label: 'Español', privacyFile: 'es', data: {
         subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas y respiración.',
+        stat1Num: '5+', stat1Label: 'Ejercicios', stat2Num: '4 sem', stat2Label: 'Planes de entrenamiento',
         badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Respiración', badgeProgress: 'Progreso',
         appStore: 'Descargar en el App Store',
         featuresTitle: 'Todo lo que necesitas para progresar',
@@ -612,6 +764,7 @@
       }},
       it: { flag: '🇮🇹', label: 'Italiano', privacyFile: 'it', data: {
         subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle e respirazione.',
+        stat1Num: '5+', stat1Label: 'Esercizi', stat2Num: '4 sett', stat2Label: 'Piani di allenamento',
         badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Respirazione', badgeProgress: 'Progressi',
         appStore: 'Scarica sull\'App Store',
         featuresTitle: 'Tutto ciò che ti serve per progredire',
@@ -625,6 +778,7 @@
       }},
       de: { flag: '🇩🇪', label: 'Deutsch', privacyFile: 'de', data: {
         subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, Tabellen und Atemübungen.',
+        stat1Num: '5+', stat1Label: 'Übungen', stat2Num: '4 Wo', stat2Label: 'Trainingspläne',
         badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Atmung', badgeProgress: 'Fortschritt',
         appStore: 'Im App Store laden',
         featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
@@ -638,6 +792,7 @@
       }},
       pt: { flag: '🇧🇷', label: 'Português', privacyFile: 'pt', data: {
         subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas e respiração.',
+        stat1Num: '5+', stat1Label: 'Exercícios', stat2Num: '4 sem', stat2Label: 'Planos de treino',
         badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Respiração', badgeProgress: 'Progresso',
         appStore: 'Baixar na App Store',
         featuresTitle: 'Tudo que você precisa para progredir',
@@ -651,6 +806,7 @@
       }},
       zh: { flag: '🇨🇳', label: '中文', privacyFile: 'zh', data: {
         subtitle: '训练你的呼吸，突破你的极限。静态屏气、训练表和呼吸练习的完整伙伴。',
+        stat1Num: '5+', stat1Label: '练习', stat2Num: '4 周', stat2Label: '训练计划',
         badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: '呼吸', badgeProgress: '进展',
         appStore: '在 App Store 下载',
         featuresTitle: '你所需要的一切',
@@ -664,6 +820,7 @@
       }},
       ja: { flag: '🇯🇵', label: '日本語', privacyFile: 'ja', data: {
         subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、テーブル、呼吸法の完全なパートナー。',
+        stat1Num: '5+', stat1Label: 'エクササイズ', stat2Num: '4 週', stat2Label: 'トレーニングプラン',
         badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: '呼吸', badgeProgress: '進捗',
         appStore: 'App Store でダウンロード',
         featuresTitle: '上達に必要なすべて',
@@ -677,6 +834,7 @@
       }},
       da: { flag: '🇩🇰', label: 'Dansk', privacyFile: 'da', data: {
         subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, tabeller og vejrtrækning.',
+        stat1Num: '5+', stat1Label: 'Øvelser', stat2Num: '4 uger', stat2Label: 'Træningsplaner',
         badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Vejrtrækning', badgeProgress: 'Fremskridt',
         appStore: 'Download i App Store',
         featuresTitle: 'Alt du behøver for at forbedre dig',
@@ -690,6 +848,7 @@
       }},
       nl: { flag: '🇳🇱', label: 'Nederlands', privacyFile: 'nl', data: {
         subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, tabellen en ademhaling.',
+        stat1Num: '5+', stat1Label: 'Oefeningen', stat2Num: '4 wk', stat2Label: 'Trainingsplannen',
         badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Ademhaling', badgeProgress: 'Voortgang',
         appStore: 'Download in de App Store',
         featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
@@ -703,6 +862,7 @@
       }},
       hi: { flag: '🇮🇳', label: 'हिन्दी', privacyFile: 'hi', data: {
         subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
+        stat1Num: '5+', stat1Label: 'अभ्यास', stat2Num: '4 सप्ताह', stat2Label: 'प्रशिक्षण योजनाएं',
         badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'श्वास', badgeProgress: 'प्रगति',
         appStore: 'App Store से डाउनलोड करें',
         featuresTitle: 'प्रगति के लिए सब कुछ',
@@ -716,6 +876,7 @@
       }},
       id: { flag: '🇮🇩', label: 'Indonesia', privacyFile: 'id', data: {
         subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel, dan latihan pernapasan.',
+        stat1Num: '5+', stat1Label: 'Latihan', stat2Num: '4 mgu', stat2Label: 'Rencana Latihan',
         badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Pernapasan', badgeProgress: 'Kemajuan',
         appStore: 'Unduh di App Store',
         featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
@@ -729,6 +890,7 @@
       }},
       th: { flag: '🇹🇭', label: 'ไทย', privacyFile: 'th', data: {
         subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง และการฝึกหายใจ',
+        stat1Num: '5+', stat1Label: 'แบบฝึกหัด', stat2Num: '4 สัปดาห์', stat2Label: 'แผนการฝึก',
         badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'การหายใจ', badgeProgress: 'ความก้าวหน้า',
         appStore: 'ดาวน์โหลดบน App Store',
         featuresTitle: 'ทุกอย่างที่คุณต้องการ',
@@ -742,6 +904,7 @@
       }},
       vi: { flag: '🇻🇳', label: 'Tiếng Việt', privacyFile: 'vi', data: {
         subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng tập và bài tập thở.',
+        stat1Num: '5+', stat1Label: 'Bài tập', stat2Num: '4 tuần', stat2Label: 'Kế hoạch tập luyện',
         badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Hô hấp', badgeProgress: 'Tiến bộ',
         appStore: 'Tải trên App Store',
         featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
