@@ -320,7 +320,8 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 6rem 4rem 3rem;
+      flex-wrap: wrap;
+      padding: 6rem 4rem 2rem;
       gap: 4.5rem;
       max-width: 1400px;
       margin: 0 auto;
@@ -441,10 +442,17 @@
     .app-store-btn svg { width: 20px; height: 20px; }
 
     /* ── Footer links ── */
+    /* ── Site footer ── */
+    .site-footer {
+      width: 100%;
+      text-align: center;
+      padding-top: 1rem;
+    }
+
     .left-links {
-      margin-top: 2rem;
       display: flex;
       gap: 1.5rem;
+      justify-content: center;
     }
 
     .left-links a {
@@ -457,7 +465,7 @@
     .left-links a:hover { color: var(--cyan); }
 
     .left-copy {
-      margin-top: 0.6rem;
+      margin-top: 0.5rem;
       color: var(--text-tertiary);
       font-size: 0.65rem;
       opacity: 0.35;
@@ -538,6 +546,58 @@
       line-height: 1.5;
     }
 
+    /* ── Ambient ripples scattered ── */
+    .ambient-ripples {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .ambient-ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(122,180,201,0.05);
+      animation: ambient-expand ease-out infinite;
+    }
+
+    .ambient-ripples.r1 { top: 8%; left: 70%; }
+    .ambient-ripples.r1 .ambient-ripple { animation-duration: 10s; }
+    .ambient-ripples.r1 .ambient-ripple:nth-child(1) { animation-delay: 0s; }
+    .ambient-ripples.r1 .ambient-ripple:nth-child(2) { animation-delay: 2.5s; }
+    .ambient-ripples.r1 .ambient-ripple:nth-child(3) { animation-delay: 5s; }
+
+    .ambient-ripples.r2 { top: 55%; left: 5%; }
+    .ambient-ripples.r2 .ambient-ripple { animation-duration: 14s; }
+    .ambient-ripples.r2 .ambient-ripple:nth-child(1) { animation-delay: 1s; }
+    .ambient-ripples.r2 .ambient-ripple:nth-child(2) { animation-delay: 4.5s; }
+    .ambient-ripples.r2 .ambient-ripple:nth-child(3) { animation-delay: 8s; }
+
+    .ambient-ripples.r3 { top: 30%; left: 90%; }
+    .ambient-ripples.r3 .ambient-ripple { animation-duration: 11s; }
+    .ambient-ripples.r3 .ambient-ripple:nth-child(1) { animation-delay: 0.5s; }
+    .ambient-ripples.r3 .ambient-ripple:nth-child(2) { animation-delay: 3.5s; }
+    .ambient-ripples.r3 .ambient-ripple:nth-child(3) { animation-delay: 7s; }
+
+    .ambient-ripples.r4 { top: 75%; left: 60%; }
+    .ambient-ripples.r4 .ambient-ripple { animation-duration: 9s; }
+    .ambient-ripples.r4 .ambient-ripple:nth-child(1) { animation-delay: 2s; }
+    .ambient-ripples.r4 .ambient-ripple:nth-child(2) { animation-delay: 5s; }
+    .ambient-ripples.r4 .ambient-ripple:nth-child(3) { animation-delay: 7.5s; }
+
+    .ambient-ripples.r5 { top: 15%; left: 25%; }
+    .ambient-ripples.r5 .ambient-ripple { animation-duration: 13s; }
+    .ambient-ripples.r5 .ambient-ripple:nth-child(1) { animation-delay: 1.5s; }
+    .ambient-ripples.r5 .ambient-ripple:nth-child(2) { animation-delay: 5.5s; }
+    .ambient-ripples.r5 .ambient-ripple:nth-child(3) { animation-delay: 9s; }
+
+    @keyframes ambient-expand {
+      0% { width: 40px; height: 40px; opacity: 0; transform: translate(-50%, -50%); }
+      8% { opacity: 1; }
+      100% { width: 350px; height: 350px; opacity: 0; transform: translate(-50%, -50%); }
+    }
+
+    html.sepia .ambient-ripple { border-color: rgba(91,135,153,0.04); }
+
     /* ── Theme transitions ── */
     html, body, nav, .feature-card, .badge, .app-store-btn, .lang-btn, .lang-dropdown {
       transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
@@ -564,9 +624,9 @@
 
     /* ── Sepia (light) theme ── */
     html.sepia {
-      --bg: #FBF0E3;
-      --surface: #F5F4EF;
-      --surface-hi: #EBEAE3;
+      --bg: #FDF6EE;
+      --surface: #F9F6F1;
+      --surface-hi: #F2EFE8;
       --text-primary: #2C2A22;
       --text-secondary: #585040;
       --text-tertiary: #7E7A6E;
@@ -593,7 +653,7 @@
     html.sepia .corner-ring { border-color: rgba(111,175,172,0.04); }
 
     html.sepia nav {
-      background: rgba(251,240,227,0.8);
+      background: rgba(253,246,238,0.8);
       border-bottom-color: rgba(58,56,40,0.08);
     }
 
@@ -718,7 +778,6 @@
       .main-split { padding: 5rem 1.2rem 2rem; }
       .right-side { grid-template-columns: 1fr; gap: 0.8rem; }
       nav { padding: 0.9rem 1.2rem; }
-      .stats-row { gap: 1.5rem; }
       .left-side h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
     }
   </style>
@@ -726,6 +785,14 @@
 <body>
   <div class="mesh-bg"></div>
   <div class="hero-glow"></div>
+
+  <!-- Ambient ripples scattered -->
+  <div class="ambient-ripples r1"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
+  <div class="ambient-ripples r2"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
+  <div class="ambient-ripples r3"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
+  <div class="ambient-ripples r4"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
+  <div class="ambient-ripples r5"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
+
   <div class="corner-ripples">
     <div class="corner-ring"></div>
     <div class="corner-ring"></div>
@@ -770,7 +837,7 @@
           </div>
         </div>
         <h1 class="anim anim-d2">Anima <span>Apnea</span></h1>
-        <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.</p>
+        <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.</p>
         <div class="badge-row badge-grid anim anim-d4">
           <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
           <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
@@ -781,11 +848,6 @@
           <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           <span data-i18n="appStore">Download on the App Store</span>
         </a>
-        <div class="left-links anim anim-d6">
-          <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
-          <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
-        </div>
-        <p class="left-copy anim anim-d6">&copy; 2025 Anima Apnea</p>
       </div>
 
       <!-- Right: Feature cards 3x2 grid -->
@@ -820,6 +882,15 @@
           <h3 data-i18n="f6Title">Cloud Sync</h3>
           <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
         </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="site-footer anim anim-d12">
+        <div class="left-links">
+          <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
+          <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
+        </div>
+        <p class="left-copy">&copy; 2025 Anima Apnea</p>
       </div>
     </div>
 
@@ -866,7 +937,7 @@
     // ── i18n ──
     const LANGS = {
       en: { flag: '🇬🇧', label: 'English', privacyFile: 'en', data: {
-        subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, tables, and breathwork.',
+        subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.',
         badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathwork', badgeProgress: 'Progress',
         appStore: 'Download on the App Store',
         featuresTitle: 'Everything you need to progress',
@@ -876,10 +947,10 @@
         f4Title: 'Progress Charts', f4Desc: 'Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.',
         f5Title: 'Training Plans', f5Desc: '4-week structured programs that adapt to your level. Stay consistent and break records.',
         f6Title: 'Cloud Sync', f6Desc: 'Sign in with Apple or Google. Your data syncs across all your devices, always safe.',
-        privacyLabel: 'Privacy Policy', contact: 'Contact',
+        privacyLabel: 'Privacy Policy', contact: 'Contact', emailCopied: '✓ Email copied!',
       }},
       fr: { flag: '🇫🇷', label: 'Français', privacyFile: 'fr', data: {
-        subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables et la respiration.',
+        subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables O₂ & CO₂, et le breathwork.',
         badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progression',
         appStore: 'Télécharger sur l\'App Store',
         featuresTitle: 'Tout ce qu\'il te faut pour progresser',
@@ -889,10 +960,10 @@
         f4Title: 'Graphiques de progression', f4Desc: 'Visualise ton évolution par jour, semaine ou mois. Suis tes temps, tables et contractions.',
         f5Title: 'Plans d\'entraînement', f5Desc: 'Programmes de 4 semaines qui s\'adaptent à ton niveau. Reste régulier et bats tes records.',
         f6Title: 'Synchronisation cloud', f6Desc: 'Connecte-toi avec Apple ou Google. Tes données se synchronisent sur tous tes appareils.',
-        privacyLabel: 'Politique de confidentialité', contact: 'Contact',
+        privacyLabel: 'Politique de confidentialité', contact: 'Contact', emailCopied: '✓ Email copié !',
       }},
       es: { flag: '🇪🇸', label: 'Español', privacyFile: 'es', data: {
-        subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas y respiración.',
+        subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas O₂ & CO₂, y breathwork.',
         badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progreso',
         appStore: 'Descargar en el App Store',
         featuresTitle: 'Todo lo que necesitas para progresar',
@@ -902,10 +973,10 @@
         f4Title: 'Gráficos de progreso', f4Desc: 'Visualiza tu evolución por día, semana o mes. Sigue tus tiempos y contracciones.',
         f5Title: 'Planes de entrenamiento', f5Desc: 'Programas de 4 semanas que se adaptan a tu nivel. Mantén la constancia.',
         f6Title: 'Sincronización cloud', f6Desc: 'Inicia sesión con Apple o Google. Tus datos se sincronizan en todos tus dispositivos.',
-        privacyLabel: 'Política de privacidad', contact: 'Contacto',
+        privacyLabel: 'Política de privacidad', contact: 'Contacto', emailCopied: '✓ Email copiado!',
       }},
       it: { flag: '🇮🇹', label: 'Italiano', privacyFile: 'it', data: {
-        subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle e respirazione.',
+        subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle O₂ & CO₂, e breathwork.',
         badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progressi',
         appStore: 'Scarica sull\'App Store',
         featuresTitle: 'Tutto ciò che ti serve per progredire',
@@ -915,10 +986,10 @@
         f4Title: 'Grafici di progressione', f4Desc: 'Visualizza la tua evoluzione per giorno, settimana o mese.',
         f5Title: 'Piani di allenamento', f5Desc: 'Programmi di 4 settimane che si adattano al tuo livello.',
         f6Title: 'Sincronizzazione cloud', f6Desc: 'Accedi con Apple o Google. I tuoi dati si sincronizzano ovunque.',
-        privacyLabel: 'Informativa sulla privacy', contact: 'Contatto',
+        privacyLabel: 'Informativa sulla privacy', contact: 'Contatto', emailCopied: '✓ Email copiata!',
       }},
       de: { flag: '🇩🇪', label: 'Deutsch', privacyFile: 'de', data: {
-        subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, Tabellen und Atemübungen.',
+        subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, O₂- & CO₂-Tabellen und Breathwork.',
         badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Fortschritt',
         appStore: 'Im App Store laden',
         featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
@@ -928,10 +999,10 @@
         f4Title: 'Fortschrittsdiagramme', f4Desc: 'Visualisiere deine Entwicklung nach Tag, Woche oder Monat.',
         f5Title: 'Trainingspläne', f5Desc: '4-Wochen-Programme, die sich an dein Level anpassen.',
         f6Title: 'Cloud-Synchronisierung', f6Desc: 'Melde dich mit Apple oder Google an. Deine Daten werden überall synchronisiert.',
-        privacyLabel: 'Datenschutz', contact: 'Kontakt',
+        privacyLabel: 'Datenschutz', contact: 'Kontakt', emailCopied: '✓ E-Mail kopiert!',
       }},
       pt: { flag: '🇧🇷', label: 'Português', privacyFile: 'pt', data: {
-        subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas e respiração.',
+        subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas O₂ & CO₂, e breathwork.',
         badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progresso',
         appStore: 'Baixar na App Store',
         featuresTitle: 'Tudo que você precisa para progredir',
@@ -941,10 +1012,10 @@
         f4Title: 'Gráficos de progresso', f4Desc: 'Visualize sua evolução por dia, semana ou mês.',
         f5Title: 'Planos de treino', f5Desc: 'Programas de 4 semanas que se adaptam ao seu nível.',
         f6Title: 'Sincronização na nuvem', f6Desc: 'Entre com Apple ou Google. Seus dados sincronizam em todos os dispositivos.',
-        privacyLabel: 'Política de privacidade', contact: 'Contato',
+        privacyLabel: 'Política de privacidade', contact: 'Contato', emailCopied: '✓ Email copiado!',
       }},
       zh: { flag: '🇨🇳', label: '中文', privacyFile: 'zh', data: {
-        subtitle: '训练你的呼吸，突破你的极限。静态屏气、训练表和呼吸练习的完整伙伴。',
+        subtitle: '训练你的呼吸，突破你的极限。静态屏气、O₂ & CO₂ 训练表和呼吸训练的完整伙伴。',
         badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: 'Breathwork', badgeProgress: '进展',
         appStore: '在 App Store 下载',
         featuresTitle: '你所需要的一切',
@@ -954,10 +1025,10 @@
         f4Title: '进展图表', f4Desc: '按日、周或月查看你的进步。',
         f5Title: '训练计划', f5Desc: '4周结构化计划，适应你的水平。',
         f6Title: '云同步', f6Desc: '使用 Apple 或 Google 登录，数据在所有设备间同步。',
-        privacyLabel: '隐私政策', contact: '联系我们',
+        privacyLabel: '隐私政策', contact: '联系我们', emailCopied: '✓ 邮箱已复制！',
       }},
       ja: { flag: '🇯🇵', label: '日本語', privacyFile: 'ja', data: {
-        subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、テーブル、呼吸法の完全なパートナー。',
+        subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、O₂ & CO₂ テーブル、ブレスワークの完全なパートナー。',
         badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: 'Breathwork', badgeProgress: '進捗',
         appStore: 'App Store でダウンロード',
         featuresTitle: '上達に必要なすべて',
@@ -967,10 +1038,10 @@
         f4Title: '進捗チャート', f4Desc: '日・週・月単位で進歩を可視化。',
         f5Title: 'トレーニングプラン', f5Desc: 'レベルに合わせた4週間プログラム。',
         f6Title: 'クラウド同期', f6Desc: 'Apple または Google でサインイン。全デバイスでデータ同期。',
-        privacyLabel: 'プライバシーポリシー', contact: 'お問い合わせ',
+        privacyLabel: 'プライバシーポリシー', contact: 'お問い合わせ', emailCopied: '✓ メールをコピーしました！',
       }},
       da: { flag: '🇩🇰', label: 'Dansk', privacyFile: 'da', data: {
-        subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, tabeller og vejrtrækning.',
+        subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, O₂ & CO₂ tabeller og breathwork.',
         badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Breathwork', badgeProgress: 'Fremskridt',
         appStore: 'Download i App Store',
         featuresTitle: 'Alt du behøver for at forbedre dig',
@@ -980,10 +1051,10 @@
         f4Title: 'Fremskridtsdiagrammer', f4Desc: 'Se din udvikling per dag, uge eller måned.',
         f5Title: 'Træningsplaner', f5Desc: '4-ugers programmer tilpasset dit niveau.',
         f6Title: 'Cloud-synkronisering', f6Desc: 'Log ind med Apple eller Google. Dine data synkroniseres overalt.',
-        privacyLabel: 'Fortrolighedspolitik', contact: 'Kontakt',
+        privacyLabel: 'Fortrolighedspolitik', contact: 'Kontakt', emailCopied: '✓ Email kopieret!',
       }},
       nl: { flag: '🇳🇱', label: 'Nederlands', privacyFile: 'nl', data: {
-        subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, tabellen en ademhaling.',
+        subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, O₂ & CO₂ tabellen en breathwork.',
         badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Voortgang',
         appStore: 'Download in de App Store',
         featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
@@ -993,10 +1064,10 @@
         f4Title: 'Voortgangsgrafieken', f4Desc: 'Bekijk je evolutie per dag, week of maand.',
         f5Title: 'Trainingsplannen', f5Desc: '4-weken programma\'s aangepast aan je niveau.',
         f6Title: 'Cloud-synchronisatie', f6Desc: 'Log in met Apple of Google. Je data synchroniseert op al je apparaten.',
-        privacyLabel: 'Privacybeleid', contact: 'Contact',
+        privacyLabel: 'Privacybeleid', contact: 'Contact', emailCopied: '✓ Email gekopieerd!',
       }},
       hi: { flag: '🇮🇳', label: 'हिन्दी', privacyFile: 'hi', data: {
-        subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
+        subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, O₂ & CO₂ टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
         badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'Breathwork', badgeProgress: 'प्रगति',
         appStore: 'App Store से डाउनलोड करें',
         featuresTitle: 'प्रगति के लिए सब कुछ',
@@ -1006,10 +1077,10 @@
         f4Title: 'प्रगति चार्ट', f4Desc: 'दिन, सप्ताह या महीने के अनुसार अपनी प्रगति देखें।',
         f5Title: 'प्रशिक्षण योजनाएं', f5Desc: 'आपके स्तर के अनुसार 4-सप्ताह के कार्यक्रम।',
         f6Title: 'क्लाउड सिंक', f6Desc: 'Apple या Google से साइन इन करें। सभी उपकरणों पर डेटा सिंक।',
-        privacyLabel: 'गोपनीयता नीति', contact: 'संपर्क',
+        privacyLabel: 'गोपनीयता नीति', contact: 'संपर्क', emailCopied: '✓ ईमेल कॉपी हो गया!',
       }},
       id: { flag: '🇮🇩', label: 'Indonesia', privacyFile: 'id', data: {
-        subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel, dan latihan pernapasan.',
+        subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel O₂ & CO₂, dan breathwork.',
         badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Kemajuan',
         appStore: 'Unduh di App Store',
         featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
@@ -1019,10 +1090,10 @@
         f4Title: 'Grafik Kemajuan', f4Desc: 'Lihat evolusimu per hari, minggu, atau bulan.',
         f5Title: 'Rencana Latihan', f5Desc: 'Program 4 minggu yang disesuaikan dengan levelmu.',
         f6Title: 'Sinkronisasi Cloud', f6Desc: 'Masuk dengan Apple atau Google. Data tersinkron di semua perangkat.',
-        privacyLabel: 'Kebijakan Privasi', contact: 'Kontak',
+        privacyLabel: 'Kebijakan Privasi', contact: 'Kontak', emailCopied: '✓ Email disalin!',
       }},
       th: { flag: '🇹🇭', label: 'ไทย', privacyFile: 'th', data: {
-        subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง และการฝึกหายใจ',
+        subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง O₂ & CO₂ และ breathwork',
         badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'ความก้าวหน้า',
         appStore: 'ดาวน์โหลดบน App Store',
         featuresTitle: 'ทุกอย่างที่คุณต้องการ',
@@ -1032,10 +1103,10 @@
         f4Title: 'กราฟความก้าวหน้า', f4Desc: 'ดูพัฒนาการตามวัน สัปดาห์ หรือเดือน',
         f5Title: 'แผนการฝึก', f5Desc: 'โปรแกรม 4 สัปดาห์ที่ปรับตามระดับของคุณ',
         f6Title: 'ซิงค์บนคลาวด์', f6Desc: 'เข้าสู่ระบบด้วย Apple หรือ Google ข้อมูลซิงค์ทุกอุปกรณ์',
-        privacyLabel: 'นโยบายความเป็นส่วนตัว', contact: 'ติดต่อ',
+        privacyLabel: 'นโยบายความเป็นส่วนตัว', contact: 'ติดต่อ', emailCopied: '✓ คัดลอกอีเมลแล้ว!',
       }},
       vi: { flag: '🇻🇳', label: 'Tiếng Việt', privacyFile: 'vi', data: {
-        subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng tập và bài tập thở.',
+        subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng O₂ & CO₂ và breathwork.',
         badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Tiến bộ',
         appStore: 'Tải trên App Store',
         featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
@@ -1045,7 +1116,7 @@
         f4Title: 'Biểu đồ tiến bộ', f4Desc: 'Xem tiến trình theo ngày, tuần hoặc tháng.',
         f5Title: 'Kế hoạch tập luyện', f5Desc: 'Chương trình 4 tuần thích ứng với trình độ của bạn.',
         f6Title: 'Đồng bộ đám mây', f6Desc: 'Đăng nhập bằng Apple hoặc Google. Dữ liệu đồng bộ trên mọi thiết bị.',
-        privacyLabel: 'Chính sách bảo mật', contact: 'Liên hệ',
+        privacyLabel: 'Chính sách bảo mật', contact: 'Liên hệ', emailCopied: '✓ Đã sao chép email!',
       }},
     };
 
@@ -1095,7 +1166,8 @@
       navigator.clipboard.writeText('lucas.massoni.contact@gmail.com').then(() => {
         const btn = document.getElementById('contactBtn');
         const original = btn.textContent;
-        btn.textContent = '✓ Email copied!';
+        const copied = LANGS[currentLang] && LANGS[currentLang].data.emailCopied || '✓ Email copied!';
+        btn.textContent = copied;
         btn.style.color = 'var(--cyan)';
         setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
       });
