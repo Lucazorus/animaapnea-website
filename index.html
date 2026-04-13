@@ -34,7 +34,7 @@
   <link rel="alternate" hreflang="x-default" href="https://animaapnea.com/">
 
   <!-- App linking -->
-  <meta name="apple-itunes-app" content="app-id=YOUR_APP_ID">
+  <meta name="apple-itunes-app" content="app-id=6760680506">
 
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -413,7 +413,13 @@
     .badge.aqua   { color: var(--aqua); border-color: rgba(122,196,192,0.2); background: rgba(122,196,192,0.06); }
     .badge.green  { color: var(--green); border-color: rgba(123,196,147,0.2); background: rgba(123,196,147,0.06); }
 
-    /* ── CTA Button ── */
+    /* ── CTA Buttons ── */
+    .store-buttons {
+      display: flex;
+      gap: 0.7rem;
+      align-self: flex-start;
+      flex-wrap: wrap;
+    }
     .app-store-btn {
       display: inline-flex;
       align-items: center;
@@ -426,7 +432,6 @@
       font-weight: 600;
       text-decoration: none;
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
-      align-self: flex-start;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08);
       letter-spacing: -0.01em;
     }
@@ -768,10 +773,37 @@
       .stats-row { justify-content: center; }
       .badge-row { justify-content: center; }
       .badge-grid { justify-content: center; }
-      .app-store-btn { align-self: center; }
+      .store-buttons { align-self: center; justify-content: center; }
       .left-links { justify-content: center; }
       .right-side { grid-template-columns: 1fr 1fr; }
       .hero-glow { left: 50%; transform: translateX(-50%); top: 5%; width: 350px; height: 350px; }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .left-side h1 .h1-sub {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text-secondary);
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: var(--text-secondary);
+      background-clip: unset;
+      margin-top: 0.3rem;
+    }
+
+    html.sepia .left-side h1 .h1-sub {
+      -webkit-text-fill-color: rgba(44,42,34,0.55);
     }
 
     @media (max-width: 600px) {
@@ -836,7 +868,7 @@
             <div class="ripple-ring"></div>
           </div>
         </div>
-        <h1 class="anim anim-d2">Anima <span>Apnea</span></h1>
+        <h1 class="anim anim-d2">Anima <span>Apnea</span> <span class="h1-sub">— Freediving Training App</span></h1>
         <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.</p>
         <div class="badge-row badge-grid anim anim-d4">
           <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
@@ -844,14 +876,17 @@
           <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathwork</span></span>
           <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
         </div>
-        <a href="#" class="app-store-btn anim anim-d5">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <span data-i18n="appStore">Download on the App Store</span>
-        </a>
+        <div class="store-buttons anim anim-d5">
+          <a href="https://apps.apple.com/app/anima-apnea/id6760680506" class="app-store-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span data-i18n="appStore">Download on the App Store</span>
+          </a>
+        </div>
       </div>
 
       <!-- Right: Feature cards 3x2 grid -->
       <div class="right-side">
+        <h2 class="sr-only">Freediving Training Features</h2>
         <div class="feature-card anim anim-d6">
           <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
           <h3 data-i18n="f1Title">Static Apnea Timer</h3>
@@ -890,7 +925,7 @@
           <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
           <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
         </div>
-        <p class="left-copy">&copy; 2025 Anima Apnea</p>
+        <p class="left-copy">&copy; 2026 Anima Apnea</p>
       </div>
     </div>
 
@@ -940,6 +975,7 @@
         subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.',
         badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathwork', badgeProgress: 'Progress',
         appStore: 'Download on the App Store',
+        googlePlay: 'Get it on Google Play',
         featuresTitle: 'Everything you need to progress',
         f1Title: 'Static Apnea Timer', f1Desc: 'Precise timer with contraction tracking, personal records, and detailed session history.',
         f2Title: 'CO₂ & O₂ Tables', f2Desc: 'Customizable training tables to build your tolerance. Auto-adapts to your personal record.',
@@ -953,6 +989,7 @@
         subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables O₂ & CO₂, et le breathwork.',
         badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progression',
         appStore: 'Télécharger sur l\'App Store',
+        googlePlay: 'Télécharger sur Google Play',
         featuresTitle: 'Tout ce qu\'il te faut pour progresser',
         f1Title: 'Chrono apnée statique', f1Desc: 'Chrono précis avec suivi des contractions, records personnels et historique détaillé.',
         f2Title: 'Tables CO₂ & O₂', f2Desc: 'Tables d\'entraînement personnalisables. S\'adaptent automatiquement à ton record.',
@@ -966,6 +1003,7 @@
         subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas O₂ & CO₂, y breathwork.',
         badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progreso',
         appStore: 'Descargar en el App Store',
+        googlePlay: 'Disponible en Google Play',
         featuresTitle: 'Todo lo que necesitas para progresar',
         f1Title: 'Cronómetro de apnea', f1Desc: 'Cronómetro preciso con seguimiento de contracciones, récords personales e historial.',
         f2Title: 'Tablas CO₂ y O₂', f2Desc: 'Tablas de entrenamiento personalizables. Se adaptan automáticamente a tu récord.',
@@ -979,6 +1017,7 @@
         subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle O₂ & CO₂, e breathwork.',
         badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progressi',
         appStore: 'Scarica sull\'App Store',
+        googlePlay: 'Scarica su Google Play',
         featuresTitle: 'Tutto ciò che ti serve per progredire',
         f1Title: 'Timer apnea statica', f1Desc: 'Timer preciso con tracciamento contrazioni, record personali e cronologia.',
         f2Title: 'Tabelle CO₂ e O₂', f2Desc: 'Tabelle di allenamento personalizzabili. Si adattano al tuo record.',
@@ -992,6 +1031,7 @@
         subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, O₂- & CO₂-Tabellen und Breathwork.',
         badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Fortschritt',
         appStore: 'Im App Store laden',
+        googlePlay: 'Jetzt bei Google Play',
         featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
         f1Title: 'Statische Apnoe Timer', f1Desc: 'Präziser Timer mit Kontraktionstracking, persönlichen Rekorden und Verlauf.',
         f2Title: 'CO₂ & O₂ Tabellen', f2Desc: 'Anpassbare Trainingstabellen. Passen sich automatisch an deinen Rekord an.',
@@ -1005,6 +1045,7 @@
         subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas O₂ & CO₂, e breathwork.',
         badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progresso',
         appStore: 'Baixar na App Store',
+        googlePlay: 'Disponível no Google Play',
         featuresTitle: 'Tudo que você precisa para progredir',
         f1Title: 'Timer de apneia', f1Desc: 'Timer preciso com rastreamento de contrações, recordes pessoais e histórico.',
         f2Title: 'Tabelas CO₂ e O₂', f2Desc: 'Tabelas de treino personalizáveis que se adaptam ao seu recorde.',
@@ -1018,6 +1059,7 @@
         subtitle: '训练你的呼吸，突破你的极限。静态屏气、O₂ & CO₂ 训练表和呼吸训练的完整伙伴。',
         badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: 'Breathwork', badgeProgress: '进展',
         appStore: '在 App Store 下载',
+        googlePlay: '在 Google Play 下载',
         featuresTitle: '你所需要的一切',
         f1Title: '静态屏气计时器', f1Desc: '精确计时，收缩追踪，个人记录和详细历史。',
         f2Title: 'CO₂ 和 O₂ 训练表', f2Desc: '可自定义的训练表，自动适应你的个人记录。',
@@ -1031,6 +1073,7 @@
         subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、O₂ & CO₂ テーブル、ブレスワークの完全なパートナー。',
         badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: 'Breathwork', badgeProgress: '進捗',
         appStore: 'App Store でダウンロード',
+        googlePlay: 'Google Play で入手',
         featuresTitle: '上達に必要なすべて',
         f1Title: 'スタティック・アプネア・タイマー', f1Desc: '収縮トラッキング、自己記録、セッション履歴付き精密タイマー。',
         f2Title: 'CO₂ & O₂ テーブル', f2Desc: 'カスタマイズ可能なトレーニングテーブル。自己記録に自動適応。',
@@ -1044,6 +1087,7 @@
         subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, O₂ & CO₂ tabeller og breathwork.',
         badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Breathwork', badgeProgress: 'Fremskridt',
         appStore: 'Download i App Store',
+        googlePlay: 'Hent den på Google Play',
         featuresTitle: 'Alt du behøver for at forbedre dig',
         f1Title: 'Statisk apnø timer', f1Desc: 'Præcis timer med kontraktionssporing, personlige rekorder og historik.',
         f2Title: 'CO₂ & O₂ tabeller', f2Desc: 'Tilpasselige træningstabeller der tilpasser sig din rekord.',
@@ -1057,6 +1101,7 @@
         subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, O₂ & CO₂ tabellen en breathwork.',
         badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Voortgang',
         appStore: 'Download in de App Store',
+        googlePlay: 'Ontdek het op Google Play',
         featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
         f1Title: 'Statische apneu timer', f1Desc: 'Nauwkeurige timer met contractietracking, persoonlijke records en geschiedenis.',
         f2Title: 'CO₂ & O₂ tabellen', f2Desc: 'Aanpasbare trainingstabellen die zich aanpassen aan je record.',
@@ -1070,6 +1115,7 @@
         subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, O₂ & CO₂ टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
         badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'Breathwork', badgeProgress: 'प्रगति',
         appStore: 'App Store से डाउनलोड करें',
+        googlePlay: 'Google Play से डाउनलोड करें',
         featuresTitle: 'प्रगति के लिए सब कुछ',
         f1Title: 'स्टैटिक एपनिया टाइमर', f1Desc: 'संकुचन ट्रैकिंग, व्यक्तिगत रिकॉर्ड और विस्तृत इतिहास के साथ सटीक टाइमर।',
         f2Title: 'CO₂ और O₂ टेबल', f2Desc: 'अनुकूलन योग्य प्रशिक्षण तालिकाएं जो आपके रिकॉर्ड के अनुसार ढलती हैं।',
@@ -1083,6 +1129,7 @@
         subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel O₂ & CO₂, dan breathwork.',
         badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Kemajuan',
         appStore: 'Unduh di App Store',
+        googlePlay: 'Dapatkan di Google Play',
         featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
         f1Title: 'Timer Apnea Statis', f1Desc: 'Timer presisi dengan pelacakan kontraksi, rekor pribadi, dan riwayat.',
         f2Title: 'Tabel CO₂ & O₂', f2Desc: 'Tabel latihan yang dapat disesuaikan dan otomatis menyesuaikan rekor.',
@@ -1096,6 +1143,7 @@
         subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง O₂ & CO₂ และ breathwork',
         badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'ความก้าวหน้า',
         appStore: 'ดาวน์โหลดบน App Store',
+        googlePlay: 'ดาวน์โหลดบน Google Play',
         featuresTitle: 'ทุกอย่างที่คุณต้องการ',
         f1Title: 'ตัวจับเวลาแอปเนีย', f1Desc: 'ตัวจับเวลาแม่นยำพร้อมการติดตามการบีบตัว สถิติส่วนตัว และประวัติ',
         f2Title: 'ตาราง CO₂ และ O₂', f2Desc: 'ตารางฝึกซ้อมที่ปรับแต่งได้ ปรับอัตโนมัติตามสถิติ',
@@ -1109,6 +1157,7 @@
         subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng O₂ & CO₂ và breathwork.',
         badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Tiến bộ',
         appStore: 'Tải trên App Store',
+        googlePlay: 'Tải trên Google Play',
         featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
         f1Title: 'Bộ đếm ngưng thở', f1Desc: 'Bộ đếm chính xác với theo dõi co thắt, kỷ lục cá nhân và lịch sử.',
         f2Title: 'Bảng CO₂ & O₂', f2Desc: 'Bảng tập tùy chỉnh tự động thích ứng với kỷ lục của bạn.',

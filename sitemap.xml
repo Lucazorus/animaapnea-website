@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://animaapnea.com/</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en"   href="https://animaapnea.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr"   href="https://animaapnea.com/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es"   href="https://animaapnea.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="de"   href="https://animaapnea.com/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="it"   href="https://animaapnea.com/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="pt"   href="https://animaapnea.com/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="ja"   href="https://animaapnea.com/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="zh"   href="https://animaapnea.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://animaapnea.com/"/>
+  </url>
+
+  <url>
+    <loc>https://animaapnea.com/privacy/en.html</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
