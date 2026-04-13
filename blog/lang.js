@@ -7,7 +7,13 @@
     it: { flag: '🇮🇹', label: 'IT' },
     pt: { flag: '🇧🇷', label: 'PT' },
     ja: { flag: '🇯🇵', label: 'JA' },
-    zh: { flag: '🇨🇳', label: 'ZH' }
+    zh: { flag: '🇨🇳', label: 'ZH' },
+    da: { flag: '🇩🇰', label: 'DA' },
+    nl: { flag: '🇳🇱', label: 'NL' },
+    hi: { flag: '🇮🇳', label: 'HI' },
+    id: { flag: '🇮🇩', label: 'ID' },
+    th: { flag: '🇹🇭', label: 'TH' },
+    vi: { flag: '🇻🇳', label: 'VI' }
   };
 
   // Extract pathname from an absolute URL (handles www vs non-www)
