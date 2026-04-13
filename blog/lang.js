@@ -102,5 +102,32 @@
 
   wrapper.appendChild(btn);
   wrapper.appendChild(dropdown);
-  nav.appendChild(wrapper);
+
+  // ── Theme toggle ──
+  var themeBtn = document.createElement('button');
+  themeBtn.className = 'blog-theme-btn';
+  themeBtn.setAttribute('aria-label', 'Toggle theme');
+
+  var html = document.documentElement;
+  var storedTheme = localStorage.getItem('theme');
+  var sysPref = window.matchMedia('(prefers-color-scheme: light)').matches;
+  var isSepia = storedTheme ? storedTheme === 'sepia' : sysPref;
+
+  function applyTheme(sepia) {
+    html.classList.toggle('sepia', sepia);
+    themeBtn.textContent = sepia ? '☀️' : '🌙';
+  }
+  applyTheme(isSepia);
+
+  themeBtn.addEventListener('click', function () {
+    var next = !html.classList.contains('sepia');
+    applyTheme(next);
+    localStorage.setItem('theme', next ? 'sepia' : 'dark');
+  });
+
+  var navRight = document.createElement('div');
+  navRight.style.cssText = 'display:flex;align-items:center;gap:0.5rem;';
+  navRight.appendChild(themeBtn);
+  navRight.appendChild(wrapper);
+  nav.appendChild(navRight);
 })();

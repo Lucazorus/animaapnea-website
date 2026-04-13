@@ -6,13 +6,40 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #040B15;
+  --surface: #0A1525;
+  --nav-bg: rgba(4,11,21,0.9);
+  --text-primary: #F0F4F8;
+  --text-secondary: rgba(240,244,248,0.68);
+  --text-muted: rgba(240,244,248,0.42);
+  --border: rgba(255,255,255,0.06);
+  --border-mid: rgba(255,255,255,0.08);
+  --accent: #8ECAE6;
+  --accent2: #7BBEC4;
+}
+
+html.sepia {
+  --bg: #F5F0E8;
+  --surface: #EDE8DC;
+  --nav-bg: rgba(245,240,232,0.92);
+  --text-primary: #2C2A22;
+  --text-secondary: rgba(44,42,34,0.72);
+  --text-muted: rgba(44,42,34,0.45);
+  --border: rgba(44,42,34,0.08);
+  --border-mid: rgba(44,42,34,0.12);
+  --accent: #4A7A8A;
+  --accent2: #4A8A87;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #040B15;
-  color: #F0F4F8;
+  background: var(--bg);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
 }
 
 /* ── Navigation ── */
@@ -23,18 +50,18 @@ nav.blog-nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(4, 11, 21, 0.9);
+  background: var(--nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 nav.blog-nav a {
-  color: #8ECAE6;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
@@ -46,7 +73,7 @@ nav.blog-nav a:hover {
 }
 
 nav.blog-nav span {
-  color: rgba(240, 244, 248, 0.42);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
@@ -86,7 +113,7 @@ h2 {
   font-weight: 600;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: #F0F4F8;
+  color: var(--text-primary);
 }
 
 h3 {
@@ -94,13 +121,13 @@ h3 {
   font-weight: 600;
   margin-top: 1.8rem;
   margin-bottom: 0.6rem;
-  color: #8ECAE6;
+  color: var(--accent);
 }
 
 /* ── Meta ── */
 
 .meta {
-  color: rgba(240, 244, 248, 0.42);
+  color: var(--text-muted);
   font-size: 0.875rem;
 }
 
@@ -109,7 +136,7 @@ h3 {
 p {
   line-height: 1.75;
   margin-bottom: 1.2rem;
-  color: rgba(240, 244, 248, 0.82);
+  color: var(--text-secondary);
 }
 
 ul,
@@ -121,14 +148,14 @@ ol {
 li {
   line-height: 1.75;
   margin-bottom: 0.4rem;
-  color: rgba(240, 244, 248, 0.82);
+  color: var(--text-secondary);
 }
 
 /* ── Table ── */
 
 .table-example {
-  background: #0A1525;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
   border-radius: 12px;
   padding: 1.5rem;
   margin: 1.5rem 0;
@@ -143,16 +170,16 @@ li {
 .table-example th {
   text-align: left;
   padding: 0.6rem 1rem;
-  color: #8ECAE6;
+  color: var(--accent);
   font-size: 0.85rem;
   font-weight: 600;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-mid);
 }
 
 .table-example td {
   padding: 0.6rem 1rem;
   font-size: 0.9rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ── CTA box ── */
@@ -193,19 +220,19 @@ footer.blog-footer {
   margin-top: 4rem;
   padding: 2rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: rgba(240, 244, 248, 0.42);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
   font-size: 0.85rem;
 }
 
 footer.blog-footer a {
-  color: rgba(240, 244, 248, 0.6);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 footer.blog-footer a:hover {
-  color: #8ECAE6;
+  color: var(--accent);
 }
 
 /* ── Language selector ── */
@@ -216,9 +243,9 @@ footer.blog-footer a:hover {
 
 .blog-lang-btn {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-mid);
   border-radius: 8px;
-  color: #F0F4F8;
+  color: var(--text-primary);
   cursor: pointer;
   font-family: inherit;
   font-size: 0.82rem;
@@ -239,8 +266,8 @@ footer.blog-footer a:hover {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
-  background: #0A1525;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
   border-radius: 10px;
   padding: 0.4rem;
   min-width: 120px;
@@ -255,7 +282,7 @@ footer.blog-footer a:hover {
 .blog-lang-dropdown a {
   display: block;
   padding: 0.45rem 0.8rem;
-  color: rgba(240, 244, 248, 0.75) !important;
+  color: var(--text-secondary) !important;
   font-size: 0.85rem;
   border-radius: 6px;
   transition: background 0.15s;
@@ -263,13 +290,51 @@ footer.blog-footer a:hover {
 
 .blog-lang-dropdown a:hover {
   background: rgba(255, 255, 255, 0.07);
-  color: #F0F4F8 !important;
+  color: var(--text-primary) !important;
   opacity: 1 !important;
 }
 
 .blog-lang-dropdown a.active {
   color: #8ECAE6 !important;
   font-weight: 600;
+}
+
+/* ── Theme toggle ── */
+
+.blog-theme-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.32rem 0.55rem;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.blog-theme-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+html.sepia .blog-theme-btn {
+  background: rgba(0,0,0,0.05);
+}
+
+html.sepia .blog-theme-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+html.sepia .blog-lang-btn {
+  background: rgba(0,0,0,0.05);
+  color: var(--text-primary);
+}
+
+html.sepia .blog-lang-dropdown {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+html.sepia .blog-lang-dropdown a:hover {
+  background: rgba(0,0,0,0.06);
 }
 
 /* ── Responsive ── */
