@@ -10,6 +10,11 @@
     zh: { flag: '🇨🇳', label: 'ZH' }
   };
 
+  // Extract pathname from an absolute URL (handles www vs non-www)
+  function getPath(url) {
+    try { return new URL(url).pathname; } catch (e) { return url; }
+  }
+
   // ── Detect current lang from canonical URL ──
   function getCurrentLang() {
     var canonical = document.querySelector('link[rel="canonical"]');
@@ -27,7 +32,8 @@
     var target = stored || (LANGS[browserLang] ? browserLang : null);
     if (target && target !== currentLang && LANGS[target]) {
       var hreflang = document.querySelector('link[hreflang="' + target + '"]');
-      if (hreflang && hreflang.href !== window.location.href) {
+      // Compare paths only — avoids www vs non-www mismatch
+      if (hreflang && getPath(hreflang.href) !== window.location.pathname) {
         window.location.replace(hreflang.href);
         return;
       }
@@ -64,12 +70,11 @@
     a.addEventListener('click', function (e) {
       e.preventDefault();
       localStorage.setItem('lang', code);
-      // On article pages, go to hreflang equivalent
       var hreflang = document.querySelector('link[hreflang="' + code + '"]');
       if (hreflang) {
         window.location.href = hreflang.href;
       } else {
-        // On index page, just update button label and close
+        // Index page: just update button and close
         btn.innerHTML = info.flag + ' <span>' + info.label + '</span>';
         dropdown.classList.remove('open');
       }
