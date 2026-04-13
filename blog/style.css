@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #040B15;
+  color: #F0F4F8;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navigation ── */
+
+nav.blog-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(4, 11, 21, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+nav.blog-nav a {
+  color: #8ECAE6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+
+nav.blog-nav a:hover {
+  opacity: 0.75;
+}
+
+nav.blog-nav span {
+  color: rgba(240, 244, 248, 0.42);
+  font-size: 0.95rem;
+}
+
+/* ── Main content ── */
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 7rem 2rem 4rem;
+}
+
+/* ── Article header ── */
+
+article header {
+  margin-bottom: 3rem;
+}
+
+/* ── Headings ── */
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+h1 .accent {
+  background: linear-gradient(135deg, #8ECAE6, #7BBEC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #F0F4F8;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+  color: #8ECAE6;
+}
+
+/* ── Meta ── */
+
+.meta {
+  color: rgba(240, 244, 248, 0.42);
+  font-size: 0.875rem;
+}
+
+/* ── Body text ── */
+
+p {
+  line-height: 1.75;
+  margin-bottom: 1.2rem;
+  color: rgba(240, 244, 248, 0.82);
+}
+
+ul,
+ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+li {
+  line-height: 1.75;
+  margin-bottom: 0.4rem;
+  color: rgba(240, 244, 248, 0.82);
+}
+
+/* ── Table ── */
+
+.table-example {
+  background: #0A1525;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.table-example table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-example th {
+  text-align: left;
+  padding: 0.6rem 1rem;
+  color: #8ECAE6;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-example td {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ── CTA box ── */
+
+.cta-box {
+  background: linear-gradient(135deg, rgba(122, 180, 201, 0.08), rgba(123, 190, 196, 0.05));
+  border: 1px solid rgba(122, 180, 201, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.cta-box p {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #7AB4C9, #7BBEC4);
+  color: #040B15;
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+
+.cta-button:hover {
+  opacity: 0.88;
+}
+
+/* ── Footer ── */
+
+footer.blog-footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(240, 244, 248, 0.42);
+  font-size: 0.85rem;
+}
+
+footer.blog-footer a {
+  color: rgba(240, 244, 248, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer.blog-footer a:hover {
+  color: #8ECAE6;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 600px) {
+  main {
+    padding: 6rem 1.2rem 3rem;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+}
