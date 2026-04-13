@@ -208,6 +208,70 @@ footer.blog-footer a:hover {
   color: #8ECAE6;
 }
 
+/* ── Language selector ── */
+
+.blog-lang-select {
+  position: relative;
+}
+
+.blog-lang-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #F0F4F8;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.35rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.2s;
+}
+
+.blog-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.blog-lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #0A1525;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.4rem;
+  min-width: 120px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 200;
+}
+
+.blog-lang-dropdown.open {
+  display: block;
+}
+
+.blog-lang-dropdown a {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  color: rgba(240, 244, 248, 0.75) !important;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.blog-lang-dropdown a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #F0F4F8 !important;
+  opacity: 1 !important;
+}
+
+.blog-lang-dropdown a.active {
+  color: #8ECAE6 !important;
+  font-weight: 600;
+}
+
 /* ── Responsive ── */
 
 @media (max-width: 600px) {
