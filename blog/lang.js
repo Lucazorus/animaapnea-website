@@ -34,18 +34,19 @@
   // ── Auto-redirect to stored language (article pages only) ──
   if (currentLang) {
     var stored = localStorage.getItem('lang');
-    var browserLang = (navigator.language || '').slice(0, 2);
-    var target = stored || (LANGS[browserLang] ? browserLang : null);
-    if (target && target !== currentLang && LANGS[target]) {
-      var hreflang = document.querySelector('link[hreflang="' + target + '"]');
+    // If stored lang came from browser detection (not user choice), ignore it
+    // User choice is flagged by 'lang_explicit' key
+    var isExplicit = localStorage.getItem('lang_explicit') === '1';
+    if (stored && !isExplicit) stored = null;
+    // Only redirect if user explicitly chose a language (stored), not from browser detection
+    if (stored && stored !== currentLang && LANGS[stored]) {
+      var hreflang = document.querySelector('link[hreflang="' + stored + '"]');
       // Compare paths only — avoids www vs non-www mismatch
       if (hreflang && getPath(hreflang.href) !== window.location.pathname) {
         window.location.replace(hreflang.href);
         return;
       }
     }
-    // Save current lang if arriving from direct URL
-    if (!stored) localStorage.setItem('lang', currentLang);
   }
 
   // ── Build language selector in nav ──
@@ -76,6 +77,7 @@
     a.addEventListener('click', function (e) {
       e.preventDefault();
       localStorage.setItem('lang', code);
+      localStorage.setItem('lang_explicit', '1'); // mark as explicit user choice
       var hreflang = document.querySelector('link[hreflang="' + code + '"]');
       if (hreflang) {
         window.location.href = hreflang.href;
