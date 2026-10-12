@@ -64,7 +64,7 @@ window.ANIMA_I18N = {
     plCo2: 'Table CO₂', plO2: 'Table O₂', plBreath: 'Respiration',
     navGuides: 'Guides',
     heroTitle: 'Retenez votre souffle plus longtemps, en restant calme.',
-    heroLede: "Anima Apnea est un coach d'apnée statique pour iPhone. Un chrono qui enregistre vos contractions, des tables CO₂ et O₂ construites à partir de votre record, des respirations guidées et des plans de 4 semaines.",
+    heroLede: "L'app qui vous entraîne à l'apnée statique, au sec, chez vous. Elle cale vos tables CO₂ et O₂ sur votre record, note chaque contraction et vous dit chaque jour quoi faire pour progresser.",
     storeSmall: 'Télécharger dans',
     freeNote: 'Téléchargement gratuit. Fonctionne hors ligne.',
     dialIdle: 'Essayez une apnée ici même.',

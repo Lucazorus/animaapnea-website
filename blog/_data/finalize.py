@@ -176,6 +176,19 @@ def write_indexes():
         open(out, 'w', encoding='utf-8').write(index_page(l))
 
 
+def guides_index():
+    """/guides-index.js : fichiers et titres courts de chaque guide, par langue,
+    pour les liens contextuels de la homepage."""
+    titles = {l: {} for l in LANGS}
+    for art_id, per in REG.items():
+        for l in LANGS:
+            t = short_title(l, per[l])
+            if t: titles[l][art_id] = t
+    data = {'files': REG, 'titles': titles}
+    js = '/* Généré par blog/_data/finalize.py — ne pas modifier à la main. */\nwindow.ANIMA_GUIDES = ' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n'
+    open(os.path.join(SITE, 'guides-index.js'), 'w', encoding='utf-8').write(js)
+
+
 def sitemap():
     parts = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
@@ -204,6 +217,7 @@ def sitemap():
 if __name__ == '__main__':
     n, missing = fix_articles()
     write_indexes()
+    guides_index()
     sitemap()
     print(f'alternates updated in {n} pages; indexes and sitemap written')
     if missing: print('MISSING PAGES:', len(missing), missing[:20])

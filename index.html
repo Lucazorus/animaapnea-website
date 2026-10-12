@@ -293,6 +293,7 @@
     .bar .hold2 { background: color-mix(in srgb, var(--pc) 40%, transparent); }
     .bar span b { font-weight: 600; margin-right: .3rem; }
     .phase-legend b { font-weight: 600; margin-right: .35rem; color: var(--foam); }
+    .bar span { min-width: 0; }
     .bar.custom span { border: 1px dashed var(--green); background: none; color: var(--haze); flex: 1; }
 
     /* Plan grid */
@@ -317,6 +318,17 @@
     .guide h3 { font-weight: 700; font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.25; margin-bottom: .6rem; }
     .guide p { font-size: .94rem; color: var(--mist); }
     .guide:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    [data-guide-link] a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    [data-guide-link] a:hover { text-decoration-color: currentColor; }
+    .topic-guides { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.6rem; }
+    .topic-guides:empty { display: none; }
+    .topic-guides a {
+      display: inline-flex; align-items: center; gap: .45rem; min-height: 40px;
+      padding: .5rem .85rem; border-radius: 10px; border: 1px solid var(--line);
+      color: var(--mist); text-decoration: none; font-size: .88rem; line-height: 1.3;
+    }
+    .topic-guides a:hover { border-color: var(--line-strong); color: var(--foam); }
+    .topic-guides svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--cyan); }
     .all-guides { display: inline-block; margin-top: 1.6rem; color: var(--cyan); font-weight: 500; text-decoration: none; font-size: .95rem; }
     .all-guides:hover { text-decoration: underline; }
 
@@ -502,14 +514,15 @@
           <p data-i18n="ph1Text">No discomfort yet. Oxygen is plentiful and the only job is to stay loose: jaw, shoulders, hands.</p>
         </div>
         <div class="phase">
-          <h3 data-i18n="ph2Title">First contraction</h3>
+          <h3 data-guide-link="contractions" data-i18n="ph2Title">First contraction</h3>
           <p data-i18n="ph2Text">Your diaphragm twitches on its own. It's rising CO₂, not a lack of oxygen. Tap the screen and Anima records the moment.</p>
         </div>
         <div class="phase">
-          <h3 data-i18n="ph3Title">Struggle phase</h3>
+          <h3 data-guide-link="contractions" data-i18n="ph3Title">Struggle phase</h3>
           <p data-i18n="ph3Text">Contractions come closer together. Training is about letting them pass without tensing up, and seeing that first tap arrive later over the weeks.</p>
         </div>
       </div>
+      <nav class="topic-guides" data-guides="contractions,blackout"></nav>
     </div>
   </section>
 
@@ -521,10 +534,11 @@
           <p data-i18n="tbLede">Enter your best static hold and Anima builds your CO₂ and O₂ tables. Then it times every round for you with sound and haptic cues, so you never watch a clock.</p>
         </div>
         <ul class="facts">
-          <li data-i18n-html="tbFact1"><strong>CO₂ table:</strong> the hold stays the same, recovery gets shorter. Trains your tolerance to the urge to breathe.</li>
-          <li data-i18n-html="tbFact2"><strong>O₂ table:</strong> recovery stays the same, holds get longer. Trains you to go further, safely.</li>
+          <li data-guide-link="co2-table" data-i18n-html="tbFact1"><strong>CO₂ table:</strong> the hold stays the same, recovery gets shorter. Trains your tolerance to the urge to breathe.</li>
+          <li data-guide-link="o2-table" data-i18n-html="tbFact2"><strong>O₂ table:</strong> recovery stays the same, holds get longer. Trains you to go further, safely.</li>
           <li data-i18n-html="tbFact3"><strong>Your own tables:</strong> change hold, recovery and round count whenever you want.</li>
         </ul>
+        <nav class="topic-guides" data-guides="co2-table,o2-table,co2-vs-o2"></nav>
       </div>
       <div class="table-demo" id="tableDemo">
         <div class="td-switch" role="tablist" aria-label="CO₂ / O₂">
@@ -555,15 +569,15 @@
       </div>
       <div class="patterns">
         <div class="pattern">
-          <div><h3 data-i18n="br1Title">Diaphragmatic</h3><p data-i18n="br1Text">Long exhales to slow everything down.</p></div>
+          <div><h3 data-guide-link="breathwork" data-i18n="br1Title">Diaphragmatic</h3><p data-i18n="br1Text">Long exhales to slow everything down.</p></div>
           <div class="bar" style="--pc:var(--cyan);--cycle:12s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
-          <div><h3 data-i18n="br2Title">Box breathing</h3><p data-i18n="br2Text">Four equal sides for focus.</p></div>
+          <div><h3 data-guide-link="breathwork" data-i18n="br2Title">Box breathing</h3><p data-i18n="br2Text">Four equal sides for focus.</p></div>
           <div class="bar" style="--pc:var(--teal);--cycle:16s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:4"><b aria-hidden="true">—</b>4s</span><span class="out" style="flex:4"><b aria-hidden="true">↓</b>4s</span><span class="hold2" style="flex:4"><b aria-hidden="true">—</b>4s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
-          <div><h3 data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">A long pause and a longer exhale to unwind.</p></div>
+          <div><h3 data-guide-link="breathwork" data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">A long pause and a longer exhale to unwind.</p></div>
           <div class="bar" style="--pc:var(--aqua);--cycle:19s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:7"><b aria-hidden="true">—</b>7s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
@@ -572,6 +586,7 @@
         </div>
       </div>
       <div class="legend phase-legend"><span><b aria-hidden="true">↑</b><span data-i18n="brIn">Inhale</span></span><span><b aria-hidden="true">—</b><span data-i18n="brHold">Hold</span></span><span><b aria-hidden="true">↓</b><span data-i18n="brOut">Exhale</span></span></div>
+      <nav class="topic-guides" data-guides="breathwork,breathe-up"></nav>
     </div>
   </section>
 
@@ -585,13 +600,14 @@
       </div>
       <div>
         <div class="plan" id="planGrid" aria-label="Plan de 4 semaines : tables CO₂ et O₂ alternées, respiration les autres jours, tentative de record en fin de semaines 2 et 4"></div>
-        <div class="plan-legend"><span><i style="background:var(--cyan)"></i><span data-i18n="plCo2">CO₂ table</span></span><span><i style="background:var(--aqua)"></i><span data-i18n="plO2">O₂ table</span></span><span><i style="background:color-mix(in srgb, var(--green) 45%, transparent)"></i><span data-i18n="plBreath">Breathing</span></span><span><i style="background:var(--yellow)"></i><span data-i18n="plRecord">Record attempt</span></span></div>
+        <div class="plan-legend"><span><i style="background:var(--cyan)"></i><span data-i18n="plCo2">CO₂ table</span></span><span><i style="background:var(--aqua)"></i><span data-i18n="plO2">O₂ table</span></span><span><i style="background:color-mix(in srgb, var(--green) 45%, transparent)"></i><span data-i18n="plBreath">Breathing</span></span><span><i style="background:var(--yellow)"></i><span data-guide-link="measure-pb" data-i18n="plRecord">Record attempt</span></span></div>
         <div class="extras">
-          <div><h3 data-i18n="ex1Title">Progress you can see</h3><p data-i18n="ex1Text">Charts by day, week or month for your holds, tables and contractions.</p></div>
+          <div><h3 data-guide-link="without-coach" data-i18n="ex1Title">Progress you can see</h3><p data-i18n="ex1Text">Charts by day, week or month for your holds, tables and contractions.</p></div>
           <div><h3 data-i18n="ex2Title">A streak to protect</h3><p data-i18n="ex2Text">Daily reminders and a home-screen widget keep the habit going.</p></div>
           <div><h3 data-i18n="ex3Title">Your data, everywhere</h3><p data-i18n="ex3Text">Sign in with Apple or Google to sync your sessions across devices.</p></div>
           <div><h3 data-i18n="ex4Title">No account needed</h3><p data-i18n="ex4Text">Everything works on your phone first. Signing in is optional.</p></div>
         </div>
+        <nav class="topic-guides" data-guides="beginner-plan,measure-pb,three-minutes,without-coach"></nav>
       </div>
     </div>
   </section>
@@ -619,7 +635,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         <span><small data-i18n="storeSmall">Download on the</small>App Store</span>
       </a>
-      <p class="safety" data-i18n="safety">Train dry, sitting or lying down. Never practise breath-holds in water without a trained buddy watching you, and never hyperventilate before a hold.</p>
+      <p class="safety" data-guide-link="blackout" data-i18n="safety">Train dry, sitting or lying down. Never practise breath-holds in water without a trained buddy watching you, and never hyperventilate before a hold.</p>
     </div>
   </section>
 </main>
@@ -635,7 +651,8 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012g"></script>
+<script src="i18n.js?v=20261012i"></script>
+<script src="guides-index.js?v=20261012i"></script>
 <script>
 (function () {
   var html = document.documentElement;
@@ -687,6 +704,7 @@
     });
     langMenu.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-current', b.dataset.code === code ? 'true' : 'false'); });
     if (explicit) { store('lang', code); store('lang_explicit', '1'); }
+    applyGuideLinks();
     resetHold();
   }
   LANG_ORDER.forEach(function (code) {
@@ -697,6 +715,32 @@
     b.addEventListener('click', function () { setLang(code, true); closeMenu(); });
     langMenu.appendChild(b);
   });
+  // ── Liens vers les guides du sujet (titres réels des articles, langue courante) ──
+  var BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>';
+  function guideHref(id) {
+    var G = window.ANIMA_GUIDES; if (!G || !G.files[id]) return null;
+    return '/blog/' + lang + '/' + (G.files[id][lang] || G.files[id].en);
+  }
+  function guideTitle(id) {
+    var G = window.ANIMA_GUIDES; if (!G) return '';
+    return (G.titles[lang] && G.titles[lang][id]) || (G.titles.en && G.titles.en[id]) || '';
+  }
+  function applyGuideLinks() {
+    document.querySelectorAll('[data-guide-link]').forEach(function (el) {
+      var href = guideHref(el.getAttribute('data-guide-link')); if (!href) return;
+      var target = el.querySelector('strong') || el;
+      if (target.querySelector('a')) return;
+      var a = document.createElement('a'); a.href = href;
+      while (target.firstChild) a.appendChild(target.firstChild);
+      target.appendChild(a);
+    });
+    document.querySelectorAll('[data-guides]').forEach(function (nav) {
+      nav.innerHTML = nav.getAttribute('data-guides').split(',').map(function (id) {
+        var href = guideHref(id), title = guideTitle(id);
+        return href && title ? '<a href="' + href + '">' + BOOK + '<span>' + title.replace(/</g, '&lt;') + '</span></a>' : '';
+      }).join('');
+    });
+  }
   function closeMenu() { langMenu.classList.remove('open'); langBtn.setAttribute('aria-expanded', 'false'); }
   langBtn.addEventListener('click', function (e) {
     e.stopPropagation();
