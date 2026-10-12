@@ -91,7 +91,9 @@ def check(path):
     if re.search(r'apple watch|heart rate monitor|fréquence cardiaque', s, re.I): errs.append('mentions a feature the app does not have (watch / heart rate)')
     words = len(re.findall(r'[\w\u0900-\u097F]+', ' '.join(p.text)))
     cjk = len(re.findall(r'[぀-ヿ一-鿿฀-๿]', ' '.join(p.text)))
-    if not cjk and not (1500 <= words <= 3300): errs.append(f'body is {words} words (target 1800–2600)')
+    # le vietnamien s'écrit syllabe par syllabe : chaque syllabe compte comme un « mot »
+    upper = 4000 if lang == 'vi' else 3300
+    if not cjk and not (1500 <= words <= upper): errs.append(f'body is {words} words (target 1800–2600)')
     return errs
 
 

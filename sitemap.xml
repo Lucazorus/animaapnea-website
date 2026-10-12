@@ -5,19 +5,279 @@
     <lastmod>2026-10-12</lastmod>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/?lang=fr"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/?lang=it"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/?lang=pt"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/?lang=ja"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/?lang=da"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/?lang=nl"/>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/?lang=hi"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/?lang=id"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/?lang=th"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/fr/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/es/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/de/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/it/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/pt/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/ja/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/zh/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/da/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/nl/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/hi/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/id/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/th/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
+  </url>
+  <url>
+    <loc>https://www.animaapnea.com/vi/</loc>
+    <lastmod>2026-10-12</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.animaapnea.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/"/>
   </url>
   <url>
