@@ -1,0 +1,47 @@
+/* Blog index (all languages) */
+main.index-main { max-width: 1080px; padding: 8rem 2rem 4rem; }
+
+.index-hero { max-width: 44rem; margin-bottom: 3.5rem; }
+.index-hero h1 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.04; letter-spacing: -0.025em;
+  margin-bottom: 1.2rem;
+}
+.index-hero p { font-size: 1.15rem; line-height: 1.6; max-width: 36rem; }
+
+a.feature {
+  display: block; text-decoration: none; margin-bottom: 4rem;
+  padding: clamp(1.6rem, 4vw, 2.6rem); border-radius: 22px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--co2) 14%, transparent), transparent 60%),
+    var(--surface);
+  border: 1px solid var(--border-mid);
+  transition: border-color .2s;
+}
+a.feature:hover { border-color: color-mix(in srgb, var(--co2) 45%, transparent); }
+a.feature h3 {
+  font-family: var(--serif); font-weight: 400; color: var(--text-primary);
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.12; letter-spacing: -0.015em;
+  max-width: 24ch; margin-bottom: 0.9rem;
+}
+a.feature p { max-width: 40rem; font-size: 1.02rem; margin-bottom: 1rem; }
+
+.group { margin-bottom: 3.6rem; }
+.group h2 {
+  font-size: 1rem; font-weight: 600; color: var(--text-primary);
+  margin: 0 0 0.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border-mid);
+}
+.entries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+a.entry { display: block; text-decoration: none; padding: 1.4rem 0; border-bottom: 1px solid var(--border); }
+a.entry h3 {
+  font-family: var(--serif); font-weight: 400; color: var(--text-primary);
+  font-size: 1.35rem; line-height: 1.22; margin-bottom: 0.45rem;
+}
+a.entry:hover h3, a.feature:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+a.entry p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
+.mins { font-size: 0.8rem; color: var(--text-muted); }
+
+@media (max-width: 760px) {
+  main.index-main { padding: 6.5rem 1rem 3rem; }
+  .entries { grid-template-columns: 1fr; }
+}

@@ -3,1235 +3,754 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anima Apnea — Freediving Training App | Static Apnea Timer, CO₂/O₂ Tables & Breathwork</title>
-  <meta name="description" content="The best freediving app for breath-hold training. Static apnea timer with contraction tracking, CO₂ and O₂ training tables, breathing exercises, progress charts and training plans. Available on iOS.">
-  <meta name="keywords" content="freediving app, apnea training, static apnea timer, breath hold training, CO2 table, O2 table, freediving training, breathwork app, apnea app, breath hold app, freediving breath training, spearfishing breath training, apnée statique, entraînement apnée, plongée libre">
+  <title>Anima Apnea · Static apnea training app for iPhone</title>
+  <meta name="description" content="Learn to hold your breath longer, calmly. Static apnea timer with contraction tracking, CO₂ and O₂ tables built from your record, guided breathing and 4-week training plans. Free on iOS.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Anima Apnea — Freediving Training App">
-  <meta property="og:description" content="Train your breath, push your limits. Static apnea timer, CO₂/O₂ tables, breathing exercises and progress tracking.">
-  <meta property="og:image" content="https://animaapnea.com/og-image.png">
-  <meta property="og:url" content="https://animaapnea.com">
+  <meta property="og:title" content="Anima Apnea · Static apnea training for iPhone">
+  <meta property="og:description" content="A breath-hold timer that logs your contractions, CO₂ and O₂ tables built from your record, guided breathing and 4-week plans.">
+  <meta property="og:image" content="https://www.animaapnea.com/og-image.png">
+  <meta property="og:url" content="https://www.animaapnea.com">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anima Apnea">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anima Apnea — Freediving Training App">
-  <meta name="twitter:description" content="Train your breath, push your limits. The complete freediving companion.">
-  <meta name="twitter:image" content="https://animaapnea.com/og-image.png">
+  <meta name="twitter:image" content="https://www.animaapnea.com/og-image.png">
 
-  <!-- Canonical & alternate languages -->
-  <link rel="canonical" href="https://animaapnea.com/">
-  <link rel="alternate" hreflang="en" href="https://animaapnea.com/">
-  <link rel="alternate" hreflang="fr" href="https://animaapnea.com/?lang=fr">
-  <link rel="alternate" hreflang="es" href="https://animaapnea.com/?lang=es">
-  <link rel="alternate" hreflang="de" href="https://animaapnea.com/?lang=de">
-  <link rel="alternate" hreflang="it" href="https://animaapnea.com/?lang=it">
-  <link rel="alternate" hreflang="pt" href="https://animaapnea.com/?lang=pt">
-  <link rel="alternate" hreflang="ja" href="https://animaapnea.com/?lang=ja">
-  <link rel="alternate" hreflang="zh" href="https://animaapnea.com/?lang=zh">
-  <link rel="alternate" hreflang="x-default" href="https://animaapnea.com/">
+  <link rel="canonical" href="https://www.animaapnea.com/">
+  <link rel="alternate" hreflang="en" href="https://www.animaapnea.com/">
+  <link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/?lang=fr">
+  <link rel="alternate" hreflang="es" href="https://www.animaapnea.com/?lang=es">
+  <link rel="alternate" hreflang="de" href="https://www.animaapnea.com/?lang=de">
+  <link rel="alternate" hreflang="it" href="https://www.animaapnea.com/?lang=it">
+  <link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/?lang=pt">
+  <link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/?lang=ja">
+  <link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/?lang=zh">
+  <link rel="alternate" hreflang="da" href="https://www.animaapnea.com/?lang=da">
+  <link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/?lang=nl">
+  <link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/?lang=hi">
+  <link rel="alternate" hreflang="id" href="https://www.animaapnea.com/?lang=id">
+  <link rel="alternate" hreflang="th" href="https://www.animaapnea.com/?lang=th">
+  <link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/?lang=vi">
+  <link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/">
 
-  <!-- App linking -->
   <meta name="apple-itunes-app" content="app-id=6760680506">
+  <meta name="theme-color" content="#050D1A">
+  <link rel="icon" type="image/png" href="logo-256.png">
+  <link rel="apple-touch-icon" href="logo-256.png">
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="apple-touch-icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "MobileApplication",
     "name": "Anima Apnea",
     "operatingSystem": "iOS",
     "applicationCategory": "HealthApplication",
-    "description": "Freediving training app with static apnea timer, CO₂/O₂ training tables, breathing exercises, progress charts and training plans.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "ratingCount": "1"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Lucas Massoni"
-    },
-    "url": "https://animaapnea.com",
-    "image": "https://animaapnea.com/logo.png",
-    "keywords": "freediving, apnea, breath hold, training, static apnea, CO2 table, O2 table, breathwork"
+    "description": "Static apnea training app: breath-hold timer with contraction tracking, CO₂ and O₂ tables built from your personal record, guided breathing exercises, progress charts and 4-week training plans.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "author": {"@type": "Person", "name": "Lucas Massoni"},
+    "url": "https://www.animaapnea.com",
+    "downloadUrl": "https://apps.apple.com/app/anima-apnea/id6760680506",
+    "image": "https://www.animaapnea.com/logo.png"
   }
   </script>
+
+  <script>
+    // Apply the stored theme before first paint (shared key with the blog)
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        var light = t ? t === 'sepia' : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('sepia');
+      } catch (e) {}
+    })();
+  </script>
+
   <style>
+    /* Anima app palette (lib/theme/app_colors.dart) and its meanings:
+       cyan = CO₂ table / main accent, aqua = O₂ table, teal = box breathing,
+       green = recovery & breathing, yellow = apnea, records, contractions. */
     :root {
-      --bg: #040B15;
-      --surface: #0A1525;
-      --surface-hi: #0F1D32;
-      --cyan: #7AB4C9;
-      --cyan-bright: #8ECAE6;
-      --teal: #7BBEC4;
-      --aqua: #7AC4C0;
-      --green: #7BC493;
-      --yellow: #FFD740;
-      --orange: #FF6D00;
-      --text-primary: #F0F4F8;
-      --text-secondary: rgba(240,244,248,0.68);
-      --text-tertiary: rgba(240,244,248,0.42);
-      --border-dim: rgba(255,255,255,0.06);
-      --border-mid: rgba(255,255,255,0.12);
-      --glass: rgba(255,255,255,0.03);
-      --glass-secondary: rgba(255,255,255,0.05);
+      --abyss: #050D1A;
+      --deep: #0C1829;
+      --deeper: #112035;
+      --foam: #FFFFFF;
+      --mist: rgba(255,255,255,0.80);
+      --haze: rgba(255,255,255,0.60);
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.20);
+      --cyan: #6F9CAF;
+      --aqua: #6FAFAC;
+      --teal: #70AAAF;
+      --green: #70AF84;
+      --yellow: #FFCF56;
+      --ripple: rgba(111,156,175,0.40);
+      --rest: rgba(112,175,132,0.42);
+      --on-accent: #FFFFFF;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --measure: 34rem;
+      --gutter: clamp(1rem, 4vw, 3rem);
+    }
+    html.sepia {
+      --abyss: #FBF0E3;
+      --deep: #F5F4EF;
+      --deeper: #EBEAE3;
+      --foam: #2C2A22;
+      --mist: #585040;
+      --haze: #7E7A6E;
+      --line: rgba(58,56,40,0.12);
+      --line-strong: rgba(58,56,40,0.20);
+      --cyan: #5B8799;
+      --yellow: #BF8705;
+      --ripple: rgba(91,135,153,0.35);
+      --rest: rgba(112,175,132,0.45);
+      --on-accent: #FFFFFF;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { overflow-x: hidden; }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text-primary);
-      overflow-x: hidden;
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--foam);
+      background: var(--abyss);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    /* ── Grain texture overlay ── */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 180px;
-    }
-
-    .mesh-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(122,180,201,0.10) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 65% at 85% 75%, rgba(122,196,192,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(123,190,196,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 40% at 30% 60%, rgba(122,180,201,0.03) 0%, transparent 70%);
-    }
-
-    /* ── Hero glow ── */
-    .hero-glow {
-      position: fixed;
-      top: 10%; left: 15%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(122,180,201,0.08) 0%, transparent 70%);
-      z-index: 0;
-      pointer-events: none;
-      filter: blur(60px);
-    }
-
-    /* ── Entrance animations ── */
-    @keyframes fade-up {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .anim { opacity: 0; animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .anim-d1 { animation-delay: 0.08s; }
-    .anim-d2 { animation-delay: 0.18s; }
-    .anim-d3 { animation-delay: 0.28s; }
-    .anim-d4 { animation-delay: 0.38s; }
-    .anim-d5 { animation-delay: 0.48s; }
-    .anim-d6 { animation-delay: 0.58s; }
-    .anim-d7 { animation-delay: 0.68s; }
-    .anim-d8 { animation-delay: 0.78s; }
-    .anim-d9 { animation-delay: 0.88s; }
-    .anim-d10 { animation-delay: 0.98s; }
-    .anim-d11 { animation-delay: 1.08s; }
-    .anim-d12 { animation-delay: 1.18s; }
-
-    /* ── Concentric ripple — behind logo ── */
-    .logo-wrapper {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
-
-    .logo-wrapper .hero-logo {
-      position: relative;
-      z-index: 2;
-      margin-bottom: 0;
-    }
-
-    .logo-ripples {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .ripple-ring {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 1px solid rgba(122,180,201,0.06);
-      animation: ripple-expand 8s ease-out infinite;
-    }
-
-    .ripple-ring:nth-child(1) { animation-delay: 0s; }
-    .ripple-ring:nth-child(2) { animation-delay: 1.6s; }
-    .ripple-ring:nth-child(3) { animation-delay: 3.2s; }
-    .ripple-ring:nth-child(4) { animation-delay: 4.8s; }
-    .ripple-ring:nth-child(5) { animation-delay: 6.4s; }
-
-    @keyframes ripple-expand {
-      0% { width: 90px; height: 90px; opacity: 0; border-color: rgba(122,180,201,0.12); }
-      10% { opacity: 1; }
-      100% { width: 500px; height: 500px; opacity: 0; border-color: rgba(122,196,192,0.01); }
-    }
-
-    /* ── Corner ripples ── */
-    .corner-ripples {
-      position: fixed;
-      bottom: 0; right: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .corner-ring {
-      position: absolute;
-      bottom: 0; right: 0;
-      transform: translate(50%, 50%);
-      border-radius: 50%;
-      border: 1px solid rgba(122,196,192,0.04);
-      animation: corner-expand 12s ease-out infinite;
-    }
-
-    .corner-ring:nth-child(1) { animation-delay: 0s; }
-    .corner-ring:nth-child(2) { animation-delay: 2.4s; }
-    .corner-ring:nth-child(3) { animation-delay: 4.8s; }
-    .corner-ring:nth-child(4) { animation-delay: 7.2s; }
-    .corner-ring:nth-child(5) { animation-delay: 9.6s; }
-
-    @keyframes corner-expand {
-      0% { width: 100px; height: 100px; opacity: 0; border-color: rgba(122,196,192,0.08); }
-      8% { opacity: 1; }
-      100% { width: 900px; height: 900px; opacity: 0; border-color: rgba(122,180,201,0.005); }
-    }
-
-    .content { position: relative; z-index: 1; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); }
 
     /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 2.5rem;
-      background: rgba(4,11,21,0.7);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      transition: background 0.3s;
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--abyss) 82%, transparent);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
     }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: -0.01em;
+    .nav.scrolled { border-bottom-color: var(--line); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; font-weight: 600; font-size: .98rem; letter-spacing: -.01em; }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .nav-right { display: flex; align-items: center; gap: .4rem; }
+    .nav-link { font-size: .9rem; color: var(--mist); text-decoration: none; padding: .45rem .7rem; border-radius: 8px; }
+    .nav-link:hover { color: var(--foam); }
+    .icon-btn, .lang-btn {
+      height: 36px; min-width: 36px; padding: 0 .6rem; border-radius: 9px;
+      border: 1px solid var(--line); background: transparent; color: var(--foam);
+      font: 500 .82rem var(--sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
     }
-
-    .nav-brand img { width: 30px; height: 30px; border-radius: 8px; }
-
+    .icon-btn:hover, .lang-btn:hover { border-color: var(--line-strong); }
+    .icon-btn svg { width: 17px; height: 17px; }
     .lang-select { position: relative; }
-
-    .lang-btn {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 10px;
-      color: var(--text-secondary);
-      padding: 0.4rem 0.75rem;
-      font-size: 0.78rem;
-      font-family: inherit;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: background 0.2s, border-color 0.2s;
+    .lang-menu {
+      display: none; position: absolute; right: 0; top: calc(100% + 8px);
+      background: var(--deep); border: 1px solid var(--line-strong); border-radius: 12px;
+      padding: .35rem; min-width: 168px; max-height: 70vh; overflow: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
     }
-
-    .lang-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.10); }
-
-    .lang-btn .material-icons-round { font-size: 15px; }
-
-    .lang-dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 8px);
-      right: 0;
-      background: rgba(10,21,37,0.95);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 14px;
-      padding: 0.5rem;
-      min-width: 170px;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    .lang-menu.open { display: block; }
+    .lang-menu button {
+      display: block; width: 100%; text-align: left; border: 0; background: none; color: var(--mist);
+      font: 400 .88rem var(--sans); padding: .5rem .7rem; border-radius: 8px; cursor: pointer;
     }
+    .lang-menu button:hover, .lang-menu button[aria-current="true"] { background: var(--line); color: var(--foam); }
 
-    .lang-dropdown.open { display: block; }
-
-    .lang-dropdown a {
-      display: block;
-      padding: 0.5rem 0.8rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.8rem;
-      border-radius: 8px;
-      transition: background 0.15s, color 0.15s;
+    /* ── Buttons ── */
+    .store-btn {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--foam); color: var(--abyss); text-decoration: none;
+      padding: .8rem 1.35rem .8rem 1.1rem; border-radius: 14px; font-weight: 600; font-size: .98rem;
+      transition: transform .2s;
     }
-
-    .lang-dropdown a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
-
-    /* ── Main layout ── */
-    .main-split {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 6rem 4rem 2rem;
-      gap: 4.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .left-side {
-      flex: 0 0 40%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .right-side {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(3, auto);
-      gap: 1rem;
-      align-content: center;
-    }
+    .store-btn:hover { transform: translateY(-1px); }
+    .store-btn svg { width: 22px; height: 22px; fill: currentColor; }
+    .store-btn small { display: block; font-weight: 400; font-size: .72rem; opacity: .7; line-height: 1.1; }
+    .store-btn span { line-height: 1.2; }
+    .free-note { font-size: .85rem; color: var(--haze); margin-top: .9rem; }
 
     /* ── Hero ── */
-    .hero-logo {
-      width: 88px;
-      height: 88px;
-      border-radius: 22px;
-      margin-bottom: 1.5rem;
-      box-shadow:
-        0 0 60px rgba(122,180,201,0.2),
-        0 0 120px rgba(122,196,192,0.08),
-        0 4px 20px rgba(0,0,0,0.3);
+    .hero { position: relative; padding: clamp(3rem, 8vh, 6rem) 0 clamp(4rem, 10vh, 7rem); overflow: hidden; }
+    .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(2.6rem, 6.2vw, 5.1rem);
+      line-height: 1.02; letter-spacing: -.025em;
+      margin-bottom: 1.6rem; max-width: 12ch;
     }
+    .hero .lede { color: var(--mist); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: var(--measure); margin-bottom: 2.2rem; }
 
-    .left-side h1 {
-      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.8rem;
-      line-height: 1.05;
+    /* Hold dial — the one loud element */
+    .dial-wrap { display: flex; flex-direction: column; align-items: center; }
+    .dial {
+      position: relative; width: min(440px, 82vw); aspect-ratio: 1; border-radius: 50%;
+      display: grid; place-items: center; touch-action: none; user-select: none; -webkit-user-select: none;
     }
-
-    .left-side h1 span {
-      background: linear-gradient(135deg, var(--cyan-bright) 0%, var(--teal) 50%, var(--aqua) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .dial svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .ring-track { fill: none; stroke: var(--line); stroke-width: 1.5; }
+    .ring-fill { fill: none; stroke: url(#cyanTeal); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset .1s linear; }
+    .ripples { position: absolute; inset: 14%; border-radius: 50%; pointer-events: none; }
+    .ripples i {
+      position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--ripple); opacity: 0;
     }
+    .dial.holding .ripples i { animation: ripple 4.8s cubic-bezier(.2,.6,.3,1) infinite; }
+    .dial.holding .ripples i:nth-child(2) { animation-delay: 1.6s; }
+    .dial.holding .ripples i:nth-child(3) { animation-delay: 3.2s; }
+    @keyframes ripple { 0% { transform: scale(.55); opacity: .9; } 100% { transform: scale(1.18); opacity: 0; } }
 
-    .left-side .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      font-weight: 350;
-      line-height: 1.7;
-      margin-bottom: 1.8rem;
-      max-width: 420px;
+    .dial-core { position: relative; text-align: center; }
+    .clock {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(4.2rem, 11vw, 7.4rem); line-height: 1; letter-spacing: -.03em;
+      font-variant-numeric: tabular-nums lining-nums;
+      display: inline-flex; align-items: baseline;
     }
-
-    /* ── Badges ── */
-    .badge-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.2rem;
+    .clock .d { display: inline-block; width: .56em; text-align: center; }
+    .clock .c { display: inline-block; width: .28em; text-align: center; opacity: .5; transform: translateY(-.06em); }
+    .dial-state { margin-top: .8rem; font-size: .92rem; color: var(--mist); min-height: 1.5em; }
+    .hold-btn {
+      margin-top: 1.4rem; border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--cyan) 10%, transparent);
+      color: var(--foam); font: 500 .95rem var(--sans); padding: .85rem 1.6rem; border-radius: 99px; cursor: pointer;
+      touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+      transition: background .2s, border-color .2s;
     }
+    .hold-btn:hover { border-color: var(--cyan); }
+    .dial.holding + .hold-btn, .hold-btn[aria-pressed="true"] { background: var(--cyan); border-color: var(--cyan); color: var(--on-accent); }
+    .dial-hint { margin-top: .9rem; font-size: .8rem; color: var(--haze); text-align: center; max-width: 30ch; }
 
-    .badge-grid {
-      display: grid;
-      grid-template-columns: auto auto;
-      gap: 0.5rem;
-      justify-content: start;
+    /* ── Sections ── */
+    section.block { padding: clamp(4.5rem, 11vh, 8rem) 0; border-top: 1px solid var(--line); }
+    .block-head { max-width: 40rem; margin-bottom: clamp(2.2rem, 5vh, 3.5rem); }
+    .block-head h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 1rem;
     }
+    .block-head p { color: var(--mist); max-width: var(--measure); }
 
-    .badge {
-      padding: 0.35rem 0.8rem;
-      border-radius: 100px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      border: 1px solid;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+    /* Phases of a hold (a real sequence) */
+    .hold-line { position: relative; margin: 0 0 2.4rem; }
+    .hold-line svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .hl-base { stroke: var(--line-strong); stroke-width: 2; }
+    .hl-easy { stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; }
+    .hl-struggle { stroke: var(--yellow); stroke-width: 4; stroke-linecap: round; opacity: .55; }
+    .hl-tick { stroke: var(--yellow); stroke-width: 2; stroke-linecap: round; }
+    .hl-first { fill: var(--abyss); stroke: var(--yellow); stroke-width: 2.5; }
+    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 3rem); counter-reset: ph; }
+    .phase { counter-increment: ph; }
+    .phase h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .5rem; display: flex; gap: .6rem; align-items: baseline; }
+    .phase h3::before { content: counter(ph); font-family: var(--serif); font-weight: 400; font-size: 1.4rem; color: var(--cyan); }
+    .phase:nth-child(n+2) h3::before { color: var(--yellow); }
+    .phase p { color: var(--mist); font-size: .98rem; }
+
+    /* Tables */
+    .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+    .facts { list-style: none; margin-top: 1.8rem; border-top: 1px solid var(--line); }
+    .facts li { padding: .9rem 0; border-bottom: 1px solid var(--line); color: var(--mist); font-size: .98rem; }
+    .facts strong { color: var(--foam); font-weight: 600; }
+    .table-demo { background: var(--deep); border: 1px solid var(--line); border-radius: 22px; padding: clamp(1.2rem, 3vw, 2rem); }
+    .td-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+    .td-top label { font-size: .9rem; color: var(--mist); }
+    .td-pr { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .table-demo input[type=range] { width: 100%; margin: 1rem 0 1.4rem; accent-color: var(--cyan); height: 28px; }
+    .td-sum { display: flex; gap: 2rem; flex-wrap: wrap; font-size: .9rem; color: var(--mist); margin-bottom: 1.2rem; }
+    .td-sum b { display: block; color: var(--foam); font-weight: 600; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+    .td-chart svg { width: 100%; height: auto; display: block; }
+    .c-grid { stroke: var(--line); }
+    .c-tick { fill: var(--haze); font: 11px var(--sans); font-variant-numeric: tabular-nums; }
+    .c-lab { fill: var(--mist); font: 500 12px var(--sans); font-variant-numeric: tabular-nums; }
+    .c-rest { fill: var(--rest); }
+    .c-hold { fill: var(--cyan); }
+    .legend { display: flex; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
+
+    /* Breathing patterns */
+    .patterns { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .pattern { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2rem; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+    .pattern h3 { font-size: 1.05rem; font-weight: 600; }
+    .pattern p { font-size: .9rem; color: var(--haze); }
+    .bar { display: flex; gap: 4px; height: 44px; }
+    .bar span {
+      border-radius: 8px; display: flex; align-items: center; padding: 0 .7rem;
+      font-size: .78rem; color: #FFFFFF; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden;
     }
+    /* Same phase opacities as the app's breathing screen (breathing_page.dart) */
+    .bar .in { background: var(--pc); }
+    .bar .hold { background: color-mix(in srgb, var(--pc) 70%, transparent); }
+    .bar .out { background: color-mix(in srgb, var(--pc) 50%, transparent); }
+    .bar .hold2 { background: color-mix(in srgb, var(--pc) 40%, transparent); }
+    .bar.custom span { border: 1px dashed var(--green); background: none; color: var(--haze); flex: 1; }
 
-    .badge .material-icons-round { font-size: 13px; }
+    /* Plan grid */
+    .plan { display: grid; grid-template-columns: auto repeat(7, 1fr); gap: 6px; align-items: center; }
+    .plan .wk { font-size: .8rem; color: var(--haze); padding-right: .6rem; white-space: nowrap; }
+    .plan .dow { font-size: .75rem; color: var(--haze); text-align: center; padding-bottom: .2rem; }
+    .plan .cell { aspect-ratio: 1; border-radius: 9px; background: var(--deep); border: 1px solid var(--line); }
+    .plan .cell.s { background: color-mix(in srgb, var(--cyan) 55%, transparent); border-color: transparent; }
+    .plan .cell.r { background: var(--yellow); border-color: transparent; }
+    .plan-legend { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
+    .plan-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
+    .extras { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 2.5rem; }
+    .extras h3 { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
+    .extras p { font-size: .94rem; color: var(--mist); }
 
-    .badge.cyan   { color: var(--cyan); border-color: rgba(122,180,201,0.2); background: rgba(122,180,201,0.06); }
-    .badge.teal   { color: var(--teal); border-color: rgba(123,190,196,0.2); background: rgba(123,190,196,0.06); }
-    .badge.aqua   { color: var(--aqua); border-color: rgba(122,196,192,0.2); background: rgba(122,196,192,0.06); }
-    .badge.green  { color: var(--green); border-color: rgba(123,196,147,0.2); background: rgba(123,196,147,0.06); }
+    /* Guides */
+    .guides { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .guide { padding: 1.8rem 1.8rem 1.8rem 0; text-decoration: none; display: block; border-bottom: 1px solid var(--line); }
+    .guide + .guide { padding-left: 1.8rem; border-left: 1px solid var(--line); }
+    .guide h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; line-height: 1.2; margin-bottom: .6rem; }
+    .guide p { font-size: .94rem; color: var(--mist); }
+    .guide:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .all-guides { display: inline-block; margin-top: 1.6rem; color: var(--cyan); font-weight: 500; text-decoration: none; font-size: .95rem; }
+    .all-guides:hover { text-decoration: underline; }
 
-    /* ── CTA Buttons ── */
-    .store-buttons {
-      display: flex;
-      gap: 0.7rem;
-      align-self: flex-start;
-      flex-wrap: wrap;
+    /* Closing */
+    .closing { padding: clamp(5rem, 14vh, 9rem) 0; border-top: 1px solid var(--line); text-align: center; }
+    .closing h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.3rem, 5.4vw, 4.2rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 auto 1.2rem; max-width: 16ch; }
+    .closing p { color: var(--mist); margin: 0 auto 2.2rem; max-width: 32rem; }
+    .safety { margin: 3rem auto 0; max-width: 34rem; font-size: .85rem; color: var(--haze); padding-top: 1.4rem; border-top: 1px solid var(--line); }
+
+    footer { border-top: 1px solid var(--line); padding: 2rem 0 2.6rem; font-size: .85rem; color: var(--haze); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    footer nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    footer a, footer button { color: var(--mist); text-decoration: none; background: none; border: 0; font: inherit; cursor: pointer; }
+    footer a:hover, footer button:hover { color: var(--foam); }
+
+    /* Page-load sequence: the only ambient motion */
+    .rise { opacity: 0; transform: translateY(14px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+    .rise.d1 { animation-delay: .05s; } .rise.d2 { animation-delay: .18s; } .rise.d3 { animation-delay: .3s; } .rise.d4 { animation-delay: .45s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise { animation: none; opacity: 1; transform: none; }
+      .dial.holding .ripples i { animation: none; }
+      .store-btn:hover { transform: none; }
     }
-    .app-store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.9rem 1.8rem;
-      background: linear-gradient(135deg, #FFFFFF 0%, #E8EDF2 100%);
-      color: #0A1525;
-      border-radius: 14px;
-      font-size: 0.92rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08);
-      letter-spacing: -0.01em;
-    }
-
-    .app-store-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow:
-        0 8px 40px rgba(122,180,201,0.15),
-        0 4px 20px rgba(0,0,0,0.3),
-        0 0 0 1px rgba(255,255,255,0.12);
-    }
-
-    .app-store-btn svg { width: 20px; height: 20px; }
-
-    /* ── Footer links ── */
-    /* ── Site footer ── */
-    .site-footer {
-      width: 100%;
-      text-align: center;
-      padding-top: 1rem;
-    }
-
-    .left-links {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .left-links a {
-      color: var(--text-tertiary);
-      text-decoration: none;
-      font-size: 0.75rem;
-      transition: color 0.2s;
-    }
-
-    .left-links a:hover { color: var(--cyan); }
-
-    .left-copy {
-      margin-top: 0.5rem;
-      color: var(--text-tertiary);
-      font-size: 0.65rem;
-      opacity: 0.35;
-    }
-
-    /* ── Feature cards ── */
-    .feature-card {
-      position: relative;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 1.4rem;
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      transition: border-color 0.35s, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(122,180,201,0) 0%, rgba(122,180,201,0) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      transition: background 0.4s;
-      pointer-events: none;
-    }
-
-    .feature-card:hover {
-      border-color: rgba(255,255,255,0.10);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.2), 0 0 60px rgba(122,180,201,0.04);
-    }
-
-    .feature-card:hover::before {
-      background: linear-gradient(135deg, rgba(122,180,201,0.15) 0%, rgba(122,196,192,0.08) 50%, rgba(123,196,147,0.05) 100%);
-    }
-
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.75rem;
-      transition: box-shadow 0.3s;
-    }
-
-    .feature-icon .material-icons-round { font-size: 20px; }
-
-    .feature-icon.cyan   { background: rgba(122,180,201,0.10); color: var(--cyan); }
-    .feature-icon.teal   { background: rgba(123,190,196,0.10); color: var(--teal); }
-    .feature-icon.aqua   { background: rgba(122,196,192,0.10); color: var(--aqua); }
-    .feature-icon.green  { background: rgba(123,196,147,0.10); color: var(--green); }
-    .feature-icon.yellow { background: rgba(255,215,64,0.10);  color: var(--yellow); }
-
-    .feature-card:hover .feature-icon.cyan   { box-shadow: 0 0 20px rgba(122,180,201,0.15); }
-    .feature-card:hover .feature-icon.teal   { box-shadow: 0 0 20px rgba(123,190,196,0.15); }
-    .feature-card:hover .feature-icon.aqua   { box-shadow: 0 0 20px rgba(122,196,192,0.15); }
-    .feature-card:hover .feature-icon.green  { box-shadow: 0 0 20px rgba(123,196,147,0.15); }
-    .feature-card:hover .feature-icon.yellow { box-shadow: 0 0 20px rgba(255,215,64,0.15); }
-
-    .feature-card h3 {
-      font-size: 0.92rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.01em;
-    }
-
-    .feature-card p {
-      color: var(--text-tertiary);
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    /* ── Ambient ripples scattered ── */
-    .ambient-ripples {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .ambient-ripple {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(122,180,201,0.05);
-      animation: ambient-expand ease-out infinite;
-    }
-
-    .ambient-ripples.r1 { top: 8%; left: 70%; }
-    .ambient-ripples.r1 .ambient-ripple { animation-duration: 10s; }
-    .ambient-ripples.r1 .ambient-ripple:nth-child(1) { animation-delay: 0s; }
-    .ambient-ripples.r1 .ambient-ripple:nth-child(2) { animation-delay: 2.5s; }
-    .ambient-ripples.r1 .ambient-ripple:nth-child(3) { animation-delay: 5s; }
-
-    .ambient-ripples.r2 { top: 55%; left: 5%; }
-    .ambient-ripples.r2 .ambient-ripple { animation-duration: 14s; }
-    .ambient-ripples.r2 .ambient-ripple:nth-child(1) { animation-delay: 1s; }
-    .ambient-ripples.r2 .ambient-ripple:nth-child(2) { animation-delay: 4.5s; }
-    .ambient-ripples.r2 .ambient-ripple:nth-child(3) { animation-delay: 8s; }
-
-    .ambient-ripples.r3 { top: 30%; left: 90%; }
-    .ambient-ripples.r3 .ambient-ripple { animation-duration: 11s; }
-    .ambient-ripples.r3 .ambient-ripple:nth-child(1) { animation-delay: 0.5s; }
-    .ambient-ripples.r3 .ambient-ripple:nth-child(2) { animation-delay: 3.5s; }
-    .ambient-ripples.r3 .ambient-ripple:nth-child(3) { animation-delay: 7s; }
-
-    .ambient-ripples.r4 { top: 75%; left: 60%; }
-    .ambient-ripples.r4 .ambient-ripple { animation-duration: 9s; }
-    .ambient-ripples.r4 .ambient-ripple:nth-child(1) { animation-delay: 2s; }
-    .ambient-ripples.r4 .ambient-ripple:nth-child(2) { animation-delay: 5s; }
-    .ambient-ripples.r4 .ambient-ripple:nth-child(3) { animation-delay: 7.5s; }
-
-    .ambient-ripples.r5 { top: 15%; left: 25%; }
-    .ambient-ripples.r5 .ambient-ripple { animation-duration: 13s; }
-    .ambient-ripples.r5 .ambient-ripple:nth-child(1) { animation-delay: 1.5s; }
-    .ambient-ripples.r5 .ambient-ripple:nth-child(2) { animation-delay: 5.5s; }
-    .ambient-ripples.r5 .ambient-ripple:nth-child(3) { animation-delay: 9s; }
-
-    @keyframes ambient-expand {
-      0% { width: 40px; height: 40px; opacity: 0; transform: translate(-50%, -50%); }
-      8% { opacity: 1; }
-      100% { width: 350px; height: 350px; opacity: 0; transform: translate(-50%, -50%); }
-    }
-
-    html.sepia .ambient-ripple { border-color: rgba(91,135,153,0.04); }
-
-    /* ── Theme transitions ── */
-    html, body, nav, .feature-card, .badge, .app-store-btn, .lang-btn, .lang-dropdown {
-      transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    /* ── Theme toggle ── */
-    .theme-toggle {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 10px;
-      color: var(--text-secondary);
-      padding: 0.4rem;
-      font-size: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, border-color 0.2s, color 0.35s;
-      line-height: 1;
-    }
-
-    .theme-toggle:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.10); }
-    .theme-toggle .material-icons-round { font-size: 18px; }
-
-    /* ── Sepia (light) theme ── */
-    html.sepia {
-      --bg: #FDF6EE;
-      --surface: #F9F6F1;
-      --surface-hi: #F2EFE8;
-      --text-primary: #2C2A22;
-      --text-secondary: #585040;
-      --text-tertiary: #7E7A6E;
-      --border-dim: rgba(58,56,40,0.10);
-      --border-mid: rgba(58,56,40,0.18);
-      --glass: rgba(58,56,40,0.03);
-      --glass-secondary: rgba(58,56,40,0.05);
-    }
-
-    html.sepia body::after { opacity: 0.018; }
-
-    html.sepia .mesh-bg {
-      background:
-        radial-gradient(ellipse 70% 55% at 15% 25%, rgba(111,156,175,0.06) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 65% at 85% 75%, rgba(111,175,172,0.04) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 50% 40%, rgba(112,170,175,0.025) 0%, transparent 60%);
-    }
-
-    html.sepia .hero-glow {
-      background: radial-gradient(circle, rgba(111,156,175,0.05) 0%, transparent 70%);
-    }
-
-    html.sepia .ripple-ring { border-color: rgba(111,156,175,0.06); }
-    html.sepia .corner-ring { border-color: rgba(111,175,172,0.04); }
-
-    html.sepia nav {
-      background: rgba(253,246,238,0.8);
-      border-bottom-color: rgba(58,56,40,0.08);
-    }
-
-    html.sepia .theme-toggle {
-      background: rgba(58,56,40,0.05);
-      border-color: rgba(58,56,40,0.10);
-      color: var(--text-secondary);
-    }
-
-    html.sepia .theme-toggle:hover {
-      background: rgba(58,56,40,0.08);
-      border-color: rgba(58,56,40,0.15);
-    }
-
-    html.sepia .lang-btn {
-      background: rgba(58,56,40,0.05);
-      border-color: rgba(58,56,40,0.10);
-    }
-
-    html.sepia .lang-btn:hover {
-      background: rgba(58,56,40,0.08);
-      border-color: rgba(58,56,40,0.15);
-    }
-
-    html.sepia .lang-dropdown {
-      background: rgba(251,240,227,0.95);
-      border-color: rgba(58,56,40,0.12);
-      box-shadow: 0 16px 48px rgba(44,42,34,0.12), 0 0 0 1px rgba(58,56,40,0.06);
-    }
-
-    html.sepia .lang-dropdown a:hover {
-      background: rgba(58,56,40,0.06);
-    }
-
-    html.sepia .hero-logo {
-      box-shadow: 0 0 60px rgba(111,156,175,0.12), 0 0 120px rgba(111,175,172,0.05), 0 4px 20px rgba(44,42,34,0.1);
-    }
-
-    html.sepia .left-side h1 span {
-      background: linear-gradient(135deg, #5B8799 0%, #5A9499 50%, #5A9995 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    html.sepia .badge.cyan   { color: #5B8799; border-color: rgba(91,135,153,0.25); background: rgba(91,135,153,0.08); }
-    html.sepia .badge.teal   { color: #5A9499; border-color: rgba(90,148,153,0.25); background: rgba(90,148,153,0.08); }
-    html.sepia .badge.aqua   { color: #5A9995; border-color: rgba(90,153,149,0.25); background: rgba(90,153,149,0.08); }
-    html.sepia .badge.green  { color: #5E9970; border-color: rgba(94,153,112,0.25); background: rgba(94,153,112,0.08); }
-
-    html.sepia .app-store-btn {
-      background: linear-gradient(135deg, #2C2A22 0%, #3A3828 100%);
-      color: #FBF0E3;
-      box-shadow: 0 4px 20px rgba(44,42,34,0.2), 0 0 0 1px rgba(58,56,40,0.12);
-    }
-
-    html.sepia .app-store-btn:hover {
-      box-shadow: 0 8px 40px rgba(91,135,153,0.12), 0 4px 20px rgba(44,42,34,0.2), 0 0 0 1px rgba(58,56,40,0.18);
-    }
-
-    html.sepia .app-store-btn svg path { fill: #FBF0E3; }
-
-    html.sepia .feature-card {
-      background: rgba(58,56,40,0.03);
-      border-color: rgba(58,56,40,0.08);
-    }
-
-    html.sepia .feature-card:hover {
-      border-color: rgba(58,56,40,0.14);
-      box-shadow: 0 12px 40px rgba(44,42,34,0.08), 0 0 60px rgba(111,156,175,0.03);
-    }
-
-    html.sepia .feature-card:hover::before {
-      background: linear-gradient(135deg, rgba(91,135,153,0.12) 0%, rgba(90,153,149,0.06) 50%, rgba(94,153,112,0.04) 100%);
-    }
-
-    html.sepia .feature-icon.cyan   { background: rgba(91,135,153,0.10); color: #5B8799; }
-    html.sepia .feature-icon.teal   { background: rgba(90,148,153,0.10); color: #5A9499; }
-    html.sepia .feature-icon.aqua   { background: rgba(90,153,149,0.10); color: #5A9995; }
-    html.sepia .feature-icon.green  { background: rgba(94,153,112,0.10); color: #5E9970; }
-    html.sepia .feature-icon.yellow { background: rgba(204,172,51,0.10); color: #B89B2E; }
-
-    html.sepia .feature-card:hover .feature-icon.cyan   { box-shadow: 0 0 20px rgba(91,135,153,0.12); }
-    html.sepia .feature-card:hover .feature-icon.teal   { box-shadow: 0 0 20px rgba(90,148,153,0.12); }
-    html.sepia .feature-card:hover .feature-icon.aqua   { box-shadow: 0 0 20px rgba(90,153,149,0.12); }
-    html.sepia .feature-card:hover .feature-icon.green  { box-shadow: 0 0 20px rgba(94,153,112,0.12); }
-    html.sepia .feature-card:hover .feature-icon.yellow { box-shadow: 0 0 20px rgba(204,172,51,0.12); }
-
-    html.sepia .left-links a:hover { color: #5B8799; }
 
     /* ── Responsive ── */
-    @media (max-width: 1024px) {
-      .main-split {
-        padding: 5rem 2.5rem 2rem;
-        gap: 3rem;
-      }
-    }
-
     @media (max-width: 900px) {
-      .main-split {
-        flex-direction: column;
-        padding: 5.5rem 1.5rem 2.5rem;
-        gap: 2.5rem;
-        min-height: auto;
-      }
-      .left-side {
-        flex: none;
-        align-items: center;
-        text-align: center;
-      }
-      .left-side .subtitle { max-width: 100%; }
-      .stats-row { justify-content: center; }
-      .badge-row { justify-content: center; }
-      .badge-grid { justify-content: center; }
-      .store-buttons { align-self: center; justify-content: center; }
-      .left-links { justify-content: center; }
-      .right-side { grid-template-columns: 1fr 1fr; }
-      .hero-glow { left: 50%; transform: translateX(-50%); top: 5%; width: 350px; height: 350px; }
+      .hero .wrap, .split { grid-template-columns: 1fr; }
+      .hero h1 { max-width: 14ch; }
+      .phases { grid-template-columns: 1fr; }
+      .pattern { grid-template-columns: 1fr; gap: .8rem; }
+      .guides { grid-template-columns: 1fr; }
+      .guide, .guide + .guide { padding: 1.5rem 0; border-left: 0; }
     }
-
-    .sr-only {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .left-side h1 .h1-sub {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--text-secondary);
-      background: none;
-      -webkit-background-clip: unset;
-      -webkit-text-fill-color: var(--text-secondary);
-      background-clip: unset;
-      margin-top: 0.3rem;
-    }
-
-    html.sepia .left-side h1 .h1-sub {
-      -webkit-text-fill-color: rgba(44,42,34,0.55);
-    }
-
-    @media (max-width: 600px) {
-      .main-split { padding: 5rem 1.2rem 2rem; }
-      .right-side { grid-template-columns: 1fr; gap: 0.8rem; }
-      nav { padding: 0.9rem 1.2rem; }
-      .left-side h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+    @media (max-width: 560px) {
+      .nav-link { display: none; }
+      .extras { grid-template-columns: 1fr; }
+      .plan { gap: 4px; }
+      .plan .cell { border-radius: 6px; }
+      .bar span { padding: 0 .4rem; font-size: .72rem; }
     }
   </style>
 </head>
 <body>
-  <div class="mesh-bg"></div>
-  <div class="hero-glow"></div>
 
-  <!-- Ambient ripples scattered -->
-  <div class="ambient-ripples r1"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
-  <div class="ambient-ripples r2"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
-  <div class="ambient-ripples r3"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
-  <div class="ambient-ripples r4"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
-  <div class="ambient-ripples r5"><div class="ambient-ripple"></div><div class="ambient-ripple"></div><div class="ambient-ripple"></div></div>
-
-  <div class="corner-ripples">
-    <div class="corner-ring"></div>
-    <div class="corner-ring"></div>
-    <div class="corner-ring"></div>
-    <div class="corner-ring"></div>
-    <div class="corner-ring"></div>
-  </div>
-  <div class="content">
-
-    <!-- Nav -->
-    <nav>
-      <a href="/" class="nav-brand">
-        <img src="logo.png" alt="Anima Apnea">
-        <span data-i18n="brand">Anima Apnea</span>
-      </a>
-      <div style="display:flex;align-items:center;gap:0.8rem;">
-      <a href="/blog/" style="font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:0.01em;" data-i18n="blogLink">Blog</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="material-icons-round">dark_mode</span>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="/" class="brand"><img src="logo-256.png" alt="" width="30" height="30"><span>Anima Apnea</span></a>
+    <div class="nav-right">
+      <a class="nav-link" href="/blog/" data-i18n="navGuides">Guides</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
       <div class="lang-select">
-        <button class="lang-btn" onclick="document.querySelector('.lang-dropdown').classList.toggle('open')">
-          <span class="material-icons-round">language</span>
-          <span id="currentLang">EN</span>
-        </button>
-        <div class="lang-dropdown" id="langDropdown"></div>
-      </div>
-      </div>
-    </nav>
-
-    <!-- Single viewport split -->
-    <div class="main-split">
-      <!-- Left: Hero -->
-      <div class="left-side">
-        <div class="logo-wrapper anim anim-d1">
-          <img src="logo.png" alt="Anima Apnea" class="hero-logo">
-          <div class="logo-ripples">
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring"></div>
-            <div class="ripple-ring"></div>
-          </div>
-        </div>
-        <h1 class="anim anim-d2">Anima <span>Apnea</span> <span class="h1-sub">— Freediving Training App</span></h1>
-        <p class="subtitle anim anim-d3" data-i18n="subtitle">Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.</p>
-        <div class="badge-row badge-grid anim anim-d4">
-          <span class="badge cyan"><span class="material-icons-round">timer</span> <span data-i18n="badgeApnea">Static Apnea</span></span>
-          <span class="badge teal"><span class="material-icons-round">equalizer</span> <span data-i18n="badgeTables">CO₂ / O₂ Tables</span></span>
-          <span class="badge aqua"><span class="material-icons-round">air</span> <span data-i18n="badgeBreathing">Breathwork</span></span>
-          <span class="badge green"><span class="material-icons-round">trending_up</span> <span data-i18n="badgeProgress">Progress</span></span>
-        </div>
-        <div class="store-buttons anim anim-d5">
-          <a href="https://apps.apple.com/app/anima-apnea/id6760680506" class="app-store-btn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            <span data-i18n="appStore">Download on the App Store</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right: Feature cards 3x2 grid -->
-      <div class="right-side">
-        <h2 class="sr-only">Freediving Training Features</h2>
-        <div class="feature-card anim anim-d6">
-          <div class="feature-icon cyan"><span class="material-icons-round">timer</span></div>
-          <h3 data-i18n="f1Title">Static Apnea Timer</h3>
-          <p data-i18n="f1Desc">Precise timer with contraction tracking, personal records, and detailed session history.</p>
-        </div>
-        <div class="feature-card anim anim-d7">
-          <div class="feature-icon teal"><span class="material-icons-round">equalizer</span></div>
-          <h3 data-i18n="f2Title">CO₂ & O₂ Tables</h3>
-          <p data-i18n="f2Desc">Customizable training tables to build your tolerance. Auto-adapts to your personal record.</p>
-        </div>
-        <div class="feature-card anim anim-d8">
-          <div class="feature-icon aqua"><span class="material-icons-round">air</span></div>
-          <h3 data-i18n="f3Title">Breathing Exercises</h3>
-          <p data-i18n="f3Desc">Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.</p>
-        </div>
-        <div class="feature-card anim anim-d9">
-          <div class="feature-icon green"><span class="material-icons-round">trending_up</span></div>
-          <h3 data-i18n="f4Title">Progress Charts</h3>
-          <p data-i18n="f4Desc">Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.</p>
-        </div>
-        <div class="feature-card anim anim-d10">
-          <div class="feature-icon yellow"><span class="material-icons-round">emoji_events</span></div>
-          <h3 data-i18n="f5Title">Training Plans</h3>
-          <p data-i18n="f5Desc">4-week structured programs that adapt to your level. Stay consistent and break records.</p>
-        </div>
-        <div class="feature-card anim anim-d11">
-          <div class="feature-icon cyan"><span class="material-icons-round">cloud_sync</span></div>
-          <h3 data-i18n="f6Title">Cloud Sync</h3>
-          <p data-i18n="f6Desc">Sign in with Apple or Google. Your data syncs across all your devices, always safe.</p>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="site-footer anim anim-d12">
-        <div class="left-links">
-          <a href="/privacy/en.html" data-i18n-href="privacyLink" data-i18n="privacyLabel">Privacy Policy</a>
-          <a href="#" id="contactBtn" data-i18n="contact" onclick="copyEmail(event)">Contact</a>
-        </div>
-        <p class="left-copy">&copy; 2026 Anima Apnea</p>
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="langCode">EN</span></button>
+        <div class="lang-menu" id="langMenu" role="menu"></div>
       </div>
     </div>
-
   </div>
+</header>
 
-  <script>
-    // ── Theme ──
-    (function() {
-      const html = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const icon = btn.querySelector('.material-icons-round');
-      const mq = window.matchMedia('(prefers-color-scheme: light)');
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 class="rise d1" data-i18n="heroTitle">Hold your breath longer, and stay calm doing it.</h1>
+        <p class="lede rise d2" data-i18n="heroLede">Anima Apnea is a static apnea trainer for iPhone. A breath-hold timer that logs your contractions, CO₂ and O₂ tables built from your record, guided breathing and 4-week plans.</p>
+        <div class="rise d3">
+          <a class="store-btn" href="https://apps.apple.com/app/anima-apnea/id6760680506" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span><small data-i18n="storeSmall">Download on the</small>App Store</span>
+          </a>
+          <p class="free-note" data-i18n="freeNote">Free to download. Works offline.</p>
+        </div>
+      </div>
 
-      function applyTheme(isSepia) {
-        html.classList.toggle('sepia', isSepia);
-        icon.textContent = isSepia ? 'light_mode' : 'dark_mode';
-      }
+      <div class="dial-wrap rise d4">
+        <div class="dial" id="dial" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="cyanTeal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--cyan)"/><stop offset="1" stop-color="var(--teal)"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="100" cy="100" r="96"/>
+            <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="96" stroke-dasharray="603.19" stroke-dashoffset="603.19"/>
+          </svg>
+          <div class="ripples"><i></i><i></i><i></i></div>
+          <div class="dial-core">
+            <div class="clock" id="clock"><span class="d">0</span><span class="c">:</span><span class="d">0</span><span class="d">0</span></div>
+            <div class="dial-state" id="dialState" aria-live="polite" data-i18n="dialIdle">Try a hold right here.</div>
+          </div>
+        </div>
+        <button class="hold-btn" id="holdBtn" type="button" aria-pressed="false" data-i18n="holdIdle">Press and hold</button>
+        <p class="dial-hint" data-i18n="dialHint">Sit comfortably, breathe out gently, then hold. Let go when you breathe.</p>
+      </div>
+    </div>
+  </section>
 
-      function getSystemPref() { return mq.matches; }
+  <section class="block" id="phases">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="phTitle">Every hold has three phases.</h2>
+        <p data-i18n="phLede">Knowing where you are in a hold is what lets you relax through it. Anima's timer is built around these moments.</p>
+      </div>
+      <div class="hold-line" aria-hidden="true">
+        <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+          <line x1="0" y1="30" x2="1000" y2="30" class="hl-base"/>
+          <line x1="2" y1="30" x2="470" y2="30" class="hl-easy"/>
+          <line x1="470" y1="30" x2="998" y2="30" class="hl-struggle"/>
+          <g id="ticks"></g>
+          <circle cx="470" cy="30" r="9" class="hl-first"/>
+        </svg>
+      </div>
+      <div class="phases">
+        <div class="phase">
+          <h3 data-i18n="ph1Title">Easy phase</h3>
+          <p data-i18n="ph1Text">No discomfort yet. Oxygen is plentiful and the only job is to stay loose: jaw, shoulders, hands.</p>
+        </div>
+        <div class="phase">
+          <h3 data-i18n="ph2Title">First contraction</h3>
+          <p data-i18n="ph2Text">Your diaphragm twitches on its own. It's rising CO₂, not a lack of oxygen. Tap the screen and Anima records the moment.</p>
+        </div>
+        <div class="phase">
+          <h3 data-i18n="ph3Title">Struggle phase</h3>
+          <p data-i18n="ph3Text">Contractions come closer together. Training is about letting them pass without tensing up, and seeing that first tap arrive later over the weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // Init: check localStorage, fallback to system
-      const stored = localStorage.getItem('theme');
-      if (stored) {
-        applyTheme(stored === 'sepia');
-      } else {
-        applyTheme(getSystemPref());
-      }
+  <section class="block" id="tables">
+    <div class="wrap split">
+      <div>
+        <div class="block-head">
+          <h2 data-i18n="tbTitle">Tables built from your record.</h2>
+          <p data-i18n="tbLede">Enter your best static hold and Anima builds your CO₂ and O₂ tables. Then it times every round for you with sound and haptic cues, so you never watch a clock.</p>
+        </div>
+        <ul class="facts">
+          <li data-i18n-html="tbFact1"><strong>CO₂ table:</strong> the hold stays the same, recovery gets shorter. Trains your tolerance to the urge to breathe.</li>
+          <li data-i18n-html="tbFact2"><strong>O₂ table:</strong> recovery stays the same, holds get longer. Trains you to go further, safely.</li>
+          <li data-i18n-html="tbFact3"><strong>Your own tables:</strong> change hold, recovery and round count whenever you want.</li>
+        </ul>
+      </div>
+      <div class="table-demo">
+        <div class="td-top">
+          <label for="prRange" data-i18n="tbSlider">Your best static hold</label>
+          <output class="td-pr" id="prOut" for="prRange">3:00</output>
+        </div>
+        <input type="range" id="prRange" min="60" max="420" step="15" value="180">
+        <div class="td-sum">
+          <div><b id="sumHold">1:30</b><span data-i18n="tbHold">Hold</span></div>
+          <div><b id="sumRest">2:00 – 0:15</b><span data-i18n="tbRest">Recovery</span></div>
+          <div><b id="sumTotal">21 min</b><span data-i18n="tbTotal">Session</span></div>
+        </div>
+        <div class="td-chart" id="tdChart"></div>
+        <div class="legend"><span><i style="background:var(--rest)"></i><span data-i18n="tbRest">Recovery</span></span><span><i style="background:var(--cyan)"></i><span data-i18n="tbHold">Hold</span></span></div>
+      </div>
+    </div>
+  </section>
 
-      // Toggle button
-      btn.addEventListener('click', () => {
-        const isSepia = !html.classList.contains('sepia');
-        applyTheme(isSepia);
-        localStorage.setItem('theme', isSepia ? 'sepia' : 'dark');
-      });
+  <section class="block" id="breathing">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="brTitle">Breathe well before you hold.</h2>
+        <p data-i18n="brLede">A calm, slow breath-up sets up a better hold. Pick a pattern and follow the guide, or build your own rhythm.</p>
+      </div>
+      <div class="patterns">
+        <div class="pattern">
+          <div><h3 data-i18n="br1Title">Diaphragmatic</h3><p data-i18n="br1Text">Long exhales to slow everything down.</p></div>
+          <div class="bar" style="--pc:var(--cyan)"><span class="in" style="flex:4">4s</span><span class="out" style="flex:8">8s</span></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-i18n="br2Title">Box breathing</h3><p data-i18n="br2Text">Four equal sides for focus.</p></div>
+          <div class="bar" style="--pc:var(--teal)"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:4">4s</span><span class="out" style="flex:4">4s</span><span class="hold2" style="flex:4">4s</span></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">A long pause and a longer exhale to unwind.</p></div>
+          <div class="bar" style="--pc:var(--aqua)"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:7">7s</span><span class="out" style="flex:8">8s</span></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-i18n="br4Title">Your own</h3><p data-i18n="br4Text">Set every phase to the second.</p></div>
+          <div class="bar custom" style="--pc:var(--green)"><span data-i18n="br4Bar">Inhale, hold, exhale, hold: your choice</span></div>
+        </div>
+      </div>
+      <div class="legend"><span><i style="background:var(--cyan)"></i><span data-i18n="brIn">Inhale</span></span><span><i style="background:color-mix(in srgb, var(--cyan) 70%, transparent)"></i><span data-i18n="brHold">Hold</span></span><span><i style="background:color-mix(in srgb, var(--cyan) 50%, transparent)"></i><span data-i18n="brOut">Exhale</span></span></div>
+    </div>
+  </section>
 
-      // Listen for system changes (only if no manual override)
-      mq.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-          applyTheme(e.matches);
-        }
-      });
-    })();
+  <section class="block" id="plans">
+    <div class="wrap split">
+      <div>
+        <div class="block-head">
+          <h2 data-i18n="plTitle">Four weeks, planned for you.</h2>
+          <p data-i18n="plLede">Choose 3 to 6 sessions a week. Anima lays out your tables and breathing work, with a record attempt at the end of weeks 2 and 4.</p>
+        </div>
+      </div>
+      <div>
+        <div class="plan" id="planGrid" aria-label="Example plan: 4 sessions a week for 4 weeks, record attempts at the end of weeks 2 and 4"></div>
+        <div class="plan-legend"><span><i style="background:color-mix(in srgb, var(--cyan) 55%, transparent)"></i><span data-i18n="plSession">Training session</span></span><span><i style="background:var(--yellow)"></i><span data-i18n="plRecord">Record attempt</span></span></div>
+        <div class="extras">
+          <div><h3 data-i18n="ex1Title">Progress you can see</h3><p data-i18n="ex1Text">Charts by day, week or month for your holds, tables and contractions.</p></div>
+          <div><h3 data-i18n="ex2Title">A streak to protect</h3><p data-i18n="ex2Text">Daily reminders and a home-screen widget keep the habit going.</p></div>
+          <div><h3 data-i18n="ex3Title">Your data, everywhere</h3><p data-i18n="ex3Text">Sign in with Apple or Google to sync your sessions across devices.</p></div>
+          <div><h3 data-i18n="ex4Title">No account needed</h3><p data-i18n="ex4Text">Everything works on your phone first. Signing in is optional.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // ── i18n ──
-    const LANGS = {
-      en: { flag: '🇬🇧', label: 'English', privacyFile: 'en', data: {
-        subtitle: 'Train your breath, push your limits. The complete freediving companion for static apnea, O₂ & CO₂ tables, and breathwork.',
-        badgeApnea: 'Static Apnea', badgeTables: 'CO₂ / O₂ Tables', badgeBreathing: 'Breathwork', badgeProgress: 'Progress',
-        appStore: 'Download on the App Store',
-        googlePlay: 'Get it on Google Play',
-        featuresTitle: 'Everything you need to progress',
-        f1Title: 'Static Apnea Timer', f1Desc: 'Precise timer with contraction tracking, personal records, and detailed session history.',
-        f2Title: 'CO₂ & O₂ Tables', f2Desc: 'Customizable training tables to build your tolerance. Auto-adapts to your personal record.',
-        f3Title: 'Breathing Exercises', f3Desc: 'Diaphragmatic, box breathing, 4-7-8, and custom patterns to prepare your body and mind.',
-        f4Title: 'Progress Charts', f4Desc: 'Visualize your evolution by day, week, or month. Track apnea times, tables, and contractions.',
-        f5Title: 'Training Plans', f5Desc: '4-week structured programs that adapt to your level. Stay consistent and break records.',
-        f6Title: 'Cloud Sync', f6Desc: 'Sign in with Apple or Google. Your data syncs across all your devices, always safe.',
-        privacyLabel: 'Privacy Policy', contact: 'Contact', emailCopied: '✓ Email copied!',
-      }},
-      fr: { flag: '🇫🇷', label: 'Français', privacyFile: 'fr', data: {
-        subtitle: 'Entraîne ton souffle, repousse tes limites. Le compagnon complet pour l\'apnée statique, les tables O₂ & CO₂, et le breathwork.',
-        badgeApnea: 'Apnée statique', badgeTables: 'Tables CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progression',
-        appStore: 'Télécharger sur l\'App Store',
-        googlePlay: 'Télécharger sur Google Play',
-        featuresTitle: 'Tout ce qu\'il te faut pour progresser',
-        f1Title: 'Chrono apnée statique', f1Desc: 'Chrono précis avec suivi des contractions, records personnels et historique détaillé.',
-        f2Title: 'Tables CO₂ & O₂', f2Desc: 'Tables d\'entraînement personnalisables. S\'adaptent automatiquement à ton record.',
-        f3Title: 'Exercices de respiration', f3Desc: 'Diaphragmatique, box breathing, 4-7-8 et patterns personnalisés pour préparer ton corps.',
-        f4Title: 'Graphiques de progression', f4Desc: 'Visualise ton évolution par jour, semaine ou mois. Suis tes temps, tables et contractions.',
-        f5Title: 'Plans d\'entraînement', f5Desc: 'Programmes de 4 semaines qui s\'adaptent à ton niveau. Reste régulier et bats tes records.',
-        f6Title: 'Synchronisation cloud', f6Desc: 'Connecte-toi avec Apple ou Google. Tes données se synchronisent sur tous tes appareils.',
-        privacyLabel: 'Politique de confidentialité', contact: 'Contact', emailCopied: '✓ Email copié !',
-      }},
-      es: { flag: '🇪🇸', label: 'Español', privacyFile: 'es', data: {
-        subtitle: 'Entrena tu respiración, supera tus límites. El compañero completo para apnea estática, tablas O₂ & CO₂, y breathwork.',
-        badgeApnea: 'Apnea estática', badgeTables: 'Tablas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progreso',
-        appStore: 'Descargar en el App Store',
-        googlePlay: 'Disponible en Google Play',
-        featuresTitle: 'Todo lo que necesitas para progresar',
-        f1Title: 'Cronómetro de apnea', f1Desc: 'Cronómetro preciso con seguimiento de contracciones, récords personales e historial.',
-        f2Title: 'Tablas CO₂ y O₂', f2Desc: 'Tablas de entrenamiento personalizables. Se adaptan automáticamente a tu récord.',
-        f3Title: 'Ejercicios de respiración', f3Desc: 'Diafragmática, box breathing, 4-7-8 y patrones personalizados.',
-        f4Title: 'Gráficos de progreso', f4Desc: 'Visualiza tu evolución por día, semana o mes. Sigue tus tiempos y contracciones.',
-        f5Title: 'Planes de entrenamiento', f5Desc: 'Programas de 4 semanas que se adaptan a tu nivel. Mantén la constancia.',
-        f6Title: 'Sincronización cloud', f6Desc: 'Inicia sesión con Apple o Google. Tus datos se sincronizan en todos tus dispositivos.',
-        privacyLabel: 'Política de privacidad', contact: 'Contacto', emailCopied: '✓ Email copiado!',
-      }},
-      it: { flag: '🇮🇹', label: 'Italiano', privacyFile: 'it', data: {
-        subtitle: 'Allena il tuo respiro, supera i tuoi limiti. Il compagno completo per apnea statica, tabelle O₂ & CO₂, e breathwork.',
-        badgeApnea: 'Apnea statica', badgeTables: 'Tabelle CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progressi',
-        appStore: 'Scarica sull\'App Store',
-        googlePlay: 'Scarica su Google Play',
-        featuresTitle: 'Tutto ciò che ti serve per progredire',
-        f1Title: 'Timer apnea statica', f1Desc: 'Timer preciso con tracciamento contrazioni, record personali e cronologia.',
-        f2Title: 'Tabelle CO₂ e O₂', f2Desc: 'Tabelle di allenamento personalizzabili. Si adattano al tuo record.',
-        f3Title: 'Esercizi di respirazione', f3Desc: 'Diaframmatica, box breathing, 4-7-8 e schemi personalizzati.',
-        f4Title: 'Grafici di progressione', f4Desc: 'Visualizza la tua evoluzione per giorno, settimana o mese.',
-        f5Title: 'Piani di allenamento', f5Desc: 'Programmi di 4 settimane che si adattano al tuo livello.',
-        f6Title: 'Sincronizzazione cloud', f6Desc: 'Accedi con Apple o Google. I tuoi dati si sincronizzano ovunque.',
-        privacyLabel: 'Informativa sulla privacy', contact: 'Contatto', emailCopied: '✓ Email copiata!',
-      }},
-      de: { flag: '🇩🇪', label: 'Deutsch', privacyFile: 'de', data: {
-        subtitle: 'Trainiere deinen Atem, überwinde deine Grenzen. Der komplette Begleiter für statische Apnoe, O₂- & CO₂-Tabellen und Breathwork.',
-        badgeApnea: 'Statische Apnoe', badgeTables: 'CO₂ / O₂ Tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Fortschritt',
-        appStore: 'Im App Store laden',
-        googlePlay: 'Jetzt bei Google Play',
-        featuresTitle: 'Alles was du brauchst um Fortschritte zu machen',
-        f1Title: 'Statische Apnoe Timer', f1Desc: 'Präziser Timer mit Kontraktionstracking, persönlichen Rekorden und Verlauf.',
-        f2Title: 'CO₂ & O₂ Tabellen', f2Desc: 'Anpassbare Trainingstabellen. Passen sich automatisch an deinen Rekord an.',
-        f3Title: 'Atemübungen', f3Desc: 'Zwerchfell, Box Breathing, 4-7-8 und individuelle Muster.',
-        f4Title: 'Fortschrittsdiagramme', f4Desc: 'Visualisiere deine Entwicklung nach Tag, Woche oder Monat.',
-        f5Title: 'Trainingspläne', f5Desc: '4-Wochen-Programme, die sich an dein Level anpassen.',
-        f6Title: 'Cloud-Synchronisierung', f6Desc: 'Melde dich mit Apple oder Google an. Deine Daten werden überall synchronisiert.',
-        privacyLabel: 'Datenschutz', contact: 'Kontakt', emailCopied: '✓ E-Mail kopiert!',
-      }},
-      pt: { flag: '🇧🇷', label: 'Português', privacyFile: 'pt', data: {
-        subtitle: 'Treine sua respiração, supere seus limites. O companheiro completo para apneia estática, tabelas O₂ & CO₂, e breathwork.',
-        badgeApnea: 'Apneia estática', badgeTables: 'Tabelas CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Progresso',
-        appStore: 'Baixar na App Store',
-        googlePlay: 'Disponível no Google Play',
-        featuresTitle: 'Tudo que você precisa para progredir',
-        f1Title: 'Timer de apneia', f1Desc: 'Timer preciso com rastreamento de contrações, recordes pessoais e histórico.',
-        f2Title: 'Tabelas CO₂ e O₂', f2Desc: 'Tabelas de treino personalizáveis que se adaptam ao seu recorde.',
-        f3Title: 'Exercícios de respiração', f3Desc: 'Diafragmática, box breathing, 4-7-8 e padrões personalizados.',
-        f4Title: 'Gráficos de progresso', f4Desc: 'Visualize sua evolução por dia, semana ou mês.',
-        f5Title: 'Planos de treino', f5Desc: 'Programas de 4 semanas que se adaptam ao seu nível.',
-        f6Title: 'Sincronização na nuvem', f6Desc: 'Entre com Apple ou Google. Seus dados sincronizam em todos os dispositivos.',
-        privacyLabel: 'Política de privacidade', contact: 'Contato', emailCopied: '✓ Email copiado!',
-      }},
-      zh: { flag: '🇨🇳', label: '中文', privacyFile: 'zh', data: {
-        subtitle: '训练你的呼吸，突破你的极限。静态屏气、O₂ & CO₂ 训练表和呼吸训练的完整伙伴。',
-        badgeApnea: '静态屏气', badgeTables: 'CO₂ / O₂ 训练表', badgeBreathing: 'Breathwork', badgeProgress: '进展',
-        appStore: '在 App Store 下载',
-        googlePlay: '在 Google Play 下载',
-        featuresTitle: '你所需要的一切',
-        f1Title: '静态屏气计时器', f1Desc: '精确计时，收缩追踪，个人记录和详细历史。',
-        f2Title: 'CO₂ 和 O₂ 训练表', f2Desc: '可自定义的训练表，自动适应你的个人记录。',
-        f3Title: '呼吸练习', f3Desc: '横膈膜呼吸、方块呼吸、4-7-8 和自定义模式。',
-        f4Title: '进展图表', f4Desc: '按日、周或月查看你的进步。',
-        f5Title: '训练计划', f5Desc: '4周结构化计划，适应你的水平。',
-        f6Title: '云同步', f6Desc: '使用 Apple 或 Google 登录，数据在所有设备间同步。',
-        privacyLabel: '隐私政策', contact: '联系我们', emailCopied: '✓ 邮箱已复制！',
-      }},
-      ja: { flag: '🇯🇵', label: '日本語', privacyFile: 'ja', data: {
-        subtitle: '呼吸を鍛え、限界を超えよう。スタティック・アプネア、O₂ & CO₂ テーブル、ブレスワークの完全なパートナー。',
-        badgeApnea: 'スタティック', badgeTables: 'CO₂ / O₂ テーブル', badgeBreathing: 'Breathwork', badgeProgress: '進捗',
-        appStore: 'App Store でダウンロード',
-        googlePlay: 'Google Play で入手',
-        featuresTitle: '上達に必要なすべて',
-        f1Title: 'スタティック・アプネア・タイマー', f1Desc: '収縮トラッキング、自己記録、セッション履歴付き精密タイマー。',
-        f2Title: 'CO₂ & O₂ テーブル', f2Desc: 'カスタマイズ可能なトレーニングテーブル。自己記録に自動適応。',
-        f3Title: '呼吸エクササイズ', f3Desc: '横隔膜呼吸、ボックス呼吸、4-7-8、カスタムパターン。',
-        f4Title: '進捗チャート', f4Desc: '日・週・月単位で進歩を可視化。',
-        f5Title: 'トレーニングプラン', f5Desc: 'レベルに合わせた4週間プログラム。',
-        f6Title: 'クラウド同期', f6Desc: 'Apple または Google でサインイン。全デバイスでデータ同期。',
-        privacyLabel: 'プライバシーポリシー', contact: 'お問い合わせ', emailCopied: '✓ メールをコピーしました！',
-      }},
-      da: { flag: '🇩🇰', label: 'Dansk', privacyFile: 'da', data: {
-        subtitle: 'Træn dit åndedræt, flyt dine grænser. Den komplette fridykker-app til statisk apnø, O₂ & CO₂ tabeller og breathwork.',
-        badgeApnea: 'Statisk apnø', badgeTables: 'CO₂ / O₂ tabeller', badgeBreathing: 'Breathwork', badgeProgress: 'Fremskridt',
-        appStore: 'Download i App Store',
-        googlePlay: 'Hent den på Google Play',
-        featuresTitle: 'Alt du behøver for at forbedre dig',
-        f1Title: 'Statisk apnø timer', f1Desc: 'Præcis timer med kontraktionssporing, personlige rekorder og historik.',
-        f2Title: 'CO₂ & O₂ tabeller', f2Desc: 'Tilpasselige træningstabeller der tilpasser sig din rekord.',
-        f3Title: 'Vejrtrækningsøvelser', f3Desc: 'Diafragma, box breathing, 4-7-8 og brugerdefinerede mønstre.',
-        f4Title: 'Fremskridtsdiagrammer', f4Desc: 'Se din udvikling per dag, uge eller måned.',
-        f5Title: 'Træningsplaner', f5Desc: '4-ugers programmer tilpasset dit niveau.',
-        f6Title: 'Cloud-synkronisering', f6Desc: 'Log ind med Apple eller Google. Dine data synkroniseres overalt.',
-        privacyLabel: 'Fortrolighedspolitik', contact: 'Kontakt', emailCopied: '✓ Email kopieret!',
-      }},
-      nl: { flag: '🇳🇱', label: 'Nederlands', privacyFile: 'nl', data: {
-        subtitle: 'Train je ademhaling, verleg je grenzen. De complete freediving-app voor statische apneu, O₂ & CO₂ tabellen en breathwork.',
-        badgeApnea: 'Statische apneu', badgeTables: 'CO₂ / O₂ tabellen', badgeBreathing: 'Breathwork', badgeProgress: 'Voortgang',
-        appStore: 'Download in de App Store',
-        googlePlay: 'Ontdek het op Google Play',
-        featuresTitle: 'Alles wat je nodig hebt om te verbeteren',
-        f1Title: 'Statische apneu timer', f1Desc: 'Nauwkeurige timer met contractietracking, persoonlijke records en geschiedenis.',
-        f2Title: 'CO₂ & O₂ tabellen', f2Desc: 'Aanpasbare trainingstabellen die zich aanpassen aan je record.',
-        f3Title: 'Ademhalingsoefeningen', f3Desc: 'Diafragma, box breathing, 4-7-8 en aangepaste patronen.',
-        f4Title: 'Voortgangsgrafieken', f4Desc: 'Bekijk je evolutie per dag, week of maand.',
-        f5Title: 'Trainingsplannen', f5Desc: '4-weken programma\'s aangepast aan je niveau.',
-        f6Title: 'Cloud-synchronisatie', f6Desc: 'Log in met Apple of Google. Je data synchroniseert op al je apparaten.',
-        privacyLabel: 'Privacybeleid', contact: 'Contact', emailCopied: '✓ Email gekopieerd!',
-      }},
-      hi: { flag: '🇮🇳', label: 'हिन्दी', privacyFile: 'hi', data: {
-        subtitle: 'अपनी सांस को प्रशिक्षित करें, अपनी सीमाओं को आगे बढ़ाएं। स्टैटिक एपनिया, O₂ & CO₂ टेबल और ब्रीथवर्क के लिए पूर्ण साथी।',
-        badgeApnea: 'स्टैटिक एपनिया', badgeTables: 'CO₂ / O₂ टेबल', badgeBreathing: 'Breathwork', badgeProgress: 'प्रगति',
-        appStore: 'App Store से डाउनलोड करें',
-        googlePlay: 'Google Play से डाउनलोड करें',
-        featuresTitle: 'प्रगति के लिए सब कुछ',
-        f1Title: 'स्टैटिक एपनिया टाइमर', f1Desc: 'संकुचन ट्रैकिंग, व्यक्तिगत रिकॉर्ड और विस्तृत इतिहास के साथ सटीक टाइमर।',
-        f2Title: 'CO₂ और O₂ टेबल', f2Desc: 'अनुकूलन योग्य प्रशिक्षण तालिकाएं जो आपके रिकॉर्ड के अनुसार ढलती हैं।',
-        f3Title: 'श्वास अभ्यास', f3Desc: 'डायाफ्रामिक, बॉक्स ब्रीदिंग, 4-7-8 और कस्टम पैटर्न।',
-        f4Title: 'प्रगति चार्ट', f4Desc: 'दिन, सप्ताह या महीने के अनुसार अपनी प्रगति देखें।',
-        f5Title: 'प्रशिक्षण योजनाएं', f5Desc: 'आपके स्तर के अनुसार 4-सप्ताह के कार्यक्रम।',
-        f6Title: 'क्लाउड सिंक', f6Desc: 'Apple या Google से साइन इन करें। सभी उपकरणों पर डेटा सिंक।',
-        privacyLabel: 'गोपनीयता नीति', contact: 'संपर्क', emailCopied: '✓ ईमेल कॉपी हो गया!',
-      }},
-      id: { flag: '🇮🇩', label: 'Indonesia', privacyFile: 'id', data: {
-        subtitle: 'Latih napasmu, lampaui batasmu. Pendamping lengkap untuk apnea statis, tabel O₂ & CO₂, dan breathwork.',
-        badgeApnea: 'Apnea Statis', badgeTables: 'Tabel CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Kemajuan',
-        appStore: 'Unduh di App Store',
-        googlePlay: 'Dapatkan di Google Play',
-        featuresTitle: 'Semua yang kamu butuhkan untuk berkembang',
-        f1Title: 'Timer Apnea Statis', f1Desc: 'Timer presisi dengan pelacakan kontraksi, rekor pribadi, dan riwayat.',
-        f2Title: 'Tabel CO₂ & O₂', f2Desc: 'Tabel latihan yang dapat disesuaikan dan otomatis menyesuaikan rekor.',
-        f3Title: 'Latihan Pernapasan', f3Desc: 'Diafragma, box breathing, 4-7-8, dan pola kustom.',
-        f4Title: 'Grafik Kemajuan', f4Desc: 'Lihat evolusimu per hari, minggu, atau bulan.',
-        f5Title: 'Rencana Latihan', f5Desc: 'Program 4 minggu yang disesuaikan dengan levelmu.',
-        f6Title: 'Sinkronisasi Cloud', f6Desc: 'Masuk dengan Apple atau Google. Data tersinkron di semua perangkat.',
-        privacyLabel: 'Kebijakan Privasi', contact: 'Kontak', emailCopied: '✓ Email disalin!',
-      }},
-      th: { flag: '🇹🇭', label: 'ไทย', privacyFile: 'th', data: {
-        subtitle: 'ฝึกลมหายใจ ก้าวข้ามขีดจำกัด เพื่อนคู่กายสำหรับแอปเนียแบบนิ่ง ตาราง O₂ & CO₂ และ breathwork',
-        badgeApnea: 'แอปเนีย', badgeTables: 'ตาราง CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'ความก้าวหน้า',
-        appStore: 'ดาวน์โหลดบน App Store',
-        googlePlay: 'ดาวน์โหลดบน Google Play',
-        featuresTitle: 'ทุกอย่างที่คุณต้องการ',
-        f1Title: 'ตัวจับเวลาแอปเนีย', f1Desc: 'ตัวจับเวลาแม่นยำพร้อมการติดตามการบีบตัว สถิติส่วนตัว และประวัติ',
-        f2Title: 'ตาราง CO₂ และ O₂', f2Desc: 'ตารางฝึกซ้อมที่ปรับแต่งได้ ปรับอัตโนมัติตามสถิติ',
-        f3Title: 'แบบฝึกหัดการหายใจ', f3Desc: 'การหายใจด้วยกระบังลม, Box Breathing, 4-7-8 และรูปแบบกำหนดเอง',
-        f4Title: 'กราฟความก้าวหน้า', f4Desc: 'ดูพัฒนาการตามวัน สัปดาห์ หรือเดือน',
-        f5Title: 'แผนการฝึก', f5Desc: 'โปรแกรม 4 สัปดาห์ที่ปรับตามระดับของคุณ',
-        f6Title: 'ซิงค์บนคลาวด์', f6Desc: 'เข้าสู่ระบบด้วย Apple หรือ Google ข้อมูลซิงค์ทุกอุปกรณ์',
-        privacyLabel: 'นโยบายความเป็นส่วนตัว', contact: 'ติดต่อ', emailCopied: '✓ คัดลอกอีเมลแล้ว!',
-      }},
-      vi: { flag: '🇻🇳', label: 'Tiếng Việt', privacyFile: 'vi', data: {
-        subtitle: 'Luyện hơi thở, vượt giới hạn. Người bạn đồng hành hoàn chỉnh cho ngưng thở tĩnh, bảng O₂ & CO₂ và breathwork.',
-        badgeApnea: 'Ngưng thở tĩnh', badgeTables: 'Bảng CO₂ / O₂', badgeBreathing: 'Breathwork', badgeProgress: 'Tiến bộ',
-        appStore: 'Tải trên App Store',
-        googlePlay: 'Tải trên Google Play',
-        featuresTitle: 'Tất cả những gì bạn cần để tiến bộ',
-        f1Title: 'Bộ đếm ngưng thở', f1Desc: 'Bộ đếm chính xác với theo dõi co thắt, kỷ lục cá nhân và lịch sử.',
-        f2Title: 'Bảng CO₂ & O₂', f2Desc: 'Bảng tập tùy chỉnh tự động thích ứng với kỷ lục của bạn.',
-        f3Title: 'Bài tập hô hấp', f3Desc: 'Thở cơ hoành, box breathing, 4-7-8 và các mẫu tùy chỉnh.',
-        f4Title: 'Biểu đồ tiến bộ', f4Desc: 'Xem tiến trình theo ngày, tuần hoặc tháng.',
-        f5Title: 'Kế hoạch tập luyện', f5Desc: 'Chương trình 4 tuần thích ứng với trình độ của bạn.',
-        f6Title: 'Đồng bộ đám mây', f6Desc: 'Đăng nhập bằng Apple hoặc Google. Dữ liệu đồng bộ trên mọi thiết bị.',
-        privacyLabel: 'Chính sách bảo mật', contact: 'Liên hệ', emailCopied: '✓ Đã sao chép email!',
-      }},
+  <section class="block" id="guides">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="gdTitle">Learn the method.</h2>
+        <p data-i18n="gdLede">Free guides on physiology, training and safety, in 14 languages.</p>
+      </div>
+      <div class="guides">
+        <a class="guide" data-guide="co2" href="/blog/en/co2-table-static-apnea.html"><h3 data-i18n="gd1Title">The CO₂ table, explained</h3><p data-i18n="gd1Text">Why CO₂, not oxygen, ends your hold, and how to build a table that trains it.</p></a>
+        <a class="guide" data-guide="breath" href="/blog/en/breathwork-freediving-techniques.html"><h3 data-i18n="gd2Title">Breathwork for freediving</h3><p data-i18n="gd2Text">The breathing techniques that help before a hold, and the one to avoid.</p></a>
+        <a class="guide" data-guide="three" href="/blog/en/how-to-break-3-minutes-static-apnea.html"><h3 data-i18n="gd3Title">Getting past 3 minutes</h3><p data-i18n="gd3Text">A realistic path to your first 3-minute static hold.</p></a>
+      </div>
+      <a class="all-guides" href="/blog/" data-i18n="gdAll">See all guides</a>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2 data-i18n="clTitle">Your next hold starts on the couch.</h2>
+      <p data-i18n="clText">Ten minutes a day, lying down, with a timer that knows what to do. Download Anima Apnea and run your first table tonight.</p>
+      <a class="store-btn" href="https://apps.apple.com/app/anima-apnea/id6760680506" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><small data-i18n="storeSmall">Download on the</small>App Store</span>
+      </a>
+      <p class="safety" data-i18n="safety">Train dry, sitting or lying down. Never practise breath-holds in water without a trained buddy watching you, and never hyperventilate before a hold.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Anima Apnea</span>
+    <nav>
+      <a href="/blog/" data-i18n="navGuides">Guides</a>
+      <a href="/privacy/en.html" id="privacyLink" data-i18n="privacy">Privacy policy</a>
+      <button type="button" id="contactBtn" data-i18n="contact">Contact</button>
+    </nav>
+  </div>
+</footer>
+
+<script src="i18n.js?v=20261012"></script>
+<script>
+(function () {
+  var html = document.documentElement;
+  var I18N = window.ANIMA_I18N || {};
+  var LANG_ORDER = ['en','fr','es','de','it','pt','ja','zh','da','nl','hi','id','th','vi'];
+  var GUIDES = {
+    co2: {en:'en/co2-table-static-apnea.html',fr:'fr/comment-faire-table-co2-apnee-statique.html',es:'es/como-hacer-tabla-co2-apnea-estatica.html',de:'de/co2-tabelle-statisches-apnoe.html',it:'it/come-fare-tabella-co2-apnea-statica.html',pt:'pt/como-fazer-tabela-co2-apneia-estatica.html',ja:'ja/co2-table-static-apnea.html',zh:'zh/co2-table-static-apnea.html',da:'da/co2-table-static-apnea.html',nl:'nl/co2-table-static-apnea.html',hi:'hi/co2-table-static-apnea.html',id:'id/co2-table-static-apnea.html',th:'th/co2-table-static-apnea.html',vi:'vi/co2-table-static-apnea.html'},
+    breath: {en:'en/breathwork-freediving-techniques.html',fr:'fr/breathwork-apnee-meilleures-techniques.html',es:'es/breathwork-apnea-mejores-tecnicas.html',de:'de/breathwork-apnoe-beste-techniken.html',it:'it/breathwork-apnea-migliori-tecniche.html',pt:'pt/breathwork-apneia-melhores-tecnicas.html',ja:'ja/breathwork-freediving.html',zh:'zh/breathwork-freediving.html',da:'da/breathwork-freediving.html',nl:'nl/breathwork-freediving.html',hi:'hi/breathwork-freediving.html',id:'id/breathwork-freediving.html',th:'th/breathwork-freediving.html',vi:'vi/breathwork-freediving.html'},
+    three: {en:'en/how-to-break-3-minutes-static-apnea.html',fr:'fr/depasser-3-minutes-apnee-statique.html',es:'es/superar-3-minutos-apnea-estatica.html',de:'de/3-minuten-statisches-apnoe-ueberwinden.html',it:'it/superare-3-minuti-apnea-statica.html',pt:'pt/superar-3-minutos-apneia-estatica.html',ja:'ja/break-3-minutes-apnea.html',zh:'zh/break-3-minutes-apnea.html',da:'da/break-3-minutes-apnea.html',nl:'nl/break-3-minutes-apnea.html',hi:'hi/break-3-minutes-apnea.html',id:'id/break-3-minutes-apnea.html',th:'th/break-3-minutes-apnea.html',vi:'vi/break-3-minutes-apnea.html'}
+  };
+  var lang = 'en';
+  function t(key) {
+    var d = I18N[lang] && I18N[lang].data;
+    return (d && d[key]) || (I18N.en && I18N.en.data[key]) || null;
+  }
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  // ── Nav border on scroll ──
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // ── Theme (shared 'theme' key with the blog) ──
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var light = !html.classList.contains('sepia');
+    html.classList.toggle('sepia', light);
+    store('theme', light ? 'sepia' : 'dark');
+  });
+
+  // ── Language ──
+  var langBtn = document.getElementById('langBtn'), langMenu = document.getElementById('langMenu');
+  function setLang(code, explicit) {
+    if (!I18N[code]) code = 'en';
+    lang = code;
+    html.lang = code;
+    document.getElementById('langCode').textContent = code.toUpperCase();
+    if (I18N[code].title) document.title = I18N[code].title;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n')); if (v) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n-html')); if (v) el.innerHTML = v;
+    });
+    document.getElementById('privacyLink').href = '/privacy/' + code + '.html';
+    document.querySelectorAll('[data-guide]').forEach(function (a) {
+      var g = GUIDES[a.getAttribute('data-guide')]; a.href = '/blog/' + (g[code] || g.en);
+    });
+    langMenu.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-current', b.dataset.code === code ? 'true' : 'false'); });
+    if (explicit) { store('lang', code); store('lang_explicit', '1'); }
+    resetHold();
+  }
+  LANG_ORDER.forEach(function (code) {
+    if (!I18N[code]) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.dataset.code = code; b.setAttribute('role', 'menuitem');
+    b.textContent = I18N[code].label;
+    b.addEventListener('click', function () { setLang(code, true); closeMenu(); });
+    langMenu.appendChild(b);
+  });
+  function closeMenu() { langMenu.classList.remove('open'); langBtn.setAttribute('aria-expanded', 'false'); }
+  langBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = langMenu.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.lang-select')) closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  // ── Contact: copy email ──
+  document.getElementById('contactBtn').addEventListener('click', function () {
+    var btn = this, email = 'lucas.massoni.contact@gmail.com';
+    var done = function () {
+      btn.textContent = t('emailCopied') || 'Email copied';
+      setTimeout(function () { btn.textContent = t('contact'); }, 2000);
     };
+    if (navigator.clipboard) navigator.clipboard.writeText(email).then(done, function () { location.href = 'mailto:' + email; });
+    else location.href = 'mailto:' + email;
+  });
 
-    let currentLang = 'en';
+  // ── Hold dial ──
+  var dial = document.getElementById('dial'), holdBtn = document.getElementById('holdBtn');
+  var clockDigits = document.querySelectorAll('#clock .d'), state = document.getElementById('dialState');
+  var ring = document.getElementById('ringFill'), C = 603.19;
+  var start = 0, raf = 0, holding = false;
+  function fmt(s) { s = Math.floor(s); var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+  function paint(sec) {
+    var m = Math.min(9, Math.floor(sec / 60)), s = Math.floor(sec % 60);
+    clockDigits[0].textContent = m;
+    clockDigits[1].textContent = Math.floor(s / 10);
+    clockDigits[2].textContent = s % 10;
+    ring.style.strokeDashoffset = C * (1 - (sec % 60) / 60);
+  }
+  function tick() { paint((performance.now() - start) / 1000); raf = requestAnimationFrame(tick); }
+  function begin(e) {
+    if (holding) return;
+    if (e) e.preventDefault();
+    holding = true; start = performance.now();
+    dial.classList.add('holding'); holdBtn.setAttribute('aria-pressed', 'true');
+    holdBtn.textContent = t('holdActive'); state.textContent = t('dialActive');
+    raf = requestAnimationFrame(tick);
+  }
+  function end() {
+    if (!holding) return;
+    holding = false; cancelAnimationFrame(raf);
+    var sec = (performance.now() - start) / 1000;
+    dial.classList.remove('holding'); holdBtn.setAttribute('aria-pressed', 'false');
+    paint(sec); ring.style.strokeDashoffset = C * (1 - Math.min(sec, 60) / 60);
+    holdBtn.textContent = t('holdAgain');
+    state.textContent = sec < 3 ? t('dialTooShort') : (t('dialResult') || '').replace('{t}', fmt(sec));
+  }
+  function resetHold() {
+    if (holding) return;
+    paint(0); ring.style.strokeDashoffset = C;
+    holdBtn.textContent = t('holdIdle'); state.textContent = t('dialIdle');
+  }
+  holdBtn.addEventListener('pointerdown', function (e) { holdBtn.setPointerCapture && holdBtn.setPointerCapture(e.pointerId); begin(e); });
+  holdBtn.addEventListener('pointerup', end);
+  holdBtn.addEventListener('pointercancel', end);
+  holdBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  holdBtn.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) begin(e); });
+  holdBtn.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); end(); } });
+  window.addEventListener('blur', end);
 
-    function setLang(code) {
-      currentLang = code;
-      const lang = LANGS[code];
-      document.documentElement.lang = code;
-      document.getElementById('currentLang').textContent = lang.flag + ' ' + code.toUpperCase();
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (key === 'brand') return;
-        if (lang.data[key]) el.textContent = lang.data[key];
-      });
-      // Update privacy link
-      const privLink = document.querySelector('[data-i18n-href="privacyLink"]');
-      if (privLink) privLink.href = '/privacy/' + lang.privacyFile + '.html';
-      // Close dropdown
-      document.querySelector('.lang-dropdown').classList.remove('open');
-      localStorage.setItem('lang', code);
+  // ── Contraction ticks on the phases line (closer together as the hold goes on) ──
+  var ticks = document.getElementById('ticks'), NS = 'http://www.w3.org/2000/svg';
+  [540, 600, 650, 695, 735, 770, 802, 831, 858, 882, 904, 924, 942, 958, 972, 985].forEach(function (x) {
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', 16); l.setAttribute('y2', 44);
+    l.setAttribute('class', 'hl-tick'); l.setAttribute('vector-effect', 'non-scaling-stroke');
+    ticks.appendChild(l);
+  });
+
+  // ── CO₂ table demo (same rules as the app's adapted tables) ──
+  var range = document.getElementById('prRange'), chart = document.getElementById('tdChart');
+  function snap(v) { return Math.round(v / 15) * 15; }
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  function drawTable() {
+    var pr = +range.value;
+    var hold = clamp(snap(pr * 0.5), 30, 240), rest0 = clamp(snap(pr * 0.67), 60, 300);
+    var rounds = [];
+    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 10, 300), hold]);
+    var total = rounds.reduce(function (s, r) { return s + r[0] + r[1]; }, 0);
+    document.getElementById('prOut').textContent = fmt(pr);
+    document.getElementById('sumHold').textContent = fmt(hold);
+    document.getElementById('sumRest').textContent = fmt(rounds[0][0]) + ' – ' + fmt(rounds[7][0]);
+    document.getElementById('sumTotal').textContent = Math.round(total / 60) + ' min';
+
+    var W = 600, rowH = 22, gap = 7, left = 30, right = 44, top = 4;
+    var H = top + 8 * (rowH + gap) + 22, maxT = 0;
+    rounds.forEach(function (r) { maxT = Math.max(maxT, r[0] + r[1]); });
+    var step = maxT > 360 ? 120 : 60; maxT = Math.ceil(maxT / step) * step;
+    var sx = (W - left - right) / maxT, out = '';
+    for (var tt = 0; tt <= maxT; tt += step) {
+      var x = left + tt * sx;
+      out += '<line class="c-grid" x1="' + x + '" x2="' + x + '" y1="0" y2="' + (H - 20) + '"/>';
+      out += '<text class="c-tick" x="' + x + '" y="' + (H - 4) + '" text-anchor="middle">' + fmt(tt) + '</text>';
     }
-
-    // Build dropdown
-    const dd = document.getElementById('langDropdown');
-    Object.entries(LANGS).forEach(([code, lang]) => {
-      const a = document.createElement('a');
-      a.href = '#';
-      a.textContent = lang.flag + '  ' + lang.label;
-      a.onclick = (e) => { e.preventDefault(); setLang(code); };
-      dd.appendChild(a);
+    rounds.forEach(function (r, i) {
+      var y = top + i * (rowH + gap), rw = r[0] * sx, hw = r[1] * sx;
+      out += '<text class="c-tick" x="0" y="' + (y + rowH / 2 + 4) + '">' + (i + 1) + '</text>';
+      out += '<rect class="c-rest" x="' + left + '" y="' + y + '" width="' + Math.max(rw - 2, 1) + '" height="' + rowH + '" rx="5"/>';
+      out += '<rect class="c-hold" x="' + (left + rw) + '" y="' + y + '" width="' + hw + '" height="' + rowH + '" rx="5"/>';
+      out += '<text class="c-lab" x="' + (left + rw + hw + 7) + '" y="' + (y + rowH / 2 + 4) + '">' + fmt(r[1]) + '</text>';
     });
+    chart.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="CO2 table, 8 rounds">' + out + '</svg>';
+  }
+  range.addEventListener('input', drawTable); drawTable();
 
-    // Init lang from storage or browser
-    const stored = localStorage.getItem('lang');
-    const browserLang = navigator.language.slice(0, 2);
-    setLang(stored || (LANGS[browserLang] ? browserLang : 'en'));
-
-    // Close dropdown on outside click
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.lang-select')) dd.classList.remove('open');
-    });
-
-    // Copy email to clipboard
-    function copyEmail(e) {
-      e.preventDefault();
-      navigator.clipboard.writeText('lucas.massoni.contact@gmail.com').then(() => {
-        const btn = document.getElementById('contactBtn');
-        const original = btn.textContent;
-        const copied = LANGS[currentLang] && LANGS[currentLang].data.emailCopied || '✓ Email copied!';
-        btn.textContent = copied;
-        btn.style.color = 'var(--cyan)';
-        setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
-      });
+  // ── 4-week plan grid (4 sessions a week, record at end of weeks 2 and 4) ──
+  var grid = document.getElementById('planGrid');
+  function renderPlan() {
+    var days = (t('days') || 'M,T,W,T,F,S,S').split(','), wk = t('week') || 'Week';
+    var g = '<span></span>' + days.map(function (d) { return '<span class="dow">' + d + '</span>'; }).join('');
+    var sessions = [0, 2, 4, 5];
+    for (var w = 0; w < 4; w++) {
+      g += '<span class="wk">' + (wk.indexOf('{n}') > -1 ? wk.replace('{n}', w + 1) : wk + ' ' + (w + 1)) + '</span>';
+      for (var d = 0; d < 7; d++) {
+        var cls = sessions.indexOf(d) > -1 ? ((w === 1 || w === 3) && d === 5 ? 'r' : 's') : '';
+        g += '<span class="cell ' + cls + '"></span>';
+      }
     }
+    grid.innerHTML = g;
+  }
+  var _setLang = setLang;
+  setLang = function (c, e) { _setLang(c, e); renderPlan(); };
 
-    // Handle ?lang= param
-    const urlLang = new URLSearchParams(window.location.search).get('lang');
-    if (urlLang && LANGS[urlLang]) setLang(urlLang);
-
-    // Fade-in observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+  // ── Initial language: ?lang= > explicit choice > browser ──
+  var urlLang = new URLSearchParams(location.search).get('lang');
+  var stored = read('lang');
+  var browser = (navigator.language || 'en').slice(0, 2);
+  setLang(I18N[urlLang] ? urlLang : (stored && I18N[stored]) ? stored : (I18N[browser] ? browser : 'en'), !!(urlLang && I18N[urlLang]));
+})();
+</script>
 </body>
 </html>

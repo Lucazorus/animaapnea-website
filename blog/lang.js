@@ -1,19 +1,19 @@
 (function () {
   var LANGS = {
-    en: { flag: '🇬🇧', label: 'EN' },
-    fr: { flag: '🇫🇷', label: 'FR' },
-    es: { flag: '🇪🇸', label: 'ES' },
-    de: { flag: '🇩🇪', label: 'DE' },
-    it: { flag: '🇮🇹', label: 'IT' },
-    pt: { flag: '🇧🇷', label: 'PT' },
-    ja: { flag: '🇯🇵', label: 'JA' },
-    zh: { flag: '🇨🇳', label: 'ZH' },
-    da: { flag: '🇩🇰', label: 'DA' },
-    nl: { flag: '🇳🇱', label: 'NL' },
-    hi: { flag: '🇮🇳', label: 'HI' },
-    id: { flag: '🇮🇩', label: 'ID' },
-    th: { flag: '🇹🇭', label: 'TH' },
-    vi: { flag: '🇻🇳', label: 'VI' }
+    en: { flag: '🇬🇧', label: 'EN', name: 'English' },
+    fr: { flag: '🇫🇷', label: 'FR', name: 'Français' },
+    es: { flag: '🇪🇸', label: 'ES', name: 'Español' },
+    de: { flag: '🇩🇪', label: 'DE', name: 'Deutsch' },
+    it: { flag: '🇮🇹', label: 'IT', name: 'Italiano' },
+    pt: { flag: '🇧🇷', label: 'PT', name: 'Português' },
+    ja: { flag: '🇯🇵', label: 'JA', name: '日本語' },
+    zh: { flag: '🇨🇳', label: 'ZH', name: '中文' },
+    da: { flag: '🇩🇰', label: 'DA', name: 'Dansk' },
+    nl: { flag: '🇳🇱', label: 'NL', name: 'Nederlands' },
+    hi: { flag: '🇮🇳', label: 'HI', name: 'हिन्दी' },
+    id: { flag: '🇮🇩', label: 'ID', name: 'Bahasa Indonesia' },
+    th: { flag: '🇹🇭', label: 'TH', name: 'ไทย' },
+    vi: { flag: '🇻🇳', label: 'VI', name: 'Tiếng Việt' }
   };
 
   // Extract pathname from an absolute URL (handles www vs non-www)
@@ -62,7 +62,7 @@
   var btn = document.createElement('button');
   btn.className = 'blog-lang-btn';
   btn.setAttribute('aria-label', 'Select language');
-  btn.innerHTML = activeInfo.flag + ' <span>' + activeInfo.label + '</span>';
+  btn.innerHTML = '<span>' + activeInfo.label + '</span>';
 
   var dropdown = document.createElement('div');
   dropdown.className = 'blog-lang-dropdown';
@@ -71,7 +71,7 @@
     var info = LANGS[code];
     var a = document.createElement('a');
     a.href = '#';
-    a.textContent = info.flag + '  ' + info.label;
+    a.textContent = info.name || info.label;
     if (code === activeLang) a.className = 'active';
 
     a.addEventListener('click', function (e) {
@@ -83,7 +83,7 @@
         window.location.href = hreflang.href;
       } else {
         // Index page: just update button and close
-        btn.innerHTML = info.flag + ' <span>' + info.label + '</span>';
+        btn.innerHTML = '<span>' + info.label + '</span>';
         dropdown.classList.remove('open');
       }
     });
@@ -115,7 +115,7 @@
 
   function applyTheme(sepia) {
     html.classList.toggle('sepia', sepia);
-    themeBtn.textContent = sepia ? '☀️' : '🌙';
+    themeBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
   }
   applyTheme(isSepia);
 
