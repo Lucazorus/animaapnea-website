@@ -300,7 +300,9 @@
     .plan .wk { font-size: .8rem; color: var(--haze); padding-right: .6rem; white-space: nowrap; }
     .plan .dow { font-size: .75rem; color: var(--haze); text-align: center; padding-bottom: .2rem; }
     .plan .cell { aspect-ratio: 1; border-radius: 9px; background: var(--deep); border: 1px solid var(--line); }
-    .plan .cell.s { background: color-mix(in srgb, var(--cyan) 55%, transparent); border-color: transparent; }
+    .plan .cell.co2 { background: var(--cyan); border-color: transparent; }
+    .plan .cell.o2 { background: var(--aqua); border-color: transparent; }
+    .plan .cell.br { background: color-mix(in srgb, var(--green) 45%, transparent); border-color: transparent; }
     .plan .cell.r { background: var(--yellow); border-color: transparent; }
     .plan-legend { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
     .plan-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
@@ -386,7 +388,7 @@
 
     /* Plan fills in, record attempts light up */
     .plan .cell { transition: transform .4s cubic-bezier(.3,1.5,.5,1), opacity .4s; }
-    .plan:not(.play) .cell.s, .plan:not(.play) .cell.r { transform: scale(.4); opacity: 0; }
+    .plan:not(.play) .cell.co2, .plan:not(.play) .cell.o2, .plan:not(.play) .cell.br, .plan:not(.play) .cell.r { transform: scale(.4); opacity: 0; }
     .plan.play .cell.r { animation: glow 2.4s 1.4s ease-in-out 2; }
     @keyframes glow { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--yellow) 25%, transparent); } }
 
@@ -396,7 +398,7 @@
       .hold-line .hl-easy, .hold-line .hl-struggle { stroke-dashoffset: 0; }
       .hold-line .hl-first, .hold-line .hl-tick { transform: none; opacity: 1; }
       .hold-line:not(.play) + .phases .phase { opacity: 1; }
-      .plan:not(.play) .cell.s, .plan:not(.play) .cell.r { transform: none; opacity: 1; }
+      .plan:not(.play) .cell.co2, .plan:not(.play) .cell.o2, .plan:not(.play) .cell.br, .plan:not(.play) .cell.r { transform: none; opacity: 1; }
       .bar .cursor { display: none; }
 
       .rise { animation: none; opacity: 1; transform: none; }
@@ -582,8 +584,8 @@
         </div>
       </div>
       <div>
-        <div class="plan" id="planGrid" aria-label="Example plan: 4 sessions a week for 4 weeks, record attempts at the end of weeks 2 and 4"></div>
-        <div class="plan-legend"><span><i style="background:color-mix(in srgb, var(--cyan) 55%, transparent)"></i><span data-i18n="plSession">Training session</span></span><span><i style="background:var(--yellow)"></i><span data-i18n="plRecord">Record attempt</span></span></div>
+        <div class="plan" id="planGrid" aria-label="Plan de 4 semaines : tables CO₂ et O₂ alternées, respiration les autres jours, tentative de record en fin de semaines 2 et 4"></div>
+        <div class="plan-legend"><span><i style="background:var(--cyan)"></i><span data-i18n="plCo2">CO₂ table</span></span><span><i style="background:var(--aqua)"></i><span data-i18n="plO2">O₂ table</span></span><span><i style="background:color-mix(in srgb, var(--green) 45%, transparent)"></i><span data-i18n="plBreath">Breathing</span></span><span><i style="background:var(--yellow)"></i><span data-i18n="plRecord">Record attempt</span></span></div>
         <div class="extras">
           <div><h3 data-i18n="ex1Title">Progress you can see</h3><p data-i18n="ex1Text">Charts by day, week or month for your holds, tables and contractions.</p></div>
           <div><h3 data-i18n="ex2Title">A streak to protect</h3><p data-i18n="ex2Text">Daily reminders and a home-screen widget keep the habit going.</p></div>
@@ -633,7 +635,7 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012f"></script>
+<script src="i18n.js?v=20261012g"></script>
 <script>
 (function () {
   var html = document.documentElement;
@@ -846,13 +848,18 @@
   function renderPlan() {
     var days = (t('days') || 'M,T,W,T,F,S,S').split(','), wk = t('week') || 'Week';
     var g = '<span></span>' + days.map(function (d) { return '<span class="dow">' + d + '</span>'; }).join('');
-    var sessions = [0, 2, 4, 5];
+    // Plan généré par l'app (TrainingPlan.generate) pour 4 séances + 3 respirations
+    // par semaine : tables CO₂/O₂ alternées, respiration les autres jours,
+    // respiration la veille et tentative de record le dimanche des semaines 2 et 4.
+    var plan = [
+      ['co2', 'br', 'o2', 'br', 'co2', 'br', 'o2'],
+      ['co2', 'br', 'o2', 'br', 'co2', 'br', 'r'],
+      ['o2', 'br', 'co2', 'br', 'o2', 'br', 'co2'],
+      ['o2', 'br', 'co2', 'br', 'o2', 'br', 'r']
+    ];
     for (var w = 0; w < 4; w++) {
       g += '<span class="wk">' + (wk.indexOf('{n}') > -1 ? wk.replace('{n}', w + 1) : wk + ' ' + (w + 1)) + '</span>';
-      for (var d = 0; d < 7; d++) {
-        var cls = sessions.indexOf(d) > -1 ? ((w === 1 || w === 3) && d === 5 ? 'r' : 's') : '';
-        g += '<span class="cell ' + cls + '"></span>';
-      }
+      for (var d = 0; d < 7; d++) g += '<span class="cell ' + plan[w][d] + '"></span>';
     }
     grid.innerHTML = g;
     grid.querySelectorAll('.cell').forEach(function (c, i) { c.style.transitionDelay = (i * 0.035) + 's'; });

@@ -2,6 +2,7 @@
    {t} in dialResult is replaced by the hold time. */
 window.ANIMA_I18N = {
   en: { label: 'English', data: {
+    plCo2: 'CO₂ table', plO2: 'O₂ table', plBreath: 'Breathing',
     navGuides: 'Guides',
     heroTitle: 'Hold your breath longer, and stay calm doing it.',
     heroLede: 'Anima Apnea is a static apnea trainer for iPhone. A breath-hold timer that logs your contractions, CO₂ and O₂ tables built from your record, guided breathing and 4-week plans.',
@@ -60,6 +61,7 @@ window.ANIMA_I18N = {
     privacy: 'Privacy policy', contact: 'Contact', emailCopied: 'Email copied'
   }},
   fr: { label: 'Français', title: 'Anima Apnea · Entraînement à l’apnée statique sur iPhone', data: {
+    plCo2: 'Table CO₂', plO2: 'Table O₂', plBreath: 'Respiration',
     navGuides: 'Guides',
     heroTitle: 'Retenez votre souffle plus longtemps, en restant calme.',
     heroLede: "Anima Apnea est un coach d'apnée statique pour iPhone. Un chrono qui enregistre vos contractions, des tables CO₂ et O₂ construites à partir de votre record, des respirations guidées et des plans de 4 semaines.",
@@ -118,6 +120,7 @@ window.ANIMA_I18N = {
     privacy: 'Confidentialité', contact: 'Contact', emailCopied: 'E-mail copié'
   }},
   es: { label: 'Español', data: {
+    plCo2: 'Tabla CO₂', plO2: 'Tabla O₂', plBreath: 'Respiración',
     navGuides: 'Guías',
     heroTitle: 'Aguanta la respiración más tiempo, y con calma.',
     heroLede: 'Anima Apnea es un entrenador de apnea estática para iPhone. Un cronómetro que registra tus contracciones, tablas de CO₂ y O₂ creadas a partir de tu récord, respiración guiada y planes de 4 semanas.',
@@ -176,6 +179,7 @@ window.ANIMA_I18N = {
     privacy: 'Privacidad', contact: 'Contacto', emailCopied: 'Correo copiado'
   }},
   de: { label: 'Deutsch', data: {
+    plCo2: 'CO₂-Tabelle', plO2: 'O₂-Tabelle', plBreath: 'Atemübung',
     navGuides: 'Ratgeber',
     heroTitle: 'Länger die Luft anhalten, und dabei ruhig bleiben.',
     heroLede: 'Anima Apnea ist ein Trainer für statische Apnoe auf dem iPhone. Ein Timer, der Ihre Kontraktionen erfasst, CO₂- und O₂-Tabellen auf Basis Ihres Rekords, geführte Atmung und 4-Wochen-Pläne.',
@@ -234,6 +238,7 @@ window.ANIMA_I18N = {
     privacy: 'Datenschutz', contact: 'Kontakt', emailCopied: 'E-Mail kopiert'
   }},
   it: { label: 'Italiano', data: {
+    plCo2: 'Tabella CO₂', plO2: 'Tabella O₂', plBreath: 'Respirazione',
     navGuides: 'Guide',
     heroTitle: 'Trattieni il respiro più a lungo, restando calmo.',
     heroLede: 'Anima Apnea è un allenatore di apnea statica per iPhone. Un timer che registra le tue contrazioni, tabelle CO₂ e O₂ costruite sul tuo record, respirazione guidata e piani di 4 settimane.',
@@ -292,6 +297,7 @@ window.ANIMA_I18N = {
     privacy: 'Privacy', contact: 'Contatti', emailCopied: 'Email copiata'
   }},
   pt: { label: 'Português', data: {
+    plCo2: 'Tabela CO₂', plO2: 'Tabela O₂', plBreath: 'Respiração',
     navGuides: 'Guias',
     heroTitle: 'Prenda a respiração por mais tempo, com calma.',
     heroLede: 'Anima Apnea é um treinador de apneia estática para iPhone. Um cronômetro que registra suas contrações, tabelas de CO₂ e O₂ criadas a partir do seu recorde, respiração guiada e planos de 4 semanas.',
@@ -350,6 +356,7 @@ window.ANIMA_I18N = {
     privacy: 'Privacidade', contact: 'Contato', emailCopied: 'E-mail copiado'
   }},
   ja: { label: '日本語', data: {
+    plCo2: 'CO₂テーブル', plO2: 'O₂テーブル', plBreath: '呼吸練習',
     navGuides: 'ガイド',
     heroTitle: '息止めを、もっと長く。心は静かなまま。',
     heroLede: 'Anima Apneaは、iPhone向けのスタティックアプネア・トレーナーです。収縮を記録する息止めタイマー、自己ベストから作るCO₂・O₂テーブル、呼吸ガイド、4週間プランを備えています。',
@@ -408,6 +415,7 @@ window.ANIMA_I18N = {
     privacy: 'プライバシーポリシー', contact: 'お問い合わせ', emailCopied: 'メールアドレスをコピーしました'
   }},
   zh: { label: '中文', data: {
+    plCo2: 'CO₂训练表', plO2: 'O₂训练表', plBreath: '呼吸练习',
     navGuides: '指南',
     heroTitle: '屏息更久，始终保持平静。',
     heroLede: 'Anima Apnea 是一款 iPhone 静态闭气训练应用。闭气计时器记录你的每次收缩，CO₂ 和 O₂ 表根据你的最佳成绩生成，另有呼吸引导和 4 周训练计划。',
@@ -466,6 +474,7 @@ window.ANIMA_I18N = {
     privacy: '隐私政策', contact: '联系我们', emailCopied: '邮箱已复制'
   }},
   da: { label: 'Dansk', data: {
+    plCo2: 'CO₂-tabel', plO2: 'O₂-tabel', plBreath: 'Vejrtrækning',
     navGuides: 'Guides',
     heroTitle: 'Hold vejret længere, og bliv rolig imens.',
     heroLede: 'Anima Apnea er en træner til statisk apnø på iPhone. En timer, der registrerer dine kontraktioner, CO₂- og O₂-tabeller bygget på din rekord, guidet vejrtrækning og 4-ugers planer.',
@@ -524,6 +533,7 @@ window.ANIMA_I18N = {
     privacy: 'Privatlivspolitik', contact: 'Kontakt', emailCopied: 'E-mail kopieret'
   }},
   nl: { label: 'Nederlands', data: {
+    plCo2: 'CO₂-tabel', plO2: 'O₂-tabel', plBreath: 'Ademhaling',
     navGuides: 'Gidsen',
     heroTitle: 'Houd uw adem langer in, en blijf daarbij kalm.',
     heroLede: 'Anima Apnea is een trainer voor statische apneu op de iPhone. Een timer die uw contracties vastlegt, CO₂- en O₂-tabellen op basis van uw record, begeleide ademhaling en plannen van 4 weken.',
@@ -582,6 +592,7 @@ window.ANIMA_I18N = {
     privacy: 'Privacybeleid', contact: 'Contact', emailCopied: 'E-mail gekopieerd'
   }},
   hi: { label: 'हिन्दी', data: {
+    plCo2: 'CO₂ टेबल', plO2: 'O₂ टेबल', plBreath: 'श्वास अभ्यास',
     navGuides: 'गाइड',
     heroTitle: 'साँस ज़्यादा देर रोकें, और शांत रहें।',
     heroLede: 'Anima Apnea, iPhone के लिए स्टैटिक एप्निया ट्रेनर है। एक ब्रेथ-होल्ड टाइमर जो आपके कॉन्ट्रैक्शन दर्ज करता है, आपके रिकॉर्ड पर आधारित CO₂ और O₂ टेबल, गाइडेड ब्रीदिंग और 4 हफ़्तों के प्लान।',
@@ -640,6 +651,7 @@ window.ANIMA_I18N = {
     privacy: 'प्राइवेसी पॉलिसी', contact: 'संपर्क', emailCopied: 'ईमेल कॉपी हो गया'
   }},
   id: { label: 'Bahasa Indonesia', data: {
+    plCo2: 'Tabel CO₂', plO2: 'Tabel O₂', plBreath: 'Latihan napas',
     navGuides: 'Panduan',
     heroTitle: 'Tahan napas lebih lama, dengan tetap tenang.',
     heroLede: 'Anima Apnea adalah pelatih apnea statis untuk iPhone. Timer tahan napas yang mencatat kontraksi Anda, tabel CO₂ dan O₂ yang disusun dari rekor Anda, pernapasan terpandu, dan program 4 minggu.',
@@ -698,6 +710,7 @@ window.ANIMA_I18N = {
     privacy: 'Kebijakan privasi', contact: 'Kontak', emailCopied: 'Email disalin'
   }},
   th: { label: 'ไทย', data: {
+    plCo2: 'ตาราง CO₂', plO2: 'ตาราง O₂', plBreath: 'ฝึกหายใจ',
     navGuides: 'คู่มือ',
     heroTitle: 'กลั้นหายใจได้นานขึ้น อย่างสงบ',
     heroLede: 'Anima Apnea คือแอปฝึกสแตติกแอปเนียสำหรับ iPhone มีตัวจับเวลากลั้นหายใจที่บันทึกการหดเกร็ง ตาราง CO₂ และ O₂ ที่สร้างจากสถิติของคุณ การหายใจแบบมีคำแนะนำ และแผนฝึก 4 สัปดาห์',
@@ -756,6 +769,7 @@ window.ANIMA_I18N = {
     privacy: 'นโยบายความเป็นส่วนตัว', contact: 'ติดต่อ', emailCopied: 'คัดลอกอีเมลแล้ว'
   }},
   vi: { label: 'Tiếng Việt', data: {
+    plCo2: 'Bảng CO₂', plO2: 'Bảng O₂', plBreath: 'Tập thở',
     navGuides: 'Hướng dẫn',
     heroTitle: 'Nín thở lâu hơn, và vẫn giữ bình tĩnh.',
     heroLede: 'Anima Apnea là ứng dụng luyện nín thở tĩnh cho iPhone. Đồng hồ nín thở ghi lại các cơn co thắt, bảng CO₂ và O₂ dựa trên kỷ lục của bạn, hướng dẫn thở và giáo án 4 tuần.',
