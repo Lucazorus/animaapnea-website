@@ -417,7 +417,7 @@
   <div class="wrap">
     <a href="/" class="brand"><img src="logo-256.png" alt="" width="30" height="30"><span>Anima Apnea</span></a>
     <div class="nav-right">
-      <a class="nav-link" href="/blog/" data-i18n="navGuides">Guides</a>
+      <a class="nav-link" href="/blog/" data-blog-index data-i18n="navGuides">Guides</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
@@ -590,7 +590,7 @@
         <a class="guide" data-guide="breath" href="/blog/en/breathwork-freediving-techniques.html"><h3 data-i18n="gd2Title">Breathwork for freediving</h3><p data-i18n="gd2Text">The breathing techniques that help before a hold, and the one to avoid.</p></a>
         <a class="guide" data-guide="three" href="/blog/en/how-to-break-3-minutes-static-apnea.html"><h3 data-i18n="gd3Title">Getting past 3 minutes</h3><p data-i18n="gd3Text">A realistic path to your first 3-minute static hold.</p></a>
       </div>
-      <a class="all-guides" href="/blog/" data-i18n="gdAll">See all guides</a>
+      <a class="all-guides" href="/blog/" data-blog-index data-i18n="gdAll">See all guides</a>
     </div>
   </section>
 
@@ -611,14 +611,14 @@
   <div class="wrap">
     <span>© 2026 Anima Apnea</span>
     <nav>
-      <a href="/blog/" data-i18n="navGuides">Guides</a>
+      <a href="/blog/" data-blog-index data-i18n="navGuides">Guides</a>
       <a href="/privacy/en.html" id="privacyLink" data-i18n="privacy">Privacy policy</a>
       <button type="button" id="contactBtn" data-i18n="contact">Contact</button>
     </nav>
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012b"></script>
+<script src="i18n.js?v=20261012c"></script>
 <script>
 (function () {
   var html = document.documentElement;
@@ -664,6 +664,7 @@
       var v = t(el.getAttribute('data-i18n-html')); if (v) el.innerHTML = v;
     });
     document.getElementById('privacyLink').href = '/privacy/' + code + '.html';
+    document.querySelectorAll('[data-blog-index]').forEach(function (el) { el.href = code === 'en' ? '/blog/' : '/blog/' + code + '/'; });
     document.querySelectorAll('[data-guide]').forEach(function (a) {
       var g = GUIDES[a.getAttribute('data-guide')]; a.href = '/blog/' + (g[code] || g.en);
     });

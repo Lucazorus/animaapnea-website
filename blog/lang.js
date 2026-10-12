@@ -31,6 +31,20 @@
 
   var currentLang = getCurrentLang(); // null on index page
 
+  // ── English blog index: send visitors to the index in their language ──
+  // (explicit choice first, then the device language; crawlers stay on /blog/)
+  if (!currentLang && /^\/blog\/?(index\.html)?$/.test(window.location.pathname)) {
+    var pref = null;
+    try {
+      pref = localStorage.getItem('lang_explicit') === '1' ? localStorage.getItem('lang') : null;
+    } catch (e) {}
+    if (!pref) pref = (navigator.language || '').slice(0, 2).toLowerCase();
+    if (pref && pref !== 'en' && LANGS[pref]) {
+      window.location.replace('/blog/' + pref + '/');
+      return;
+    }
+  }
+
   // ── Auto-redirect to stored language (article pages only) ──
   if (currentLang) {
     var stored = localStorage.getItem('lang');

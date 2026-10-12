@@ -142,9 +142,9 @@ def index_page(lang):
   <meta property="og:image" content="{BASE}/og-image.png">
   <link rel="icon" type="image/png" href="/logo-256.png">
   <script type="application/ld+json">{ld}</script>
-  <link rel="stylesheet" href="{root}style.css?v=20261012b">
-  <link rel="stylesheet" href="{root}article.css?v=20261012b">
-  <link rel="stylesheet" href="{root}index.css?v=20261012b">
+  <link rel="stylesheet" href="{root}style.css?v=20261012c">
+  <link rel="stylesheet" href="{root}article.css?v=20261012c">
+  <link rel="stylesheet" href="{root}index.css?v=20261012c">
 </head>
 <body>
   <nav class="blog-nav">
@@ -164,7 +164,7 @@ def index_page(lang):
   <footer class="blog-footer">
     <p>© 2026 Anima Apnea · <a href="/privacy/{lang}.html">{u["privacy"]}</a></p>
   </footer>
-<script src="{root}lang.js?v=20261012b"></script>
+<script src="{root}lang.js?v=20261012c"></script>
 </body>
 </html>
 '''
