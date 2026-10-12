@@ -5,6 +5,7 @@ window.ANIMA_I18N = {
  "en": {
   "label": "English",
   "data": {
+   "storeCta": "Download on the App Store",
    "plCo2": "CO₂ table",
    "plO2": "O₂ table",
    "plBreath": "Breathing",
@@ -87,6 +88,7 @@ window.ANIMA_I18N = {
   "label": "Français",
   "title": "Anima Apnea · L’app d’entraînement à l’apnée statique sur iPhone",
   "data": {
+   "storeCta": "Télécharger sur l’App Store",
    "plCo2": "Table CO₂",
    "plO2": "Table O₂",
    "plBreath": "Respiration",
@@ -168,6 +170,7 @@ window.ANIMA_I18N = {
  "es": {
   "label": "Español",
   "data": {
+   "storeCta": "Descargar en el App Store",
    "plCo2": "Tabla de CO₂",
    "plO2": "Tabla de O₂",
    "plBreath": "Respiración",
@@ -250,6 +253,7 @@ window.ANIMA_I18N = {
  "de": {
   "label": "Deutsch",
   "data": {
+   "storeCta": "Laden im App Store",
    "plCo2": "CO₂-Tabelle",
    "plO2": "O₂-Tabelle",
    "plBreath": "Atmung",
@@ -332,6 +336,7 @@ window.ANIMA_I18N = {
  "it": {
   "label": "Italiano",
   "data": {
+   "storeCta": "Scarica su App Store",
    "plCo2": "Tabella CO₂",
    "plO2": "Tabella O₂",
    "plBreath": "Respirazione",
@@ -414,6 +419,7 @@ window.ANIMA_I18N = {
  "pt": {
   "label": "Português",
   "data": {
+   "storeCta": "Baixar na App Store",
    "plCo2": "Tabela de CO₂",
    "plO2": "Tabela de O₂",
    "plBreath": "Respiração",
@@ -496,6 +502,7 @@ window.ANIMA_I18N = {
  "ja": {
   "label": "日本語",
   "data": {
+   "storeCta": "App Storeからダウンロード",
    "plCo2": "CO₂テーブル",
    "plO2": "O₂テーブル",
    "plBreath": "呼吸練習",
@@ -578,6 +585,7 @@ window.ANIMA_I18N = {
  "zh": {
   "label": "中文",
   "data": {
+   "storeCta": "在 App Store 下载",
    "plCo2": "CO₂训练表",
    "plO2": "O₂训练表",
    "plBreath": "呼吸练习",
@@ -660,6 +668,7 @@ window.ANIMA_I18N = {
  "da": {
   "label": "Dansk",
   "data": {
+   "storeCta": "Hent i App Store",
    "plCo2": "CO₂-tabel",
    "plO2": "O₂-tabel",
    "plBreath": "Vejrtrækning",
@@ -742,6 +751,7 @@ window.ANIMA_I18N = {
  "nl": {
   "label": "Nederlands",
   "data": {
+   "storeCta": "Download in de App Store",
    "plCo2": "CO₂-tabel",
    "plO2": "O₂-tabel",
    "plBreath": "Ademhaling",
@@ -824,6 +834,7 @@ window.ANIMA_I18N = {
  "hi": {
   "label": "हिन्दी",
   "data": {
+   "storeCta": "App Store से डाउनलोड करें",
    "plCo2": "CO₂ टेबल",
    "plO2": "O₂ टेबल",
    "plBreath": "साँस का अभ्यास",
@@ -906,6 +917,7 @@ window.ANIMA_I18N = {
  "id": {
   "label": "Bahasa Indonesia",
   "data": {
+   "storeCta": "Unduh di App Store",
    "plCo2": "Tabel CO₂",
    "plO2": "Tabel O₂",
    "plBreath": "Latihan napas",
@@ -988,6 +1000,7 @@ window.ANIMA_I18N = {
  "th": {
   "label": "ไทย",
   "data": {
+   "storeCta": "ดาวน์โหลดบน App Store",
    "plCo2": "ตาราง CO₂",
    "plO2": "ตาราง O₂",
    "plBreath": "ฝึกหายใจ",
@@ -1070,6 +1083,7 @@ window.ANIMA_I18N = {
  "vi": {
   "label": "Tiếng Việt",
   "data": {
+   "storeCta": "Tải về trên App Store",
    "plCo2": "Bảng CO₂",
    "plO2": "Bảng O₂",
    "plBreath": "Tập thở",
