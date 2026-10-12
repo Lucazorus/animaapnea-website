@@ -264,6 +264,15 @@
     .c-lab { fill: var(--mist); font: 500 12px var(--sans); font-variant-numeric: tabular-nums; }
     .c-rest { fill: var(--rest); }
     .c-hold { fill: var(--cyan); }
+    .table-demo.o2 .c-hold { fill: var(--aqua); }
+    .td-hold-swatch { background: var(--cyan); }
+    .table-demo.o2 .td-hold-swatch { background: var(--aqua); }
+    .table-demo.o2 input[type=range] { accent-color: var(--aqua); }
+    .td-switch { display: inline-flex; padding: 3px; gap: 3px; border-radius: 12px; background: var(--abyss); border: 1px solid var(--line); margin-bottom: 1.2rem; }
+    .td-switch button { border: 0; background: none; color: var(--mist); font: 600 .95rem var(--sans); padding: .5rem 1.2rem; border-radius: 9px; cursor: pointer; min-height: 40px; }
+    .td-switch button[aria-selected="true"] { background: var(--deep); color: var(--foam); box-shadow: 0 1px 0 var(--line-strong) inset; }
+    .td-switch button[data-kind="co2"][aria-selected="true"] { color: var(--cyan); }
+    .td-switch button[data-kind="o2"][aria-selected="true"] { color: var(--aqua); }
     .legend { display: flex; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
     .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
 
@@ -515,7 +524,11 @@
           <li data-i18n-html="tbFact3"><strong>Your own tables:</strong> change hold, recovery and round count whenever you want.</li>
         </ul>
       </div>
-      <div class="table-demo">
+      <div class="table-demo" id="tableDemo">
+        <div class="td-switch" role="tablist" aria-label="CO₂ / O₂">
+          <button type="button" role="tab" data-kind="co2" aria-selected="true">CO₂</button>
+          <button type="button" role="tab" data-kind="o2" aria-selected="false">O₂</button>
+        </div>
         <div class="td-top">
           <label for="prRange" data-i18n="tbSlider">Your best static hold</label>
           <output class="td-pr" id="prOut" for="prRange">3:00</output>
@@ -527,7 +540,7 @@
           <div><b id="sumTotal">21 min</b><span data-i18n="tbTotal">Session</span></div>
         </div>
         <div class="td-chart" id="tdChart"></div>
-        <div class="legend"><span><i style="background:var(--rest)"></i><span data-i18n="tbRest">Recovery</span></span><span><i style="background:var(--cyan)"></i><span data-i18n="tbHold">Hold</span></span></div>
+        <div class="legend"><span><i style="background:var(--rest)"></i><span data-i18n="tbRest">Recovery</span></span><span><i class="td-hold-swatch"></i><span data-i18n="tbHold">Hold</span></span></div>
       </div>
     </div>
   </section>
@@ -620,7 +633,7 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012e"></script>
+<script src="i18n.js?v=20261012f"></script>
 <script>
 (function () {
   var html = document.documentElement;
@@ -760,15 +773,36 @@
   var range = document.getElementById('prRange'), chart = document.getElementById('tdChart');
   function snap(v) { return Math.round(v / 15) * 15; }
   function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  // Mêmes formules que l'app (TableAdaptation, lib/models/apnea_table.dart)
+  var tableKind = 'co2';
+  function floorTo(v, n) { return Math.floor(v / n) * n; }
+  function co2Rounds(pr) {
+    var hold = clamp(snap(pr * 0.5), 30, 240), cap = Math.max(15, floorTo(pr * 0.6, 15));
+    if (hold > cap) hold = cap;
+    var rest0 = clamp(snap(pr * 0.67), 120, 300), rounds = [];
+    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 15, 300), hold]);
+    return rounds;
+  }
+  function o2Rounds(pr) {
+    var start = clamp(snap(pr * 0.33), 30, 180);
+    var linear = start + 7 * 15, target = Math.max(linear, floorTo(pr * 0.8, 5));
+    var end = Math.max(start, Math.min(target, floorTo(pr * 0.85, 15)));
+    var stepH = (end - start) / 7, rounds = [];
+    for (var i = 0; i < 8; i++) rounds.push([120, i === 7 ? end : Math.min(end, Math.round((start + i * stepH) / 5) * 5)]);
+    return rounds;
+  }
   function drawTable() {
     var pr = +range.value;
-    var hold = clamp(snap(pr * 0.5), 30, 240), rest0 = clamp(snap(pr * 0.67), 120, 300);
-    var rounds = [];
-    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 15, 300), hold]);
+    var rounds = tableKind === 'o2' ? o2Rounds(pr) : co2Rounds(pr);
     var total = rounds.reduce(function (s, r) { return s + r[0] + r[1]; }, 0);
     document.getElementById('prOut').textContent = fmt(pr);
-    document.getElementById('sumHold').textContent = fmt(hold);
-    document.getElementById('sumRest').textContent = fmt(rounds[0][0]) + ' – ' + fmt(rounds[7][0]);
+    if (tableKind === 'o2') {
+      document.getElementById('sumHold').textContent = fmt(rounds[0][1]) + ' – ' + fmt(rounds[7][1]);
+      document.getElementById('sumRest').textContent = fmt(rounds[0][0]);
+    } else {
+      document.getElementById('sumHold').textContent = fmt(rounds[0][1]);
+      document.getElementById('sumRest').textContent = fmt(rounds[0][0]) + ' – ' + fmt(rounds[7][0]);
+    }
     document.getElementById('sumTotal').textContent = Math.round(total / 60) + ' min';
 
     var W = 600, rowH = 22, gap = 7, left = 30, right = 44, top = 4;
@@ -788,9 +822,19 @@
       out += '<rect class="c-hold" x="' + (left + rw) + '" y="' + y + '" width="' + hw + '" height="' + rowH + '" rx="5"/>';
       out += '<text class="c-lab" x="' + (left + rw + hw + 7) + '" y="' + (y + rowH / 2 + 4) + '">' + fmt(r[1]) + '</text>';
     });
-    chart.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="CO2 table, 8 rounds">' + out + '</svg>';
+    chart.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (tableKind === 'o2' ? 'Table O₂' : 'Table CO₂') + ', 8 rounds">' + out + '</svg>';
   }
   range.addEventListener('input', function () { chart.classList.remove('build'); drawTable(); }); drawTable();
+  var demo = document.getElementById('tableDemo');
+  demo.querySelectorAll('.td-switch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      tableKind = b.getAttribute('data-kind');
+      demo.classList.toggle('o2', tableKind === 'o2');
+      demo.querySelectorAll('.td-switch button').forEach(function (o) { o.setAttribute('aria-selected', o === b ? 'true' : 'false'); });
+      drawTable();
+      staggerTable();
+    });
+  });
   function staggerTable() {
     chart.querySelectorAll('rect').forEach(function (r, i) { r.style.animationDelay = (Math.floor(i / 2) * 0.09 + (i % 2) * 0.12) + 's'; });
     chart.querySelectorAll('text').forEach(function (t, i) { t.style.animationDelay = (0.3 + i * 0.03) + 's'; });
