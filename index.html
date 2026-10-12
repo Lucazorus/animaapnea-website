@@ -275,13 +275,15 @@
     .bar { display: flex; gap: 4px; height: 44px; }
     .bar span {
       border-radius: 8px; display: flex; align-items: center; padding: 0 .7rem;
-      font-size: .78rem; color: #FFFFFF; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden;
+      font-size: .78rem; color: var(--foam); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden;
     }
     /* Same phase opacities as the app's breathing screen (breathing_page.dart) */
-    .bar .in { background: var(--pc); }
+    .bar .in { background: var(--pc); color: #FFFFFF; }
     .bar .hold { background: color-mix(in srgb, var(--pc) 70%, transparent); }
     .bar .out { background: color-mix(in srgb, var(--pc) 50%, transparent); }
     .bar .hold2 { background: color-mix(in srgb, var(--pc) 40%, transparent); }
+    .bar span b { font-weight: 600; margin-right: .3rem; }
+    .phase-legend b { font-weight: 600; margin-right: .35rem; color: var(--foam); }
     .bar.custom span { border: 1px dashed var(--green); background: none; color: var(--haze); flex: 1; }
 
     /* Plan grid */
@@ -539,22 +541,22 @@
       <div class="patterns">
         <div class="pattern">
           <div><h3 data-i18n="br1Title">Diaphragmatic</h3><p data-i18n="br1Text">Long exhales to slow everything down.</p></div>
-          <div class="bar" style="--pc:var(--cyan);--cycle:12s"><span class="in" style="flex:4">4s</span><span class="out" style="flex:8">8s</span><i class="cursor"></i></div>
+          <div class="bar" style="--pc:var(--cyan);--cycle:12s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br2Title">Box breathing</h3><p data-i18n="br2Text">Four equal sides for focus.</p></div>
-          <div class="bar" style="--pc:var(--teal);--cycle:16s"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:4">4s</span><span class="out" style="flex:4">4s</span><span class="hold2" style="flex:4">4s</span><i class="cursor"></i></div>
+          <div class="bar" style="--pc:var(--teal);--cycle:16s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:4"><b aria-hidden="true">—</b>4s</span><span class="out" style="flex:4"><b aria-hidden="true">↓</b>4s</span><span class="hold2" style="flex:4"><b aria-hidden="true">—</b>4s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">A long pause and a longer exhale to unwind.</p></div>
-          <div class="bar" style="--pc:var(--aqua);--cycle:19s"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:7">7s</span><span class="out" style="flex:8">8s</span><i class="cursor"></i></div>
+          <div class="bar" style="--pc:var(--aqua);--cycle:19s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:7"><b aria-hidden="true">—</b>7s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br4Title">Your own</h3><p data-i18n="br4Text">Set every phase to the second.</p></div>
           <div class="bar custom" style="--pc:var(--green)"><span data-i18n="br4Bar">Inhale, hold, exhale, hold: your choice</span></div>
         </div>
       </div>
-      <div class="legend"><span><i style="background:var(--cyan)"></i><span data-i18n="brIn">Inhale</span></span><span><i style="background:color-mix(in srgb, var(--cyan) 70%, transparent)"></i><span data-i18n="brHold">Hold</span></span><span><i style="background:color-mix(in srgb, var(--cyan) 50%, transparent)"></i><span data-i18n="brOut">Exhale</span></span></div>
+      <div class="legend phase-legend"><span><b aria-hidden="true">↑</b><span data-i18n="brIn">Inhale</span></span><span><b aria-hidden="true">—</b><span data-i18n="brHold">Hold</span></span><span><b aria-hidden="true">↓</b><span data-i18n="brOut">Exhale</span></span></div>
     </div>
   </section>
 
@@ -618,7 +620,7 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012c"></script>
+<script src="i18n.js?v=20261012d"></script>
 <script>
 (function () {
   var html = document.documentElement;
