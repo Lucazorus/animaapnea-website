@@ -45,3 +45,22 @@ a.entry p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
   main.index-main { padding: 6.5rem 1rem 3rem; }
   .entries { grid-template-columns: 1fr; }
 }
+
+/* Vignettes : premier graphique ou schéma de chaque article */
+.thumb {
+  height: 150px; margin-bottom: 1rem; padding: 14px 16px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  overflow: hidden; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.thumb > div, .thumb > svg { width: 100%; height: 100%; }
+.thumb svg { width: 100%; height: 100%; display: block; overflow: hidden; }
+.thumb .c-tick, .thumb .c-lab, .thumb .c-lab-strong, .thumb .c-warn-t { font-size: 13px; }
+a.entry { padding-top: 1.8rem; }
+a.feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 2rem; align-items: center; }
+a.feature .thumb { order: 2; height: 230px; margin: 0; background: var(--bg); }
+@media (max-width: 760px) {
+  a.feature { grid-template-columns: 1fr; gap: 1.2rem; }
+  a.feature .thumb { order: 0; height: 180px; }
+  .thumb { height: 130px; }
+}

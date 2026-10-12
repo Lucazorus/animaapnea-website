@@ -6,7 +6,7 @@
 2. Generates the blog index for each language: /blog/index.html (en) and /blog/<lang>/index.html.
 3. Regenerates /sitemap.xml.
 """
-import html, json, os, re
+import html, json, os, re, zlib
 
 BLOG = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.dirname(BLOG)
@@ -65,6 +65,24 @@ def page_meta(path):
     }
 
 
+def first_visual(path):
+    """Premier visuel de l'article (graphique JS ou schéma SVG), sans légende,
+    pour la vignette de l'index. Les calculateurs sont ignorés."""
+    s = open(path, encoding='utf-8').read()
+    for fig in re.findall(r'<figure class="fig[^"]*">(.*?)</figure>', s, re.S):
+        m = re.search(r'(<div data-chart="[^"]+"[^>]*>\s*</div>)', fig, re.S)
+        if m: return m.group(1)
+        m = re.search(r'(<svg\b.*?</svg>)', fig, re.S)
+        if m:
+            svg = m.group(1)
+            # ids uniques par vignette (marqueurs de flèches, dégradés)
+            uid = 'v' + format(zlib.crc32(path.encode()) % 100000)
+            for i in set(re.findall(r'id="([^"]+)"', svg)):
+                svg = svg.replace(f'id="{i}"', f'id="{uid}-{i}"').replace(f'url(#{i})', f'url(#{uid}-{i})')
+            return svg
+    return ''
+
+
 def short_title(lang, fname):
     p = os.path.join(BLOG, lang, fname)
     if not os.path.exists(p): return None
@@ -114,8 +132,10 @@ def index_page(lang):
         m = page_meta(p)
         mins = f'<span class="mins">{m["mins"]} {u["read"]}</span>' if m['mins'] else ''
         cls = 'feature' if big else 'entry'
-        return (f'<a class="{cls}" href="{prefix}{REG[art_id][lang]}">'
-                f'<h3>{html.escape(m["title"])}</h3><p>{html.escape(m["dek"])}</p>{mins}</a>')
+        vis = first_visual(p)
+        thumb = f'<div class="thumb" aria-hidden="true">{vis}</div>' if vis else ''
+        return (f'<a class="{cls}" href="{prefix}{REG[art_id][lang]}">{thumb}'
+                f'<div class="card-text"><h3>{html.escape(m["title"])}</h3><p>{html.escape(m["dek"])}</p>{mins}</div></a>')
 
     groups = ''
     for key, ids in GROUPS:
@@ -165,6 +185,7 @@ def index_page(lang):
     <p>© 2026 Anima Apnea · <a href="/privacy/{lang}.html">{u["privacy"]}</a></p>
   </footer>
 <script src="{root}lang.js?v=20261012c"></script>
+<script src="{root}article.js?v=20261012c"></script>
 </body>
 </html>
 '''
