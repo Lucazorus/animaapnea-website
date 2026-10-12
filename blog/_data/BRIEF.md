@@ -76,7 +76,7 @@ related articles (`.related`).
 ## Byline / author box (translate)
 
 Byline: initials avatar "LM", "Lucas Massoni", "Founder of Anima Apnea", "Updated 12 October 2026" (localized date), "N min read".
-Author box text: "Creator of Anima Apnea, the static apnea training app. He writes about method, physiology and safety in breath-hold training." Do not invent credentials.
+Author box text (meaning): Lucas built Anima Apnea; a diver in his spare time and an ocean lover, he trains his breath-hold to stay underwater longer and watch marine life; he writes about method, physiology and safe training. Do not invent credentials.
 
 ## Related articles
 

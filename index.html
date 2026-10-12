@@ -9,7 +9,7 @@
   <meta property="og:title" content="Anima Apnea · Static apnea training for iPhone">
   <meta property="og:description" content="A breath-hold timer that logs your contractions, CO₂ and O₂ tables built from your record, guided breathing and 4-week plans.">
   <meta property="og:image" content="https://www.animaapnea.com/og-image.png">
-  <meta property="og:url" content="https://www.animaapnea.com">
+  <meta property="og:url" content="https://www.animaapnea.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Anima Apnea">
   <meta name="twitter:card" content="summary_large_image">
@@ -17,25 +17,25 @@
 
   <link rel="canonical" href="https://www.animaapnea.com/">
   <link rel="alternate" hreflang="en" href="https://www.animaapnea.com/">
-  <link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/?lang=fr">
-  <link rel="alternate" hreflang="es" href="https://www.animaapnea.com/?lang=es">
-  <link rel="alternate" hreflang="de" href="https://www.animaapnea.com/?lang=de">
-  <link rel="alternate" hreflang="it" href="https://www.animaapnea.com/?lang=it">
-  <link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/?lang=pt">
-  <link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/?lang=ja">
-  <link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/?lang=zh">
-  <link rel="alternate" hreflang="da" href="https://www.animaapnea.com/?lang=da">
-  <link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/?lang=nl">
-  <link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/?lang=hi">
-  <link rel="alternate" hreflang="id" href="https://www.animaapnea.com/?lang=id">
-  <link rel="alternate" hreflang="th" href="https://www.animaapnea.com/?lang=th">
-  <link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/?lang=vi">
+  <link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/">
+  <link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/">
+  <link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/">
+  <link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/">
+  <link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/">
+  <link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/">
+  <link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/">
+  <link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/">
+  <link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/">
+  <link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/">
+  <link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/">
+  <link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/">
   <link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/">
 
   <meta name="apple-itunes-app" content="app-id=6760680506">
   <meta name="theme-color" content="#050D1A">
-  <link rel="icon" type="image/png" href="logo-256.png">
-  <link rel="apple-touch-icon" href="logo-256.png">
+  <link rel="icon" type="image/png" href="/logo-256.png">
+  <link rel="apple-touch-icon" href="/logo-256.png">
 
 
   <script type="application/ld+json">
@@ -440,7 +440,7 @@
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a href="/" class="brand"><img src="logo-256.png" alt="" width="30" height="30"><span>Anima Apnea</span></a>
+    <a href="/" class="brand"><img src="/logo-256.png" alt="" width="30" height="30"><span>Anima Apnea</span></a>
     <div class="nav-right">
       <a class="nav-link" href="/blog/" data-blog-index data-i18n="navGuides">Guides</a>
       <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
@@ -651,8 +651,8 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012i"></script>
-<script src="guides-index.js?v=20261012i"></script>
+<script src="/i18n.js?v=20261012i"></script>
+<script src="/guides-index.js?v=20261012i"></script>
 <script>
 (function () {
   var html = document.documentElement;
@@ -712,7 +712,11 @@
     var b = document.createElement('button');
     b.type = 'button'; b.dataset.code = code; b.setAttribute('role', 'menuitem');
     b.textContent = I18N[code].label;
-    b.addEventListener('click', function () { setLang(code, true); closeMenu(); });
+    b.addEventListener('click', function () {
+      store('lang', code); store('lang_explicit', '1');
+      if (code === lang) { closeMenu(); return; }
+      location.href = code === 'en' ? '/' : '/' + code + '/';
+    });
     langMenu.appendChild(b);
   });
   // ── Liens vers les guides du sujet (titres réels des articles, langue courante) ──
@@ -931,11 +935,15 @@
     grid.classList.add('play');
   }
 
-  // ── Initial language: ?lang= > explicit choice > browser ──
-  var urlLang = new URLSearchParams(location.search).get('lang');
-  var stored = read('lang');
-  var browser = (navigator.language || 'en').slice(0, 2);
-  setLang(I18N[urlLang] ? urlLang : (stored && I18N[stored]) ? stored : (I18N[browser] ? browser : 'en'), !!(urlLang && I18N[urlLang]));
+  // ── Langue = celle de la page (une URL par langue : /, /fr/, /es/…) ──
+  var pageLang = html.lang && I18N[html.lang] ? html.lang : 'en';
+  if (pageLang === 'en' && location.pathname === '/') {
+    // Racine : anciens liens ?lang=xx, choix explicite, puis langue de l'appareil.
+    var urlLang = new URLSearchParams(location.search).get('lang');
+    var pref = I18N[urlLang] ? urlLang : (read('lang_explicit') === '1' ? read('lang') : (navigator.language || '').slice(0, 2).toLowerCase());
+    if (pref && pref !== 'en' && I18N[pref]) { location.replace('/' + pref + '/'); return; }
+  }
+  setLang(pageLang, false);
 })();
 </script>
 </body>

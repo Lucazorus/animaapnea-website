@@ -220,8 +220,9 @@ def sitemap():
         x.append('  </url>')
         return '\n'.join(x)
 
-    home_alts = [(l, f'{BASE}/' if l == 'en' else f'{BASE}/?lang={l}') for l in LANGS] + [('x-default', f'{BASE}/')]
-    parts.append(entry(f'{BASE}/', home_alts, TODAY, '1.0'))
+    home_alts = [(l, f'{BASE}/' if l == 'en' else f'{BASE}/{l}/') for l in LANGS] + [('x-default', f'{BASE}/')]
+    for l in LANGS:
+        parts.append(entry(f'{BASE}/' if l == 'en' else f'{BASE}/{l}/', home_alts, TODAY, '1.0'))
     idx_alts = [(l, f'{BASE}/blog/' if l == 'en' else f'{BASE}/blog/{l}/') for l in LANGS] + [('x-default', f'{BASE}/blog/')]
     for l in LANGS:
         parts.append(entry(f'{BASE}/blog/' if l == 'en' else f'{BASE}/blog/{l}/', idx_alts, TODAY, '0.8'))

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anima Apnea · 息止めを、もっと長く。心は静かなまま。</title>
+  <meta name="description" content="Anima Apneaは、iPhone向けのスタティックアプネア・トレーナーです。収縮を記録する息止めタイマー、自己ベストから作るCO₂・O₂テーブル、呼吸ガイド、4週間プランを備えています。">
+
+  <meta property="og:title" content="Anima Apnea · 息止めを、もっと長く。心は静かなまま。">
+  <meta property="og:description" content="Anima Apneaは、iPhone向けのスタティックアプネア・トレーナーです。収縮を記録する息止めタイマー、自己ベストから作るCO₂・O₂テーブル、呼吸ガイド、4週間プランを備えています。">
+  <meta property="og:image" content="https://www.animaapnea.com/og-image.png">
+  <meta property="og:url" content="https://www.animaapnea.com/ja/">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Anima Apnea">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.animaapnea.com/og-image.png">
+
+  <link rel="canonical" href="https://www.animaapnea.com/ja/">
+  <link rel="alternate" hreflang="en" href="https://www.animaapnea.com/">
+  <link rel="alternate" hreflang="fr" href="https://www.animaapnea.com/fr/">
+  <link rel="alternate" hreflang="es" href="https://www.animaapnea.com/es/">
+  <link rel="alternate" hreflang="de" href="https://www.animaapnea.com/de/">
+  <link rel="alternate" hreflang="it" href="https://www.animaapnea.com/it/">
+  <link rel="alternate" hreflang="pt" href="https://www.animaapnea.com/pt/">
+  <link rel="alternate" hreflang="ja" href="https://www.animaapnea.com/ja/">
+  <link rel="alternate" hreflang="zh" href="https://www.animaapnea.com/zh/">
+  <link rel="alternate" hreflang="da" href="https://www.animaapnea.com/da/">
+  <link rel="alternate" hreflang="nl" href="https://www.animaapnea.com/nl/">
+  <link rel="alternate" hreflang="hi" href="https://www.animaapnea.com/hi/">
+  <link rel="alternate" hreflang="id" href="https://www.animaapnea.com/id/">
+  <link rel="alternate" hreflang="th" href="https://www.animaapnea.com/th/">
+  <link rel="alternate" hreflang="vi" href="https://www.animaapnea.com/vi/">
+  <link rel="alternate" hreflang="x-default" href="https://www.animaapnea.com/">
+
+  <meta name="apple-itunes-app" content="app-id=6760680506">
+  <meta name="theme-color" content="#050D1A">
+  <link rel="icon" type="image/png" href="/logo-256.png">
+  <link rel="apple-touch-icon" href="/logo-256.png">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Anima Apnea",
+    "operatingSystem": "iOS",
+    "applicationCategory": "HealthApplication",
+    "description": "Static apnea training app: breath-hold timer with contraction tracking, CO₂ and O₂ tables built from your personal record, guided breathing exercises, progress charts and 4-week training plans.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "author": {"@type": "Person", "name": "Lucas Massoni"},
+    "url": "https://www.animaapnea.com",
+    "downloadUrl": "https://apps.apple.com/app/anima-apnea/id6760680506",
+    "image": "https://www.animaapnea.com/logo.png"
+  }
+  </script>
+
+  <script>
+    // Apply the stored theme before first paint (shared key with the blog)
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        var light = t ? t === 'sepia' : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('sepia');
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    /* Anima app palette (lib/theme/app_colors.dart) and its meanings:
+       cyan = CO₂ table / main accent, aqua = O₂ table, teal = box breathing,
+       green = recovery & breathing, yellow = apnea, records, contractions. */
+    :root {
+      --abyss: #050D1A;
+      --deep: #0C1829;
+      --deeper: #112035;
+      --foam: #FFFFFF;
+      --mist: rgba(255,255,255,0.80);
+      --haze: rgba(255,255,255,0.60);
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.20);
+      --cyan: #6F9CAF;
+      --aqua: #6FAFAC;
+      --teal: #70AAAF;
+      --green: #70AF84;
+      --yellow: #FFCF56;
+      --ripple: rgba(111,156,175,0.40);
+      --rest: rgba(112,175,132,0.42);
+      --on-accent: #FFFFFF;
+      /* Same type as the app: the system font (SF Pro on Apple devices), see lib/theme/typography.md */
+      --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --measure: 34rem;
+      --gutter: clamp(1rem, 4vw, 3rem);
+    }
+    html.sepia {
+      --abyss: #FBF0E3;
+      --deep: #F5F4EF;
+      --deeper: #EBEAE3;
+      --foam: #2C2A22;
+      --mist: #585040;
+      --haze: #7E7A6E;
+      --line: rgba(58,56,40,0.12);
+      --line-strong: rgba(58,56,40,0.20);
+      --cyan: #5B8799;
+      --yellow: #BF8705;
+      --ripple: rgba(91,135,153,0.35);
+      --rest: rgba(112,175,132,0.45);
+      --on-accent: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--foam);
+      background: var(--abyss);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--abyss) 82%, transparent);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
+    }
+    .nav.scrolled { border-bottom-color: var(--line); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; font-weight: 600; font-size: .98rem; letter-spacing: -.01em; }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .nav-right { display: flex; align-items: center; gap: .4rem; }
+    .nav-link { font-size: .9rem; color: var(--mist); text-decoration: none; padding: .45rem .7rem; border-radius: 8px; }
+    .nav-link:hover { color: var(--foam); }
+    .icon-btn, .lang-btn {
+      height: 36px; min-width: 36px; padding: 0 .6rem; border-radius: 9px;
+      border: 1px solid var(--line); background: transparent; color: var(--foam);
+      font: 500 .82rem var(--sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+    }
+    .icon-btn:hover, .lang-btn:hover { border-color: var(--line-strong); }
+    .icon-btn svg { width: 17px; height: 17px; }
+    .lang-select { position: relative; }
+    .lang-menu {
+      display: none; position: absolute; right: 0; top: calc(100% + 8px);
+      background: var(--deep); border: 1px solid var(--line-strong); border-radius: 12px;
+      padding: .35rem; min-width: 168px; max-height: 70vh; overflow: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    .lang-menu.open { display: block; }
+    .lang-menu button {
+      display: block; width: 100%; text-align: left; border: 0; background: none; color: var(--mist);
+      font: 400 .88rem var(--sans); padding: .5rem .7rem; border-radius: 8px; cursor: pointer;
+    }
+    .lang-menu button:hover, .lang-menu button[aria-current="true"] { background: var(--line); color: var(--foam); }
+
+    /* ── Buttons ── */
+    .store-btn {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: var(--foam); color: var(--abyss); text-decoration: none;
+      padding: .8rem 1.35rem .8rem 1.1rem; border-radius: 14px; font-weight: 600; font-size: .98rem;
+      transition: transform .2s;
+    }
+    .store-btn:hover { transform: translateY(-1px); }
+    .store-btn svg { width: 22px; height: 22px; fill: currentColor; }
+    .store-btn small { display: block; font-weight: 400; font-size: .72rem; opacity: .7; line-height: 1.1; }
+    .store-btn span { line-height: 1.2; }
+    .free-note { font-size: .85rem; color: var(--haze); margin-top: .9rem; }
+
+    /* ── Hero ── */
+    .hero { position: relative; padding: clamp(3rem, 8vh, 6rem) 0 clamp(4rem, 10vh, 7rem); overflow: hidden; }
+    .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .hero h1 {
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+      line-height: 1.04; letter-spacing: -.03em;
+      margin-bottom: 1.6rem; max-width: 12ch;
+    }
+    .hero .lede { color: var(--mist); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: var(--measure); margin-bottom: 2.2rem; }
+
+    /* Hold dial — the one loud element */
+    .dial-wrap { display: flex; flex-direction: column; align-items: center; }
+    .dial {
+      position: relative; width: min(440px, 82vw); aspect-ratio: 1; border-radius: 50%;
+      display: grid; place-items: center; touch-action: none; user-select: none; -webkit-user-select: none;
+    }
+    .dial svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .ring-track { fill: none; stroke: var(--line); stroke-width: 1.5; }
+    .ring-fill { fill: none; stroke: url(#cyanTeal); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset .1s linear; }
+    .ripples { position: absolute; inset: 14%; border-radius: 50%; pointer-events: none; }
+    .ripples i {
+      position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--ripple); opacity: 0;
+    }
+    .dial.holding .ripples i { animation: ripple 4.8s cubic-bezier(.2,.6,.3,1) infinite; }
+    .dial.holding .ripples i:nth-child(2) { animation-delay: 1.6s; }
+    .dial.holding .ripples i:nth-child(3) { animation-delay: 3.2s; }
+    @keyframes ripple { 0% { transform: scale(.55); opacity: .9; } 100% { transform: scale(1.18); opacity: 0; } }
+
+    .dial-core { position: relative; text-align: center; }
+    .clock {
+      font-weight: 100;
+      font-size: clamp(4.4rem, 11.5vw, 7.6rem); line-height: 1; letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums lining-nums;
+      display: inline-flex; align-items: baseline;
+    }
+    .clock .d { display: inline-block; width: .58em; text-align: center; }
+    .clock .c { display: inline-block; width: .28em; text-align: center; opacity: .5; transform: translateY(-.06em); }
+    .dial-state { margin-top: .8rem; font-size: .92rem; color: var(--mist); min-height: 1.5em; }
+    .hold-btn {
+      margin-top: 1.4rem; border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--cyan) 10%, transparent);
+      color: var(--foam); font: 500 .95rem var(--sans); padding: .85rem 1.6rem; border-radius: 99px; cursor: pointer;
+      touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+      transition: background .2s, border-color .2s;
+    }
+    .hold-btn:hover { border-color: var(--cyan); }
+    .dial.holding + .hold-btn, .hold-btn[aria-pressed="true"] { background: var(--cyan); border-color: var(--cyan); color: var(--on-accent); }
+    .dial-hint { margin-top: .9rem; font-size: .8rem; color: var(--haze); text-align: center; max-width: 30ch; }
+
+    /* ── Sections ── */
+    section.block { padding: clamp(4.5rem, 11vh, 8rem) 0; border-top: 1px solid var(--line); }
+    .block-head { max-width: 40rem; margin-bottom: clamp(2.2rem, 5vh, 3.5rem); }
+    .block-head h2 {
+      font-weight: 700;
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem;
+    }
+    .block-head p { color: var(--mist); max-width: var(--measure); }
+
+    /* Phases of a hold (a real sequence) */
+    .hold-line { position: relative; margin: 0 0 2.4rem; }
+    .hold-line svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .hl-base { stroke: var(--line-strong); stroke-width: 2; }
+    .hl-easy { stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; }
+    .hl-struggle { stroke: var(--yellow); stroke-width: 4; stroke-linecap: round; opacity: .55; }
+    .hl-tick { stroke: var(--yellow); stroke-width: 2; stroke-linecap: round; }
+    .hl-first { fill: var(--abyss); stroke: var(--yellow); stroke-width: 2.5; }
+    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 3rem); counter-reset: ph; }
+    .phase { counter-increment: ph; }
+    .phase h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .5rem; display: flex; gap: .6rem; align-items: baseline; }
+    .phase h3::before { content: counter(ph); font-weight: 100; font-size: 1.6rem; font-variant-numeric: tabular-nums; color: var(--cyan); }
+    .phase:nth-child(n+2) h3::before { color: var(--yellow); }
+    .phase p { color: var(--mist); font-size: .98rem; }
+
+    /* Tables */
+    .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+    .facts { list-style: none; margin-top: 1.8rem; border-top: 1px solid var(--line); }
+    .facts li { padding: .9rem 0; border-bottom: 1px solid var(--line); color: var(--mist); font-size: .98rem; }
+    .facts strong { color: var(--foam); font-weight: 600; }
+    .table-demo { background: var(--deep); border: 1px solid var(--line); border-radius: 22px; padding: clamp(1.2rem, 3vw, 2rem); }
+    .td-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+    .td-top label { font-size: .9rem; color: var(--mist); }
+    .td-pr { font-size: 2.8rem; font-weight: 100; font-variant-numeric: tabular-nums; }
+    .table-demo input[type=range] { width: 100%; margin: 1rem 0 1.4rem; accent-color: var(--cyan); height: 28px; }
+    .td-sum { display: flex; gap: 2rem; flex-wrap: wrap; font-size: .9rem; color: var(--mist); margin-bottom: 1.2rem; }
+    .td-sum b { display: block; color: var(--foam); font-weight: 600; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+    .td-chart svg { width: 100%; height: auto; display: block; }
+    .c-grid { stroke: var(--line); }
+    .c-tick { fill: var(--haze); font: 11px var(--sans); font-variant-numeric: tabular-nums; }
+    .c-lab { fill: var(--mist); font: 500 12px var(--sans); font-variant-numeric: tabular-nums; }
+    .c-rest { fill: var(--rest); }
+    .c-hold { fill: var(--cyan); }
+    .table-demo.o2 .c-hold { fill: var(--aqua); }
+    .td-hold-swatch { background: var(--cyan); }
+    .table-demo.o2 .td-hold-swatch { background: var(--aqua); }
+    .table-demo.o2 input[type=range] { accent-color: var(--aqua); }
+    .td-switch { display: inline-flex; padding: 3px; gap: 3px; border-radius: 12px; background: var(--abyss); border: 1px solid var(--line); margin-bottom: 1.2rem; }
+    .td-switch button { border: 0; background: none; color: var(--mist); font: 600 .95rem var(--sans); padding: .5rem 1.2rem; border-radius: 9px; cursor: pointer; min-height: 40px; }
+    .td-switch button[aria-selected="true"] { background: var(--deep); color: var(--foam); box-shadow: 0 1px 0 var(--line-strong) inset; }
+    .td-switch button[data-kind="co2"][aria-selected="true"] { color: var(--cyan); }
+    .td-switch button[data-kind="o2"][aria-selected="true"] { color: var(--aqua); }
+    .legend { display: flex; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
+
+    /* Breathing patterns */
+    .patterns { display: grid; gap: 0; border-top: 1px solid var(--line); }
+    .pattern { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 2rem; align-items: center; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+    .pattern h3 { font-size: 1.05rem; font-weight: 600; }
+    .pattern p { font-size: .9rem; color: var(--haze); }
+    .bar { display: flex; gap: 4px; height: 44px; }
+    .bar span {
+      border-radius: 8px; display: flex; align-items: center; padding: 0 .7rem;
+      font-size: .78rem; color: var(--foam); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden;
+    }
+    /* Same phase opacities as the app's breathing screen (breathing_page.dart) */
+    .bar .in { background: var(--pc); color: #FFFFFF; }
+    .bar .hold { background: color-mix(in srgb, var(--pc) 70%, transparent); }
+    .bar .out { background: color-mix(in srgb, var(--pc) 50%, transparent); }
+    .bar .hold2 { background: color-mix(in srgb, var(--pc) 40%, transparent); }
+    .bar span b { font-weight: 600; margin-right: .3rem; }
+    .phase-legend b { font-weight: 600; margin-right: .35rem; color: var(--foam); }
+    .bar span { min-width: 0; }
+    .bar.custom span { border: 1px dashed var(--green); background: none; color: var(--haze); flex: 1; }
+
+    /* Plan grid */
+    .plan { display: grid; grid-template-columns: auto repeat(7, 1fr); gap: 6px; align-items: center; }
+    .plan .wk { font-size: .8rem; color: var(--haze); padding-right: .6rem; white-space: nowrap; }
+    .plan .dow { font-size: .75rem; color: var(--haze); text-align: center; padding-bottom: .2rem; }
+    .plan .cell { aspect-ratio: 1; border-radius: 9px; background: var(--deep); border: 1px solid var(--line); }
+    .plan .cell.co2 { background: var(--cyan); border-color: transparent; }
+    .plan .cell.o2 { background: var(--aqua); border-color: transparent; }
+    .plan .cell.br { background: color-mix(in srgb, var(--green) 45%, transparent); border-color: transparent; }
+    .plan .cell.r { background: var(--yellow); border-color: transparent; }
+    .plan-legend { display: flex; flex-wrap: wrap; gap: 1.2rem; font-size: .8rem; color: var(--haze); margin-top: 1rem; }
+    .plan-legend i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: .4rem; vertical-align: -1px; }
+    .extras { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 2.5rem; }
+    .extras h3 { font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
+    .extras p { font-size: .94rem; color: var(--mist); }
+
+    /* Guides */
+    .guides { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .guide { padding: 1.8rem 1.8rem 1.8rem 0; text-decoration: none; display: block; border-bottom: 1px solid var(--line); }
+    .guide + .guide { padding-left: 1.8rem; border-left: 1px solid var(--line); }
+    .guide h3 { font-weight: 700; font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.25; margin-bottom: .6rem; }
+    .guide p { font-size: .94rem; color: var(--mist); }
+    .guide:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    [data-guide-link] a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    [data-guide-link] a:hover { text-decoration-color: currentColor; }
+    .topic-guides { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.6rem; }
+    .topic-guides:empty { display: none; }
+    .topic-guides a {
+      display: inline-flex; align-items: center; gap: .45rem; min-height: 40px;
+      padding: .5rem .85rem; border-radius: 10px; border: 1px solid var(--line);
+      color: var(--mist); text-decoration: none; font-size: .88rem; line-height: 1.3;
+    }
+    .topic-guides a:hover { border-color: var(--line-strong); color: var(--foam); }
+    .topic-guides svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--cyan); }
+    .all-guides { display: inline-block; margin-top: 1.6rem; color: var(--cyan); font-weight: 500; text-decoration: none; font-size: .95rem; }
+    .all-guides:hover { text-decoration: underline; }
+
+    /* Closing */
+    .closing { padding: clamp(5rem, 14vh, 9rem) 0; border-top: 1px solid var(--line); text-align: center; }
+    .closing h2 { font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.06; letter-spacing: -.03em; margin: 0 auto 1.2rem; max-width: 16ch; }
+    .closing p { color: var(--mist); margin: 0 auto 2.2rem; max-width: 32rem; }
+    .safety { margin: 3rem auto 0; max-width: 34rem; font-size: .85rem; color: var(--haze); padding-top: 1.4rem; border-top: 1px solid var(--line); }
+
+    footer { border-top: 1px solid var(--line); padding: 2rem 0 2.6rem; font-size: .85rem; color: var(--haze); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    footer nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+    footer a, footer button { color: var(--mist); text-decoration: none; background: none; border: 0; font: inherit; cursor: pointer; }
+    footer a:hover, footer button:hover { color: var(--foam); }
+
+    /* Page-load sequence: the only ambient motion */
+    .rise { opacity: 0; transform: translateY(14px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+    .rise.d1 { animation-delay: .05s; } .rise.d2 { animation-delay: .18s; } .rise.d3 { animation-delay: .3s; } .rise.d4 { animation-delay: .45s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    /* ── Motion: each animation shows something real ── */
+
+    /* Idle dial breathes on the app's diaphragmatic rhythm: 4 s in, 8 s out */
+    .breath {
+      position: absolute; inset: 9%; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 28%, transparent) 0%, color-mix(in srgb, var(--cyan) 10%, transparent) 50%, transparent 70%);
+      transform: scale(.78); opacity: .55;
+      animation: breathe 12s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%   { transform: scale(.78); opacity: .45; }
+      33%  { transform: scale(1);   opacity: 1; }
+      100% { transform: scale(.78); opacity: .45; }
+    }
+    .dial.holding .breath { animation-play-state: paused; opacity: .9; }
+
+    /* Phases line: draws, first contraction pops, contractions speed up */
+    .hold-line .hl-easy, .hold-line .hl-struggle { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+    .hold-line .hl-first { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+    .hold-line .hl-tick { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scaleY(.2); }
+    .hold-line.play .hl-easy { animation: draw 1.4s cubic-bezier(.4,0,.2,1) forwards; }
+    .hold-line.play .hl-first { animation: pop .5s 1.35s cubic-bezier(.3,1.6,.5,1) forwards; }
+    .hold-line.play .hl-struggle { animation: draw 2.6s 1.5s linear forwards; }
+    .hold-line.play .hl-tick { animation: tick .35s cubic-bezier(.3,1.6,.5,1) forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pop { to { transform: scale(1); } }
+    @keyframes tick { to { opacity: 1; transform: scaleY(1); } }
+    .phases .phase { transition: opacity .6s, transform .6s; }
+    .hold-line:not(.play) + .phases .phase { opacity: .35; }
+    .hold-line.play + .phases .phase:nth-child(1) { transition-delay: .2s; }
+    .hold-line.play + .phases .phase:nth-child(2) { transition-delay: 1.4s; }
+    .hold-line.play + .phases .phase:nth-child(3) { transition-delay: 2.2s; }
+
+    /* CO2 table builds round by round */
+    .td-chart.build rect { transform-box: fill-box; transform-origin: left center; animation: grow .55s cubic-bezier(.3,.8,.3,1) both; }
+    .td-chart.build text { animation: fadein .4s both; }
+    @keyframes grow { from { transform: scaleX(0); } }
+    @keyframes fadein { from { opacity: 0; } }
+
+    /* Breathing patterns: a cursor runs through each cycle in real time */
+    .bar { position: relative; }
+    .bar .cursor {
+      position: absolute; top: -4px; bottom: -4px; left: 0; width: 2px; border-radius: 2px;
+      background: var(--foam); box-shadow: 0 0 10px var(--pc);
+      animation: sweep var(--cycle) linear infinite; animation-play-state: paused;
+    }
+    #breathing.live .bar .cursor { animation-play-state: running; }
+    @keyframes sweep { from { left: 0; } to { left: calc(100% - 2px); } }
+
+    /* Plan fills in, record attempts light up */
+    .plan .cell { transition: transform .4s cubic-bezier(.3,1.5,.5,1), opacity .4s; }
+    .plan:not(.play) .cell.co2, .plan:not(.play) .cell.o2, .plan:not(.play) .cell.br, .plan:not(.play) .cell.r { transform: scale(.4); opacity: 0; }
+    .plan.play .cell.r { animation: glow 2.4s 1.4s ease-in-out 2; }
+    @keyframes glow { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--yellow) 25%, transparent); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .breath, .hold-line .hl-easy, .hold-line .hl-struggle, .hold-line .hl-first, .hold-line .hl-tick,
+      .td-chart.build rect, .td-chart.build text, .bar .cursor, .plan .cell { animation: none !important; transition: none !important; }
+      .hold-line .hl-easy, .hold-line .hl-struggle { stroke-dashoffset: 0; }
+      .hold-line .hl-first, .hold-line .hl-tick { transform: none; opacity: 1; }
+      .hold-line:not(.play) + .phases .phase { opacity: 1; }
+      .plan:not(.play) .cell.co2, .plan:not(.play) .cell.o2, .plan:not(.play) .cell.br, .plan:not(.play) .cell.r { transform: none; opacity: 1; }
+      .bar .cursor { display: none; }
+
+      .rise { animation: none; opacity: 1; transform: none; }
+      .dial.holding .ripples i { animation: none; }
+      .store-btn:hover { transform: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero .wrap, .split { grid-template-columns: 1fr; }
+      .hero h1 { max-width: 14ch; }
+      .phases { grid-template-columns: 1fr; }
+      .pattern { grid-template-columns: 1fr; gap: .8rem; }
+      .guides { grid-template-columns: 1fr; }
+      .guide, .guide + .guide { padding: 1.5rem 0; border-left: 0; }
+    }
+    @media (max-width: 560px) {
+      .nav-link { display: none; }
+      .extras { grid-template-columns: 1fr; }
+      .plan { gap: 4px; }
+      .plan .cell { border-radius: 6px; }
+      .bar span { padding: 0 .4rem; font-size: .72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="/" class="brand"><img src="/logo-256.png" alt="" width="30" height="30"><span>Anima Apnea</span></a>
+    <div class="nav-right">
+      <a class="nav-link" href="/blog/ja/" data-blog-index data-i18n="navGuides">ガイド</a>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <div class="lang-select">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="langCode">EN</span></button>
+        <div class="lang-menu" id="langMenu" role="menu"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 class="rise d1" data-i18n="heroTitle">息止めを、もっと長く。心は静かなまま。</h1>
+        <p class="lede rise d2" data-i18n="heroLede">Anima Apneaは、iPhone向けのスタティックアプネア・トレーナーです。収縮を記録する息止めタイマー、自己ベストから作るCO₂・O₂テーブル、呼吸ガイド、4週間プランを備えています。</p>
+        <div class="rise d3">
+          <a class="store-btn" href="https://apps.apple.com/app/anima-apnea/id6760680506" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <span><small data-i18n="storeSmall">ダウンロード</small>App Store</span>
+          </a>
+          <p class="free-note" data-i18n="freeNote">無料でダウンロード。オフラインでも使えます。</p>
+        </div>
+      </div>
+
+      <div class="dial-wrap rise d4">
+        <div class="dial" id="dial" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="cyanTeal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--cyan)"/><stop offset="1" stop-color="var(--teal)"/>
+              </linearGradient>
+            </defs>
+            <circle class="ring-track" cx="100" cy="100" r="96"/>
+            <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="96" stroke-dasharray="603.19" stroke-dashoffset="603.19"/>
+          </svg>
+          <div class="breath"></div>
+          <div class="ripples"><i></i><i></i><i></i></div>
+          <div class="dial-core">
+            <div class="clock" id="clock"><span class="d">0</span><span class="c">:</span><span class="d">0</span><span class="d">0</span></div>
+            <div class="dial-state" id="dialState" aria-live="polite" data-i18n="dialIdle">ここで息止めを試してみましょう。</div>
+          </div>
+        </div>
+        <button class="hold-btn" id="holdBtn" type="button" aria-pressed="false" data-i18n="holdIdle">長押し</button>
+        <p class="dial-hint" data-i18n="dialHint">楽な姿勢で座り、静かに息を吐いてから止めます。息をしたら指を離してください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="phases">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="phTitle">息止めには3つの段階があります。</h2>
+        <p data-i18n="phLede">今どの段階にいるかが分かれば、落ち着いて乗り切れます。Animaのタイマーは、この瞬間を軸に設計されています。</p>
+      </div>
+      <div class="hold-line" id="holdLine" aria-hidden="true">
+        <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+          <line x1="0" y1="30" x2="1000" y2="30" class="hl-base"/>
+          <line x1="2" y1="30" x2="470" y2="30" class="hl-easy"/>
+          <line x1="470" y1="30" x2="998" y2="30" class="hl-struggle"/>
+          <g id="ticks"></g>
+          <circle cx="470" cy="30" r="9" class="hl-first"/>
+        </svg>
+      </div>
+      <div class="phases">
+        <div class="phase">
+          <h3 data-i18n="ph1Title">イージーフェーズ</h3>
+          <p data-i18n="ph1Text">まだ苦しさはありません。酸素は十分にあり、やるべきことは力を抜くことだけです。あご、肩、手。</p>
+        </div>
+        <div class="phase">
+          <h3 data-guide-link="contractions" data-i18n="ph2Title">最初の収縮</h3>
+          <p data-i18n="ph2Text">横隔膜がひとりでに動きます。原因は酸素不足ではなく、CO₂の上昇です。画面をタップすると、Animaがその瞬間を記録します。</p>
+        </div>
+        <div class="phase">
+          <h3 data-guide-link="contractions" data-i18n="ph3Title">ストラグルフェーズ</h3>
+          <p data-i18n="ph3Text">収縮の間隔が短くなっていきます。トレーニングの目的は、力まずにやり過ごすこと。そして週を重ねるごとに、最初のタップが遅くなっていくのを確かめることです。</p>
+        </div>
+      </div>
+      <nav class="topic-guides" data-guides="contractions,blackout"></nav>
+    </div>
+  </section>
+
+  <section class="block" id="tables">
+    <div class="wrap split">
+      <div>
+        <div class="block-head">
+          <h2 data-i18n="tbTitle">自己ベストから作るテーブル。</h2>
+          <p data-i18n="tbLede">スタティックの自己ベストを入力すると、AnimaがCO₂テーブルとO₂テーブルを作成します。各ラウンドは音と振動でお知らせするので、時計を見る必要はありません。</p>
+        </div>
+        <ul class="facts">
+          <li data-guide-link="co2-table" data-i18n-html="tbFact1"><strong>CO₂テーブル：</strong>息止めは一定で、回復時間が短くなります。呼吸したい衝動への耐性を鍛えます。</li>
+          <li data-guide-link="o2-table" data-i18n-html="tbFact2"><strong>O₂テーブル：</strong>回復時間は一定で、息止めが長くなります。安全に、より長く止める力を鍛えます。</li>
+          <li data-i18n-html="tbFact3"><strong>オリジナルテーブル：</strong>息止め、回復、ラウンド数をいつでも変更できます。</li>
+        </ul>
+        <nav class="topic-guides" data-guides="co2-table,o2-table,co2-vs-o2"></nav>
+      </div>
+      <div class="table-demo" id="tableDemo">
+        <div class="td-switch" role="tablist" aria-label="CO₂ / O₂">
+          <button type="button" role="tab" data-kind="co2" aria-selected="true">CO₂</button>
+          <button type="button" role="tab" data-kind="o2" aria-selected="false">O₂</button>
+        </div>
+        <div class="td-top">
+          <label for="prRange" data-i18n="tbSlider">スタティックの自己ベスト</label>
+          <output class="td-pr" id="prOut" for="prRange">3:00</output>
+        </div>
+        <input type="range" id="prRange" min="60" max="420" step="15" value="180">
+        <div class="td-sum">
+          <div><b id="sumHold">1:30</b><span data-i18n="tbHold">息止め</span></div>
+          <div><b id="sumRest">2:00 – 0:15</b><span data-i18n="tbRest">回復</span></div>
+          <div><b id="sumTotal">21 min</b><span data-i18n="tbTotal">セッション</span></div>
+        </div>
+        <div class="td-chart" id="tdChart"></div>
+        <div class="legend"><span><i style="background:var(--rest)"></i><span data-i18n="tbRest">回復</span></span><span><i class="td-hold-swatch"></i><span data-i18n="tbHold">息止め</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="breathing">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="brTitle">止める前に、よく呼吸を。</h2>
+        <p data-i18n="brLede">ゆっくり落ち着いたブリーズアップが、よい息止めにつながります。パターンを選んでガイドに従うか、自分のリズムを作りましょう。</p>
+      </div>
+      <div class="patterns">
+        <div class="pattern">
+          <div><h3 data-guide-link="breathwork" data-i18n="br1Title">腹式呼吸</h3><p data-i18n="br1Text">長く吐いて、すべてをゆっくりに。</p></div>
+          <div class="bar" style="--pc:var(--cyan);--cycle:12s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-guide-link="breathwork" data-i18n="br2Title">ボックス呼吸</h3><p data-i18n="br2Text">4つの等しい時間で集中を高めます。</p></div>
+          <div class="bar" style="--pc:var(--teal);--cycle:16s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:4"><b aria-hidden="true">—</b>4s</span><span class="out" style="flex:4"><b aria-hidden="true">↓</b>4s</span><span class="hold2" style="flex:4"><b aria-hidden="true">—</b>4s</span><i class="cursor"></i></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-guide-link="breathwork" data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">長い保持と、さらに長い呼気でリラックス。</p></div>
+          <div class="bar" style="--pc:var(--aqua);--cycle:19s"><span class="in" style="flex:4"><b aria-hidden="true">↑</b>4s</span><span class="hold" style="flex:7"><b aria-hidden="true">—</b>7s</span><span class="out" style="flex:8"><b aria-hidden="true">↓</b>8s</span><i class="cursor"></i></div>
+        </div>
+        <div class="pattern">
+          <div><h3 data-i18n="br4Title">カスタム</h3><p data-i18n="br4Text">各フェーズを秒単位で設定できます。</p></div>
+          <div class="bar custom" style="--pc:var(--green)"><span data-i18n="br4Bar">吸う、止める、吐く、止める：自由に設定</span></div>
+        </div>
+      </div>
+      <div class="legend phase-legend"><span><b aria-hidden="true">↑</b><span data-i18n="brIn">吸う</span></span><span><b aria-hidden="true">—</b><span data-i18n="brHold">止める</span></span><span><b aria-hidden="true">↓</b><span data-i18n="brOut">吐く</span></span></div>
+      <nav class="topic-guides" data-guides="breathwork,breathe-up"></nav>
+    </div>
+  </section>
+
+  <section class="block" id="plans">
+    <div class="wrap split">
+      <div>
+        <div class="block-head">
+          <h2 data-i18n="plTitle">4週間のプランを、あなたに。</h2>
+          <p data-i18n="plLede">週3〜6回のセッションを選べます。Animaがテーブルと呼吸練習を組み立て、2週目と4週目の終わりに記録への挑戦を設けます。</p>
+        </div>
+      </div>
+      <div>
+        <div class="plan" id="planGrid" aria-label="Plan de 4 semaines : tables CO₂ et O₂ alternées, respiration les autres jours, tentative de record en fin de semaines 2 et 4"></div>
+        <div class="plan-legend"><span><i style="background:var(--cyan)"></i><span data-i18n="plCo2">CO₂テーブル</span></span><span><i style="background:var(--aqua)"></i><span data-i18n="plO2">O₂テーブル</span></span><span><i style="background:color-mix(in srgb, var(--green) 45%, transparent)"></i><span data-i18n="plBreath">呼吸練習</span></span><span><i style="background:var(--yellow)"></i><span data-guide-link="measure-pb" data-i18n="plRecord">記録挑戦</span></span></div>
+        <div class="extras">
+          <div><h3 data-guide-link="without-coach" data-i18n="ex1Title">目に見える成長</h3><p data-i18n="ex1Text">息止め、テーブル、収縮を、日・週・月ごとのグラフで確認できます。</p></div>
+          <div><h3 data-i18n="ex2Title">連続記録を守る</h3><p data-i18n="ex2Text">毎日のリマインダーとホーム画面ウィジェットで、習慣が続きます。</p></div>
+          <div><h3 data-i18n="ex3Title">データをどこでも</h3><p data-i18n="ex3Text">AppleまたはGoogleでサインインすると、デバイス間でセッションを同期できます。</p></div>
+          <div><h3 data-i18n="ex4Title">アカウント不要</h3><p data-i18n="ex4Text">すべての機能はまずiPhone上で動きます。サインインは任意です。</p></div>
+        </div>
+        <nav class="topic-guides" data-guides="beginner-plan,measure-pb,three-minutes,without-coach"></nav>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="guides">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 data-i18n="gdTitle">メソッドを学ぶ。</h2>
+        <p data-i18n="gdLede">生理学、トレーニング、安全についての無料ガイドを14言語で。</p>
+      </div>
+      <div class="guides">
+        <a class="guide" data-guide="co2" href="/blog/en/co2-table-static-apnea.html"><h3 data-i18n="gd1Title">CO₂テーブルを解説</h3><p data-i18n="gd1Text">息止めを終わらせるのは酸素ではなくCO₂である理由と、それを鍛えるテーブルの作り方。</p></a>
+        <a class="guide" data-guide="breath" href="/blog/en/breathwork-freediving-techniques.html"><h3 data-i18n="gd2Title">フリーダイビングの呼吸法</h3><p data-i18n="gd2Text">息止めの前に役立つ呼吸法と、避けるべきひとつの方法。</p></a>
+        <a class="guide" data-guide="three" href="/blog/en/how-to-break-3-minutes-static-apnea.html"><h3 data-i18n="gd3Title">3分の壁を越える</h3><p data-i18n="gd3Text">初めての3分スタティックへの、現実的な道のり。</p></a>
+      </div>
+      <a class="all-guides" href="/blog/ja/" data-blog-index data-i18n="gdAll">すべてのガイドを見る</a>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <h2 data-i18n="clTitle">次の息止めは、ソファから始まります。</h2>
+      <p data-i18n="clText">1日10分、横になって。やるべきことを知っているタイマーと一緒に。Anima Apneaをダウンロードして、今夜最初のテーブルを始めましょう。</p>
+      <a class="store-btn" href="https://apps.apple.com/app/anima-apnea/id6760680506" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><small data-i18n="storeSmall">ダウンロード</small>App Store</span>
+      </a>
+      <p class="safety" data-guide-link="blackout" data-i18n="safety">トレーニングは陸上で、座るか横になって行ってください。訓練を受けたバディの見守りなしに水中で息止めをしないでください。また、息止めの前に過呼吸をしないでください。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Anima Apnea</span>
+    <nav>
+      <a href="/blog/ja/" data-blog-index data-i18n="navGuides">ガイド</a>
+      <a href="/privacy/ja.html" id="privacyLink" data-i18n="privacy">プライバシーポリシー</a>
+      <button type="button" id="contactBtn" data-i18n="contact">お問い合わせ</button>
+    </nav>
+  </div>
+</footer>
+
+<script src="/i18n.js?v=20261012i"></script>
+<script src="/guides-index.js?v=20261012i"></script>
+<script>
+(function () {
+  var html = document.documentElement;
+  var I18N = window.ANIMA_I18N || {};
+  var LANG_ORDER = ['en','fr','es','de','it','pt','ja','zh','da','nl','hi','id','th','vi'];
+  var GUIDES = {
+    co2: {en:'en/co2-table-static-apnea.html',fr:'fr/comment-faire-table-co2-apnee-statique.html',es:'es/como-hacer-tabla-co2-apnea-estatica.html',de:'de/co2-tabelle-statisches-apnoe.html',it:'it/come-fare-tabella-co2-apnea-statica.html',pt:'pt/como-fazer-tabela-co2-apneia-estatica.html',ja:'ja/co2-table-static-apnea.html',zh:'zh/co2-table-static-apnea.html',da:'da/co2-table-static-apnea.html',nl:'nl/co2-table-static-apnea.html',hi:'hi/co2-table-static-apnea.html',id:'id/co2-table-static-apnea.html',th:'th/co2-table-static-apnea.html',vi:'vi/co2-table-static-apnea.html'},
+    breath: {en:'en/breathwork-freediving-techniques.html',fr:'fr/breathwork-apnee-meilleures-techniques.html',es:'es/breathwork-apnea-mejores-tecnicas.html',de:'de/breathwork-apnoe-beste-techniken.html',it:'it/breathwork-apnea-migliori-tecniche.html',pt:'pt/breathwork-apneia-melhores-tecnicas.html',ja:'ja/breathwork-freediving.html',zh:'zh/breathwork-freediving.html',da:'da/breathwork-freediving.html',nl:'nl/breathwork-freediving.html',hi:'hi/breathwork-freediving.html',id:'id/breathwork-freediving.html',th:'th/breathwork-freediving.html',vi:'vi/breathwork-freediving.html'},
+    three: {en:'en/how-to-break-3-minutes-static-apnea.html',fr:'fr/depasser-3-minutes-apnee-statique.html',es:'es/superar-3-minutos-apnea-estatica.html',de:'de/3-minuten-statisches-apnoe-ueberwinden.html',it:'it/superare-3-minuti-apnea-statica.html',pt:'pt/superar-3-minutos-apneia-estatica.html',ja:'ja/break-3-minutes-apnea.html',zh:'zh/break-3-minutes-apnea.html',da:'da/break-3-minutes-apnea.html',nl:'nl/break-3-minutes-apnea.html',hi:'hi/break-3-minutes-apnea.html',id:'id/break-3-minutes-apnea.html',th:'th/break-3-minutes-apnea.html',vi:'vi/break-3-minutes-apnea.html'}
+  };
+  var lang = 'en';
+  function t(key) {
+    var d = I18N[lang] && I18N[lang].data;
+    return (d && d[key]) || (I18N.en && I18N.en.data[key]) || null;
+  }
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  // ── Nav border on scroll ──
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // ── Theme (shared 'theme' key with the blog) ──
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var light = !html.classList.contains('sepia');
+    html.classList.toggle('sepia', light);
+    store('theme', light ? 'sepia' : 'dark');
+  });
+
+  // ── Language ──
+  var langBtn = document.getElementById('langBtn'), langMenu = document.getElementById('langMenu');
+  function setLang(code, explicit) {
+    if (!I18N[code]) code = 'en';
+    lang = code;
+    html.lang = code;
+    document.getElementById('langCode').textContent = code.toUpperCase();
+    if (I18N[code].title) document.title = I18N[code].title;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n')); if (v) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var v = t(el.getAttribute('data-i18n-html')); if (v) el.innerHTML = v;
+    });
+    document.getElementById('privacyLink').href = '/privacy/' + code + '.html';
+    document.querySelectorAll('[data-blog-index]').forEach(function (el) { el.href = code === 'en' ? '/blog/' : '/blog/' + code + '/'; });
+    document.querySelectorAll('[data-guide]').forEach(function (a) {
+      var g = GUIDES[a.getAttribute('data-guide')]; a.href = '/blog/' + (g[code] || g.en);
+    });
+    langMenu.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-current', b.dataset.code === code ? 'true' : 'false'); });
+    if (explicit) { store('lang', code); store('lang_explicit', '1'); }
+    applyGuideLinks();
+    resetHold();
+  }
+  LANG_ORDER.forEach(function (code) {
+    if (!I18N[code]) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.dataset.code = code; b.setAttribute('role', 'menuitem');
+    b.textContent = I18N[code].label;
+    b.addEventListener('click', function () {
+      store('lang', code); store('lang_explicit', '1');
+      if (code === lang) { closeMenu(); return; }
+      location.href = code === 'en' ? '/' : '/' + code + '/';
+    });
+    langMenu.appendChild(b);
+  });
+  // ── Liens vers les guides du sujet (titres réels des articles, langue courante) ──
+  var BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>';
+  function guideHref(id) {
+    var G = window.ANIMA_GUIDES; if (!G || !G.files[id]) return null;
+    return '/blog/' + lang + '/' + (G.files[id][lang] || G.files[id].en);
+  }
+  function guideTitle(id) {
+    var G = window.ANIMA_GUIDES; if (!G) return '';
+    return (G.titles[lang] && G.titles[lang][id]) || (G.titles.en && G.titles.en[id]) || '';
+  }
+  function applyGuideLinks() {
+    document.querySelectorAll('[data-guide-link]').forEach(function (el) {
+      var href = guideHref(el.getAttribute('data-guide-link')); if (!href) return;
+      var target = el.querySelector('strong') || el;
+      if (target.querySelector('a')) return;
+      var a = document.createElement('a'); a.href = href;
+      while (target.firstChild) a.appendChild(target.firstChild);
+      target.appendChild(a);
+    });
+    document.querySelectorAll('[data-guides]').forEach(function (nav) {
+      nav.innerHTML = nav.getAttribute('data-guides').split(',').map(function (id) {
+        var href = guideHref(id), title = guideTitle(id);
+        return href && title ? '<a href="' + href + '">' + BOOK + '<span>' + title.replace(/</g, '&lt;') + '</span></a>' : '';
+      }).join('');
+    });
+  }
+  function closeMenu() { langMenu.classList.remove('open'); langBtn.setAttribute('aria-expanded', 'false'); }
+  langBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = langMenu.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.lang-select')) closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  // ── Contact: copy email ──
+  document.getElementById('contactBtn').addEventListener('click', function () {
+    var btn = this, email = 'lucas.massoni.contact@gmail.com';
+    var done = function () {
+      btn.textContent = t('emailCopied') || 'Email copied';
+      setTimeout(function () { btn.textContent = t('contact'); }, 2000);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(email).then(done, function () { location.href = 'mailto:' + email; });
+    else location.href = 'mailto:' + email;
+  });
+
+  // ── Hold dial ──
+  var dial = document.getElementById('dial'), holdBtn = document.getElementById('holdBtn');
+  var clockDigits = document.querySelectorAll('#clock .d'), state = document.getElementById('dialState');
+  var ring = document.getElementById('ringFill'), C = 603.19;
+  var start = 0, raf = 0, holding = false;
+  function fmt(s) { s = Math.floor(s); var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+  function paint(sec) {
+    var m = Math.min(9, Math.floor(sec / 60)), s = Math.floor(sec % 60);
+    clockDigits[0].textContent = m;
+    clockDigits[1].textContent = Math.floor(s / 10);
+    clockDigits[2].textContent = s % 10;
+    ring.style.strokeDashoffset = C * (1 - (sec % 60) / 60);
+  }
+  function tick() { paint((performance.now() - start) / 1000); raf = requestAnimationFrame(tick); }
+  function begin(e) {
+    if (holding) return;
+    if (e) e.preventDefault();
+    holding = true; start = performance.now();
+    dial.classList.add('holding'); holdBtn.setAttribute('aria-pressed', 'true');
+    holdBtn.textContent = t('holdActive'); state.textContent = t('dialActive');
+    raf = requestAnimationFrame(tick);
+  }
+  function end() {
+    if (!holding) return;
+    holding = false; cancelAnimationFrame(raf);
+    var sec = (performance.now() - start) / 1000;
+    dial.classList.remove('holding'); holdBtn.setAttribute('aria-pressed', 'false');
+    paint(sec); ring.style.strokeDashoffset = C * (1 - Math.min(sec, 60) / 60);
+    holdBtn.textContent = t('holdAgain');
+    state.textContent = sec < 3 ? t('dialTooShort') : (t('dialResult') || '').replace('{t}', fmt(sec));
+  }
+  function resetHold() {
+    if (holding) return;
+    paint(0); ring.style.strokeDashoffset = C;
+    holdBtn.textContent = t('holdIdle'); state.textContent = t('dialIdle');
+  }
+  holdBtn.addEventListener('pointerdown', function (e) { holdBtn.setPointerCapture && holdBtn.setPointerCapture(e.pointerId); begin(e); });
+  holdBtn.addEventListener('pointerup', end);
+  holdBtn.addEventListener('pointercancel', end);
+  holdBtn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  holdBtn.addEventListener('keydown', function (e) { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) begin(e); });
+  holdBtn.addEventListener('keyup', function (e) { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); end(); } });
+  window.addEventListener('blur', end);
+
+  // ── Contraction ticks on the phases line (closer together as the hold goes on) ──
+  var ticks = document.getElementById('ticks'), NS = 'http://www.w3.org/2000/svg';
+  [540, 600, 650, 695, 735, 770, 802, 831, 858, 882, 904, 924, 942, 958, 972, 985].forEach(function (x) {
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', 16); l.setAttribute('y2', 44);
+    l.setAttribute('class', 'hl-tick'); l.setAttribute('vector-effect', 'non-scaling-stroke');
+    l.style.animationDelay = (1.6 + (x - 540) / 445 * 2.4).toFixed(2) + 's';
+    ticks.appendChild(l);
+  });
+
+  // ── CO₂ table demo (same rules as the app's adapted tables) ──
+  var range = document.getElementById('prRange'), chart = document.getElementById('tdChart');
+  function snap(v) { return Math.round(v / 15) * 15; }
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  // Mêmes formules que l'app (TableAdaptation, lib/models/apnea_table.dart)
+  var tableKind = 'co2';
+  function floorTo(v, n) { return Math.floor(v / n) * n; }
+  function co2Rounds(pr) {
+    var hold = clamp(snap(pr * 0.5), 30, 240), cap = Math.max(15, floorTo(pr * 0.6, 15));
+    if (hold > cap) hold = cap;
+    var rest0 = clamp(snap(pr * 0.67), 120, 300), rounds = [];
+    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 15, 300), hold]);
+    return rounds;
+  }
+  function o2Rounds(pr) {
+    var start = clamp(snap(pr * 0.33), 30, 180);
+    var linear = start + 7 * 15, target = Math.max(linear, floorTo(pr * 0.8, 5));
+    var end = Math.max(start, Math.min(target, floorTo(pr * 0.85, 15)));
+    var stepH = (end - start) / 7, rounds = [];
+    for (var i = 0; i < 8; i++) rounds.push([120, i === 7 ? end : Math.min(end, Math.round((start + i * stepH) / 5) * 5)]);
+    return rounds;
+  }
+  function drawTable() {
+    var pr = +range.value;
+    var rounds = tableKind === 'o2' ? o2Rounds(pr) : co2Rounds(pr);
+    var total = rounds.reduce(function (s, r) { return s + r[0] + r[1]; }, 0);
+    document.getElementById('prOut').textContent = fmt(pr);
+    if (tableKind === 'o2') {
+      document.getElementById('sumHold').textContent = fmt(rounds[0][1]) + ' – ' + fmt(rounds[7][1]);
+      document.getElementById('sumRest').textContent = fmt(rounds[0][0]);
+    } else {
+      document.getElementById('sumHold').textContent = fmt(rounds[0][1]);
+      document.getElementById('sumRest').textContent = fmt(rounds[0][0]) + ' – ' + fmt(rounds[7][0]);
+    }
+    document.getElementById('sumTotal').textContent = Math.round(total / 60) + ' min';
+
+    var W = 600, rowH = 22, gap = 7, left = 30, right = 44, top = 4;
+    var H = top + 8 * (rowH + gap) + 22, maxT = 0;
+    rounds.forEach(function (r) { maxT = Math.max(maxT, r[0] + r[1]); });
+    var step = maxT > 360 ? 120 : 60; maxT = Math.ceil(maxT / step) * step;
+    var sx = (W - left - right) / maxT, out = '';
+    for (var tt = 0; tt <= maxT; tt += step) {
+      var x = left + tt * sx;
+      out += '<line class="c-grid" x1="' + x + '" x2="' + x + '" y1="0" y2="' + (H - 20) + '"/>';
+      out += '<text class="c-tick" x="' + x + '" y="' + (H - 4) + '" text-anchor="middle">' + fmt(tt) + '</text>';
+    }
+    rounds.forEach(function (r, i) {
+      var y = top + i * (rowH + gap), rw = r[0] * sx, hw = r[1] * sx;
+      out += '<text class="c-tick" x="0" y="' + (y + rowH / 2 + 4) + '">' + (i + 1) + '</text>';
+      out += '<rect class="c-rest" x="' + left + '" y="' + y + '" width="' + Math.max(rw - 2, 1) + '" height="' + rowH + '" rx="5"/>';
+      out += '<rect class="c-hold" x="' + (left + rw) + '" y="' + y + '" width="' + hw + '" height="' + rowH + '" rx="5"/>';
+      out += '<text class="c-lab" x="' + (left + rw + hw + 7) + '" y="' + (y + rowH / 2 + 4) + '">' + fmt(r[1]) + '</text>';
+    });
+    chart.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (tableKind === 'o2' ? 'Table O₂' : 'Table CO₂') + ', 8 rounds">' + out + '</svg>';
+  }
+  range.addEventListener('input', function () { chart.classList.remove('build'); drawTable(); }); drawTable();
+  var demo = document.getElementById('tableDemo');
+  demo.querySelectorAll('.td-switch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      tableKind = b.getAttribute('data-kind');
+      demo.classList.toggle('o2', tableKind === 'o2');
+      demo.querySelectorAll('.td-switch button').forEach(function (o) { o.setAttribute('aria-selected', o === b ? 'true' : 'false'); });
+      drawTable();
+      staggerTable();
+    });
+  });
+  function staggerTable() {
+    chart.querySelectorAll('rect').forEach(function (r, i) { r.style.animationDelay = (Math.floor(i / 2) * 0.09 + (i % 2) * 0.12) + 's'; });
+    chart.querySelectorAll('text').forEach(function (t, i) { t.style.animationDelay = (0.3 + i * 0.03) + 's'; });
+    chart.classList.add('build');
+  }
+
+  // ── 4-week plan grid (4 sessions a week, record at end of weeks 2 and 4) ──
+  var grid = document.getElementById('planGrid');
+  function renderPlan() {
+    var days = (t('days') || 'M,T,W,T,F,S,S').split(','), wk = t('week') || 'Week';
+    var g = '<span></span>' + days.map(function (d) { return '<span class="dow">' + d + '</span>'; }).join('');
+    // Plan généré par l'app (TrainingPlan.generate) pour 4 séances + 3 respirations
+    // par semaine : tables CO₂/O₂ alternées, respiration les autres jours,
+    // respiration la veille et tentative de record le dimanche des semaines 2 et 4.
+    var plan = [
+      ['co2', 'br', 'o2', 'br', 'co2', 'br', 'o2'],
+      ['co2', 'br', 'o2', 'br', 'co2', 'br', 'r'],
+      ['o2', 'br', 'co2', 'br', 'o2', 'br', 'co2'],
+      ['o2', 'br', 'co2', 'br', 'o2', 'br', 'r']
+    ];
+    for (var w = 0; w < 4; w++) {
+      g += '<span class="wk">' + (wk.indexOf('{n}') > -1 ? wk.replace('{n}', w + 1) : wk + ' ' + (w + 1)) + '</span>';
+      for (var d = 0; d < 7; d++) g += '<span class="cell ' + plan[w][d] + '"></span>';
+    }
+    grid.innerHTML = g;
+    grid.querySelectorAll('.cell').forEach(function (c, i) { c.style.transitionDelay = (i * 0.035) + 's'; });
+  }
+  var _setLang = setLang;
+  setLang = function (c, e) { _setLang(c, e); renderPlan(); };
+
+  // ── Play each animation when its section comes into view ──
+  if ('IntersectionObserver' in window) {
+    var once = function (el, fn, threshold) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { fn(); io.disconnect(); } });
+      }, { threshold: threshold || 0.35 });
+      io.observe(el);
+    };
+    once(document.getElementById('holdLine'), function () { document.getElementById('holdLine').classList.add('play'); }, 0.6);
+    once(chart, staggerTable, 0.3);
+    once(grid, function () { grid.classList.add('play'); }, 0.4);
+    var breathing = document.getElementById('breathing');
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { breathing.classList.toggle('live', e.isIntersecting); });
+    }, { threshold: 0.2 }).observe(breathing);
+  } else {
+    document.getElementById('holdLine').classList.add('play');
+    grid.classList.add('play');
+  }
+
+  // ── Langue = celle de la page (une URL par langue : /, /fr/, /es/…) ──
+  var pageLang = html.lang && I18N[html.lang] ? html.lang : 'en';
+  if (pageLang === 'en' && location.pathname === '/') {
+    // Racine : anciens liens ?lang=xx, choix explicite, puis langue de l'appareil.
+    var urlLang = new URLSearchParams(location.search).get('lang');
+    var pref = I18N[urlLang] ? urlLang : (read('lang_explicit') === '1' ? read('lang') : (navigator.language || '').slice(0, 2).toLowerCase());
+    if (pref && pref !== 'en' && I18N[pref]) { location.replace('/' + pref + '/'); return; }
+  }
+  setLang(pageLang, false);
+})();
+</script>
+</body>
+</html>
