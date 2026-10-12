@@ -221,8 +221,9 @@ figure.fig figcaption b { color: var(--text-secondary); font-weight: 600; }
 .callout .ct { font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block; }
 .callout.tip { background: color-mix(in srgb, var(--co2) 6%, transparent); border-color: color-mix(in srgb, var(--co2) 22%, transparent); }
 .callout.tip .ic { background: color-mix(in srgb, var(--co2) 18%, transparent); color: var(--co2); }
-.callout.warning { background: color-mix(in srgb, var(--warn) 7%, transparent); border-color: color-mix(in srgb, var(--warn) 30%, transparent); }
-.callout.warning .ic { background: color-mix(in srgb, var(--warn) 20%, transparent); color: var(--warn); }
+.callout.warning { background: color-mix(in srgb, var(--warn) 13%, transparent); border: 1.5px solid color-mix(in srgb, var(--warn) 60%, transparent); }
+.callout.warning .ct { color: var(--warn); }
+.callout.warning .ic { background: var(--warn); color: var(--bg); }
 .callout.science { background: color-mix(in srgb, var(--o2) 6%, transparent); border-color: color-mix(in srgb, var(--o2) 22%, transparent); }
 .callout.science .ic { background: color-mix(in srgb, var(--o2) 18%, transparent); color: var(--o2); }
 

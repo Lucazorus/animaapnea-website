@@ -58,6 +58,21 @@ def fill(template, d):
     return out
 
 
+def french_typography(s):
+    """Espaces insécables : jamais de « ou » isolés en bout de ligne, ni de : ; ? ! en début de ligne.
+    Ne touche qu'au texte visible (hors balises, <script> et <style>)."""
+    nb, nnb = '\u00a0', '\u202f'
+    def fix(t):
+        t = re.sub(r'«\s+', '«' + nb, t)
+        t = re.sub(r'\s+»', nb + '»', t)
+        return re.sub(r'(?<=\S) ([:;?!])(?=\s|$|<)', nnb + r'\1', t)
+    out, i = [], 0
+    for m in re.finditer(r'<script\b.*?</script>|<style\b.*?</style>|<[^>]+>', s, re.S):
+        out.append(fix(s[i:m.start()])); out.append(m.group(0)); i = m.end()
+    out.append(fix(s[i:]))
+    return ''.join(out)
+
+
 def set_meta(page, l, entry):
     d = entry['data']
     url = f'{BASE}/' if l == 'en' else f'{BASE}/{l}/'
@@ -91,6 +106,8 @@ def main():
         if l == 'en' or l not in i18n:
             continue
         page = set_meta(fill(template, i18n[l]['data']), l, i18n[l])
+        if l == 'fr':
+            page = french_typography(page)
         os.makedirs(os.path.join(SITE, l), exist_ok=True)
         open(os.path.join(SITE, l, 'index.html'), 'w', encoding='utf-8').write(page)
     merged = [l for l in (only or LANGS) if os.path.exists(os.path.join(DATA, 'landing', f'{l}.json'))]

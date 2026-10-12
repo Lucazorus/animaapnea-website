@@ -163,7 +163,7 @@ def index_page(lang):
   <link rel="icon" type="image/png" href="/logo-256.png">
   <script type="application/ld+json">{ld}</script>
   <link rel="stylesheet" href="{root}style.css?v=20261012c">
-  <link rel="stylesheet" href="{root}article.css?v=20261012c">
+  <link rel="stylesheet" href="{root}article.css?v=20261012d">
   <link rel="stylesheet" href="{root}index.css?v=20261012c">
 </head>
 <body>
