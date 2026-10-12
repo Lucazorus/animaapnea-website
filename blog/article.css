@@ -15,8 +15,8 @@
   --rest: rgba(112,175,132,0.42);
   --grid: rgba(255,255,255,0.08);
   --surface-hi: #112035;
-  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: var(--sys);
+  --mono: var(--sys);
 }
 
 html.sepia {
@@ -73,9 +73,9 @@ main.article-main {
 
 .article-hero h1 {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  letter-spacing: -0.03em;
   line-height: 1.08;
   margin-bottom: 1.2rem;
 }
@@ -106,20 +106,15 @@ main.article-main {
 /* ── Body typography ── */
 .article-body > p,
 .article-body li { font-size: 1.065rem; line-height: 1.78; }
-.article-body > p:first-of-type::first-letter {
-  font-family: var(--serif);
-  float: left; font-size: 3.6rem; line-height: 0.9;
-  padding: 0.35rem 0.6rem 0 0; color: var(--text-primary);
-}
 .article-body strong { color: var(--text-primary); font-weight: 600; }
 .article-body a { color: var(--co2); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .article-body a:hover { text-decoration-thickness: 2px; }
 
 .article-body h2 {
   font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(1.55rem, 3vw, 2rem);
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: clamp(1.45rem, 2.8vw, 1.8rem);
+  letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 3.5rem 0 1.1rem;
 }
@@ -162,7 +157,7 @@ main.article-main {
   border-radius: 14px; padding: 1.1rem 1.2rem;
 }
 .stat .v {
-  font-family: var(--serif); font-size: 2rem; line-height: 1; color: var(--text-primary);
+  font-weight: 100; font-size: 2.2rem; line-height: 1; color: var(--text-primary);
   margin-bottom: 0.4rem; font-variant-numeric: tabular-nums;
 }
 .stat .l { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
@@ -192,9 +187,9 @@ figure.fig figcaption b { color: var(--text-secondary); font-weight: 600; }
 /* SVG paint classes (theme-aware) */
 .c-grid { stroke: var(--grid); stroke-width: 1; }
 .c-axis { stroke: var(--border-mid); stroke-width: 1; }
-.c-tick { fill: var(--text-muted); font-size: 11px; font-family: Inter, sans-serif; font-variant-numeric: tabular-nums; }
-.c-lab { fill: var(--text-secondary); font-size: 12px; font-family: Inter, sans-serif; font-weight: 500; }
-.c-lab-strong { fill: var(--text-primary); font-size: 13px; font-family: Inter, sans-serif; font-weight: 600; }
+.c-tick { fill: var(--text-muted); font-size: 11px; font-family: var(--sys); font-variant-numeric: tabular-nums; }
+.c-lab { fill: var(--text-secondary); font-size: 12px; font-family: var(--sys); font-weight: 500; }
+.c-lab-strong { fill: var(--text-primary); font-size: 13px; font-family: var(--sys); font-weight: 600; }
 .c-rest { fill: var(--rest); }
 .c-hold { fill: var(--co2); }
 .c-hold-o2 { fill: var(--o2); }
@@ -202,7 +197,7 @@ figure.fig figcaption b { color: var(--text-secondary); font-weight: 600; }
 .c-o2-line { stroke: var(--o2); stroke-width: 2.5; fill: none; }
 .c-co2-area { fill: var(--co2); opacity: 0.1; }
 .c-warn { stroke: var(--warn); stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; }
-.c-warn-t { fill: var(--warn); font-size: 11px; font-family: Inter, sans-serif; font-weight: 600; }
+.c-warn-t { fill: var(--warn); font-size: 11px; font-family: var(--sys); font-weight: 600; }
 .c-zone { fill: var(--warn); opacity: 0.08; }
 .c-node { fill: var(--surface-hi); stroke: var(--border-mid); stroke-width: 1; }
 .c-node-accent { fill: var(--surface-hi); stroke: var(--co2); stroke-width: 1.5; }
@@ -221,7 +216,7 @@ figure.fig figcaption b { color: var(--text-secondary); font-weight: 600; }
 .callout p:last-child { margin-bottom: 0; }
 .callout .ic {
   width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
-  font-weight: 700; font-size: 0.95rem; font-family: var(--serif);
+  font-weight: 700; font-size: 0.95rem;
 }
 .callout .ct { font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; display: block; }
 .callout.tip { background: color-mix(in srgb, var(--co2) 6%, transparent); border-color: color-mix(in srgb, var(--co2) 22%, transparent); }
@@ -233,7 +228,7 @@ figure.fig figcaption b { color: var(--text-secondary); font-weight: 600; }
 
 /* ── Pull quote ── */
 blockquote.pull {
-  font-family: var(--serif); font-style: italic; font-size: 1.45rem; line-height: 1.4;
+  font-weight: 600; font-size: 1.3rem; line-height: 1.45; letter-spacing: -0.01em;
   color: var(--text-primary); border-left: 2px solid var(--accent);
   padding: 0.2rem 0 0.2rem 1.5rem; margin: 2.5rem 0;
 }
@@ -247,7 +242,7 @@ ol.steps > li::before {
   content: counter(s); position: absolute; left: 0; top: 0;
   width: 2.1rem; height: 2.1rem; border-radius: 50%;
   display: grid; place-items: center;
-  font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+  font-size: 1rem; font-weight: 300; font-variant-numeric: tabular-nums;
   color: var(--co2); border: 1px solid color-mix(in srgb, var(--co2) 40%, transparent);
   background: var(--bg);
 }
@@ -288,7 +283,7 @@ ol.steps > li strong { display: block; margin-bottom: 0.15rem; }
 .calc-input { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
 .calc-input label { font-size: 0.82rem; color: var(--text-secondary); }
 .calc-pr {
-  font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--text-primary); font-variant-numeric: tabular-nums;
+  font-size: 2.2rem; font-weight: 100; color: var(--text-primary); font-variant-numeric: tabular-nums;
   min-width: 4.2ch; text-align: center;
 }
 .calc input[type=range] { width: 100%; accent-color: var(--co2); margin: 0.6rem 0 1.2rem; }
@@ -343,7 +338,7 @@ sup.ref a { font-size: 0.7rem; font-weight: 600; text-decoration: none !importan
     var(--surface);
   border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
-.cta-app .t { font-family: var(--serif); font-size: 1.5rem; color: var(--text-primary); line-height: 1.25; margin-bottom: 0.5rem; }
+.cta-app .t { font-weight: 700; letter-spacing: -0.02em; font-size: 1.35rem; color: var(--text-primary); line-height: 1.25; margin-bottom: 0.5rem; }
 .cta-app p { font-size: 0.95rem !important; margin: 0; }
 .cta-app .cta-button { white-space: nowrap; text-decoration: none !important; color: #040B15 !important; }
 
@@ -416,3 +411,5 @@ nav.blog-nav a.blog-home:hover { color: var(--text-primary); opacity: 1; }
 .c-danger { fill: var(--danger); }
 .c-apnea-line { stroke: var(--apnea); stroke-width: 2; fill: none; }
 .c-danger-line { stroke: var(--danger); stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; }
+
+@media (max-width: 600px) { .byline .dot { display: none; } }

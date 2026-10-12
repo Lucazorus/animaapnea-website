@@ -37,9 +37,6 @@
   <link rel="icon" type="image/png" href="logo-256.png">
   <link rel="apple-touch-icon" href="logo-256.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -89,8 +86,8 @@
       --ripple: rgba(111,156,175,0.40);
       --rest: rgba(112,175,132,0.42);
       --on-accent: #FFFFFF;
-      --serif: 'Newsreader', Georgia, serif;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      /* Same type as the app: the system font (SF Pro on Apple devices), see lib/theme/typography.md */
+      --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       --measure: 34rem;
       --gutter: clamp(1rem, 4vw, 3rem);
     }
@@ -180,9 +177,9 @@
     .hero { position: relative; padding: clamp(3rem, 8vh, 6rem) 0 clamp(4rem, 10vh, 7rem); overflow: hidden; }
     .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
     .hero h1 {
-      font-family: var(--serif); font-weight: 300;
-      font-size: clamp(2.6rem, 6.2vw, 5.1rem);
-      line-height: 1.02; letter-spacing: -.025em;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+      line-height: 1.04; letter-spacing: -.03em;
       margin-bottom: 1.6rem; max-width: 12ch;
     }
     .hero .lede { color: var(--mist); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: var(--measure); margin-bottom: 2.2rem; }
@@ -207,12 +204,12 @@
 
     .dial-core { position: relative; text-align: center; }
     .clock {
-      font-family: var(--serif); font-weight: 300;
-      font-size: clamp(4.2rem, 11vw, 7.4rem); line-height: 1; letter-spacing: -.03em;
+      font-weight: 100;
+      font-size: clamp(4.4rem, 11.5vw, 7.6rem); line-height: 1; letter-spacing: -.02em;
       font-variant-numeric: tabular-nums lining-nums;
       display: inline-flex; align-items: baseline;
     }
-    .clock .d { display: inline-block; width: .56em; text-align: center; }
+    .clock .d { display: inline-block; width: .58em; text-align: center; }
     .clock .c { display: inline-block; width: .28em; text-align: center; opacity: .5; transform: translateY(-.06em); }
     .dial-state { margin-top: .8rem; font-size: .92rem; color: var(--mist); min-height: 1.5em; }
     .hold-btn {
@@ -229,8 +226,8 @@
     section.block { padding: clamp(4.5rem, 11vh, 8rem) 0; border-top: 1px solid var(--line); }
     .block-head { max-width: 40rem; margin-bottom: clamp(2.2rem, 5vh, 3.5rem); }
     .block-head h2 {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.08; letter-spacing: -.02em; margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem;
     }
     .block-head p { color: var(--mist); max-width: var(--measure); }
 
@@ -245,7 +242,7 @@
     .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 3rem); counter-reset: ph; }
     .phase { counter-increment: ph; }
     .phase h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .5rem; display: flex; gap: .6rem; align-items: baseline; }
-    .phase h3::before { content: counter(ph); font-family: var(--serif); font-weight: 400; font-size: 1.4rem; color: var(--cyan); }
+    .phase h3::before { content: counter(ph); font-weight: 100; font-size: 1.6rem; font-variant-numeric: tabular-nums; color: var(--cyan); }
     .phase:nth-child(n+2) h3::before { color: var(--yellow); }
     .phase p { color: var(--mist); font-size: .98rem; }
 
@@ -257,7 +254,7 @@
     .table-demo { background: var(--deep); border: 1px solid var(--line); border-radius: 22px; padding: clamp(1.2rem, 3vw, 2rem); }
     .td-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
     .td-top label { font-size: .9rem; color: var(--mist); }
-    .td-pr { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .td-pr { font-size: 2.8rem; font-weight: 100; font-variant-numeric: tabular-nums; }
     .table-demo input[type=range] { width: 100%; margin: 1rem 0 1.4rem; accent-color: var(--cyan); height: 28px; }
     .td-sum { display: flex; gap: 2rem; flex-wrap: wrap; font-size: .9rem; color: var(--mist); margin-bottom: 1.2rem; }
     .td-sum b { display: block; color: var(--foam); font-weight: 600; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
@@ -304,7 +301,7 @@
     .guides { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
     .guide { padding: 1.8rem 1.8rem 1.8rem 0; text-decoration: none; display: block; border-bottom: 1px solid var(--line); }
     .guide + .guide { padding-left: 1.8rem; border-left: 1px solid var(--line); }
-    .guide h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; line-height: 1.2; margin-bottom: .6rem; }
+    .guide h3 { font-weight: 700; font-size: 1.25rem; letter-spacing: -.02em; line-height: 1.25; margin-bottom: .6rem; }
     .guide p { font-size: .94rem; color: var(--mist); }
     .guide:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .all-guides { display: inline-block; margin-top: 1.6rem; color: var(--cyan); font-weight: 500; text-decoration: none; font-size: .95rem; }
@@ -312,7 +309,7 @@
 
     /* Closing */
     .closing { padding: clamp(5rem, 14vh, 9rem) 0; border-top: 1px solid var(--line); text-align: center; }
-    .closing h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.3rem, 5.4vw, 4.2rem); line-height: 1.05; letter-spacing: -.025em; margin: 0 auto 1.2rem; max-width: 16ch; }
+    .closing h2 { font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.06; letter-spacing: -.03em; margin: 0 auto 1.2rem; max-width: 16ch; }
     .closing p { color: var(--mist); margin: 0 auto 2.2rem; max-width: 32rem; }
     .safety { margin: 3rem auto 0; max-width: 34rem; font-size: .85rem; color: var(--haze); padding-top: 1.4rem; border-top: 1px solid var(--line); }
 
@@ -621,7 +618,7 @@
   </div>
 </footer>
 
-<script src="i18n.js?v=20261012"></script>
+<script src="i18n.js?v=20261012b"></script>
 <script>
 (function () {
   var html = document.documentElement;

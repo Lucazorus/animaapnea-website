@@ -142,12 +142,9 @@ def index_page(lang):
   <meta property="og:image" content="{BASE}/og-image.png">
   <link rel="icon" type="image/png" href="/logo-256.png">
   <script type="application/ld+json">{ld}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{root}style.css?v=20261012">
-  <link rel="stylesheet" href="{root}article.css?v=20261012">
-  <link rel="stylesheet" href="{root}index.css?v=20261012">
+  <link rel="stylesheet" href="{root}style.css?v=20261012b">
+  <link rel="stylesheet" href="{root}article.css?v=20261012b">
+  <link rel="stylesheet" href="{root}index.css?v=20261012b">
 </head>
 <body>
   <nav class="blog-nav">
@@ -167,7 +164,7 @@ def index_page(lang):
   <footer class="blog-footer">
     <p>© 2026 Anima Apnea · <a href="/privacy/{lang}.html">{u["privacy"]}</a></p>
   </footer>
-<script src="{root}lang.js?v=20261012"></script>
+<script src="{root}lang.js?v=20261012b"></script>
 </body>
 </html>
 '''
