@@ -65,7 +65,7 @@ related articles (`.related`).
 
 - iPhone app, free download; some customization is Premium. App Store: `https://apps.apple.com/app/anima-apnea/id6760680506`
 - Static apnea timer; you tap to mark each contraction; records the first-contraction time; personal records; session history.
-- CO2 table adapted to the record: hold ≈ 50 % of PR, first recovery ≈ 2/3 of PR (min 1:00), rounded to 15 s, −15 s per round, 8 rounds. O2 table: fixed 2:00 recovery, holds increasing. Both editable (holds, recovery, rounds).
+- CO2 table adapted to the record: hold ≈ 50 % of PR, first recovery ≈ 2/3 of PR but never under 2:00, rounded to 15 s, −15 s per round, never under 15 s, 8 rounds. O2 table: fixed 2:00 recovery, first hold ≈ 33 % of PR, +15 s per round, last hold capped at 85 % of PR. Both editable (holds, recovery, rounds).
 - Sound and haptic cues during sessions.
 - Guided breathing: diaphragmatic (4 s in / 8 s out), box breathing (4-4-4-4), 4-7-8, and custom patterns. Breathe-up before holds.
 - 4-week training plans, 3 to 6 sessions a week, record attempts at the end of weeks 2 and 4.

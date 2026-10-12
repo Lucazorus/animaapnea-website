@@ -327,7 +327,70 @@
     .rise.d1 { animation-delay: .05s; } .rise.d2 { animation-delay: .18s; } .rise.d3 { animation-delay: .3s; } .rise.d4 { animation-delay: .45s; }
     @keyframes rise { to { opacity: 1; transform: none; } }
 
+    /* ── Motion: each animation shows something real ── */
+
+    /* Idle dial breathes on the app's diaphragmatic rhythm: 4 s in, 8 s out */
+    .breath {
+      position: absolute; inset: 9%; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 28%, transparent) 0%, color-mix(in srgb, var(--cyan) 10%, transparent) 50%, transparent 70%);
+      transform: scale(.78); opacity: .55;
+      animation: breathe 12s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%   { transform: scale(.78); opacity: .45; }
+      33%  { transform: scale(1);   opacity: 1; }
+      100% { transform: scale(.78); opacity: .45; }
+    }
+    .dial.holding .breath { animation-play-state: paused; opacity: .9; }
+
+    /* Phases line: draws, first contraction pops, contractions speed up */
+    .hold-line .hl-easy, .hold-line .hl-struggle { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+    .hold-line .hl-first { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+    .hold-line .hl-tick { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scaleY(.2); }
+    .hold-line.play .hl-easy { animation: draw 1.4s cubic-bezier(.4,0,.2,1) forwards; }
+    .hold-line.play .hl-first { animation: pop .5s 1.35s cubic-bezier(.3,1.6,.5,1) forwards; }
+    .hold-line.play .hl-struggle { animation: draw 2.6s 1.5s linear forwards; }
+    .hold-line.play .hl-tick { animation: tick .35s cubic-bezier(.3,1.6,.5,1) forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pop { to { transform: scale(1); } }
+    @keyframes tick { to { opacity: 1; transform: scaleY(1); } }
+    .phases .phase { transition: opacity .6s, transform .6s; }
+    .hold-line:not(.play) + .phases .phase { opacity: .35; }
+    .hold-line.play + .phases .phase:nth-child(1) { transition-delay: .2s; }
+    .hold-line.play + .phases .phase:nth-child(2) { transition-delay: 1.4s; }
+    .hold-line.play + .phases .phase:nth-child(3) { transition-delay: 2.2s; }
+
+    /* CO2 table builds round by round */
+    .td-chart.build rect { transform-box: fill-box; transform-origin: left center; animation: grow .55s cubic-bezier(.3,.8,.3,1) both; }
+    .td-chart.build text { animation: fadein .4s both; }
+    @keyframes grow { from { transform: scaleX(0); } }
+    @keyframes fadein { from { opacity: 0; } }
+
+    /* Breathing patterns: a cursor runs through each cycle in real time */
+    .bar { position: relative; }
+    .bar .cursor {
+      position: absolute; top: -4px; bottom: -4px; left: 0; width: 2px; border-radius: 2px;
+      background: var(--foam); box-shadow: 0 0 10px var(--pc);
+      animation: sweep var(--cycle) linear infinite; animation-play-state: paused;
+    }
+    #breathing.live .bar .cursor { animation-play-state: running; }
+    @keyframes sweep { from { left: 0; } to { left: calc(100% - 2px); } }
+
+    /* Plan fills in, record attempts light up */
+    .plan .cell { transition: transform .4s cubic-bezier(.3,1.5,.5,1), opacity .4s; }
+    .plan:not(.play) .cell.s, .plan:not(.play) .cell.r { transform: scale(.4); opacity: 0; }
+    .plan.play .cell.r { animation: glow 2.4s 1.4s ease-in-out 2; }
+    @keyframes glow { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--yellow) 25%, transparent); } }
+
     @media (prefers-reduced-motion: reduce) {
+      .breath, .hold-line .hl-easy, .hold-line .hl-struggle, .hold-line .hl-first, .hold-line .hl-tick,
+      .td-chart.build rect, .td-chart.build text, .bar .cursor, .plan .cell { animation: none !important; transition: none !important; }
+      .hold-line .hl-easy, .hold-line .hl-struggle { stroke-dashoffset: 0; }
+      .hold-line .hl-first, .hold-line .hl-tick { transform: none; opacity: 1; }
+      .hold-line:not(.play) + .phases .phase { opacity: 1; }
+      .plan:not(.play) .cell.s, .plan:not(.play) .cell.r { transform: none; opacity: 1; }
+      .bar .cursor { display: none; }
+
       .rise { animation: none; opacity: 1; transform: none; }
       .dial.holding .ripples i { animation: none; }
       .store-btn:hover { transform: none; }
@@ -395,6 +458,7 @@
             <circle class="ring-track" cx="100" cy="100" r="96"/>
             <circle class="ring-fill" id="ringFill" cx="100" cy="100" r="96" stroke-dasharray="603.19" stroke-dashoffset="603.19"/>
           </svg>
+          <div class="breath"></div>
           <div class="ripples"><i></i><i></i><i></i></div>
           <div class="dial-core">
             <div class="clock" id="clock"><span class="d">0</span><span class="c">:</span><span class="d">0</span><span class="d">0</span></div>
@@ -413,7 +477,7 @@
         <h2 data-i18n="phTitle">Every hold has three phases.</h2>
         <p data-i18n="phLede">Knowing where you are in a hold is what lets you relax through it. Anima's timer is built around these moments.</p>
       </div>
-      <div class="hold-line" aria-hidden="true">
+      <div class="hold-line" id="holdLine" aria-hidden="true">
         <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
           <line x1="0" y1="30" x2="1000" y2="30" class="hl-base"/>
           <line x1="2" y1="30" x2="470" y2="30" class="hl-easy"/>
@@ -478,15 +542,15 @@
       <div class="patterns">
         <div class="pattern">
           <div><h3 data-i18n="br1Title">Diaphragmatic</h3><p data-i18n="br1Text">Long exhales to slow everything down.</p></div>
-          <div class="bar" style="--pc:var(--cyan)"><span class="in" style="flex:4">4s</span><span class="out" style="flex:8">8s</span></div>
+          <div class="bar" style="--pc:var(--cyan);--cycle:12s"><span class="in" style="flex:4">4s</span><span class="out" style="flex:8">8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br2Title">Box breathing</h3><p data-i18n="br2Text">Four equal sides for focus.</p></div>
-          <div class="bar" style="--pc:var(--teal)"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:4">4s</span><span class="out" style="flex:4">4s</span><span class="hold2" style="flex:4">4s</span></div>
+          <div class="bar" style="--pc:var(--teal);--cycle:16s"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:4">4s</span><span class="out" style="flex:4">4s</span><span class="hold2" style="flex:4">4s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br3Title">4-7-8</h3><p data-i18n="br3Text">A long pause and a longer exhale to unwind.</p></div>
-          <div class="bar" style="--pc:var(--aqua)"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:7">7s</span><span class="out" style="flex:8">8s</span></div>
+          <div class="bar" style="--pc:var(--aqua);--cycle:19s"><span class="in" style="flex:4">4s</span><span class="hold" style="flex:7">7s</span><span class="out" style="flex:8">8s</span><i class="cursor"></i></div>
         </div>
         <div class="pattern">
           <div><h3 data-i18n="br4Title">Your own</h3><p data-i18n="br4Text">Set every phase to the second.</p></div>
@@ -688,6 +752,7 @@
     var l = document.createElementNS(NS, 'line');
     l.setAttribute('x1', x); l.setAttribute('x2', x); l.setAttribute('y1', 16); l.setAttribute('y2', 44);
     l.setAttribute('class', 'hl-tick'); l.setAttribute('vector-effect', 'non-scaling-stroke');
+    l.style.animationDelay = (1.6 + (x - 540) / 445 * 2.4).toFixed(2) + 's';
     ticks.appendChild(l);
   });
 
@@ -697,9 +762,9 @@
   function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
   function drawTable() {
     var pr = +range.value;
-    var hold = clamp(snap(pr * 0.5), 30, 240), rest0 = clamp(snap(pr * 0.67), 60, 300);
+    var hold = clamp(snap(pr * 0.5), 30, 240), rest0 = clamp(snap(pr * 0.67), 120, 300);
     var rounds = [];
-    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 10, 300), hold]);
+    for (var i = 0; i < 8; i++) rounds.push([clamp(rest0 - i * 15, 15, 300), hold]);
     var total = rounds.reduce(function (s, r) { return s + r[0] + r[1]; }, 0);
     document.getElementById('prOut').textContent = fmt(pr);
     document.getElementById('sumHold').textContent = fmt(hold);
@@ -725,7 +790,12 @@
     });
     chart.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="CO2 table, 8 rounds">' + out + '</svg>';
   }
-  range.addEventListener('input', drawTable); drawTable();
+  range.addEventListener('input', function () { chart.classList.remove('build'); drawTable(); }); drawTable();
+  function staggerTable() {
+    chart.querySelectorAll('rect').forEach(function (r, i) { r.style.animationDelay = (Math.floor(i / 2) * 0.09 + (i % 2) * 0.12) + 's'; });
+    chart.querySelectorAll('text').forEach(function (t, i) { t.style.animationDelay = (0.3 + i * 0.03) + 's'; });
+    chart.classList.add('build');
+  }
 
   // ── 4-week plan grid (4 sessions a week, record at end of weeks 2 and 4) ──
   var grid = document.getElementById('planGrid');
@@ -741,9 +811,30 @@
       }
     }
     grid.innerHTML = g;
+    grid.querySelectorAll('.cell').forEach(function (c, i) { c.style.transitionDelay = (i * 0.035) + 's'; });
   }
   var _setLang = setLang;
   setLang = function (c, e) { _setLang(c, e); renderPlan(); };
+
+  // ── Play each animation when its section comes into view ──
+  if ('IntersectionObserver' in window) {
+    var once = function (el, fn, threshold) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { fn(); io.disconnect(); } });
+      }, { threshold: threshold || 0.35 });
+      io.observe(el);
+    };
+    once(document.getElementById('holdLine'), function () { document.getElementById('holdLine').classList.add('play'); }, 0.6);
+    once(chart, staggerTable, 0.3);
+    once(grid, function () { grid.classList.add('play'); }, 0.4);
+    var breathing = document.getElementById('breathing');
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { breathing.classList.toggle('live', e.isIntersecting); });
+    }, { threshold: 0.2 }).observe(breathing);
+  } else {
+    document.getElementById('holdLine').classList.add('play');
+    grid.classList.add('play');
+  }
 
   // ── Initial language: ?lang= > explicit choice > browser ──
   var urlLang = new URLSearchParams(location.search).get('lang');

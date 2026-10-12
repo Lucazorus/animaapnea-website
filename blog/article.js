@@ -150,15 +150,15 @@
     host.appendChild(svg);
   }
 
-  // ── Calculator (mirrors the Anima app's TableAdaptation formulas) ──
+  // ── Calculators (mirror the Anima app's TableAdaptation formulas, lib/models/apnea_table.dart) ──
   function snap15(v) { return Math.round(v / 15) * 15; }
   function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
 
   function co2Table(pr) {
     var hold = clamp(snap15(pr * 0.5), 30, 240);
-    var rest = clamp(snap15(pr * 0.67), 60, 300);
+    var rest = clamp(snap15(pr * 0.67), 120, 300);
     var rounds = [];
-    for (var i = 0; i < 8; i++) rounds.push([clamp(rest - i * 15, 10, 300), hold]);
+    for (var i = 0; i < 8; i++) rounds.push([clamp(rest - i * 15, 15, 300), hold]);
     return rounds;
   }
   function o2Table(pr) {
